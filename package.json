@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "prod:buildclient": "webpack --watch",
     "dev:start": "nodemon ./server/app.js --exec babel-node --presets es2015,stage-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,12 +14,16 @@
   "author": "blueazurite",
   "license": "ISC",
   "dependencies": {
+    "babel-loader": "^6.2.4",
     "express": "^4.14.0",
     "mongoose": "^4.5.8"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
     "babel-preset-stage-1": "^6.5.0",
     "webpack": "^1.13.1"
   }
