@@ -8,7 +8,7 @@ const PATHS = {
 
 module.exports = {
   entry: PATHS.src,
-  output: { path: PATHS.compiled, filename: 'bundle.js' },
+  output: { path: PATHS.compiled, filename: 'app.bundle.js' },
   module: {
     loaders: [
       {
