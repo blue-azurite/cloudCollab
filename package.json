@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "prod:buildclient": "webpack --watch",
+    "prod:buildserver": "babel ./server -d ./server-dist --presets es2015,stage-2 --copy-files",
     "dev:start": "nodemon ./server/app.js --exec babel-node --presets es2015,stage-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,4 +1,11 @@
-# Dependency directorys
+# Dependency directories
 node_modules/
 bower_components/
+
+# Compiled files
 compiled/
+server-dist/
+
+# Logs
+logs
+*.log
