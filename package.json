@@ -4,10 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "prod:buildclient": "webpack --watch",
+    "prod:buildclient": "webpack",
     "prod:buildserver": "babel ./server -d ./server-dist --presets es2015,stage-2 --copy-files",
     "dev:start": "nodemon ./server/app.js --exec babel-node --presets es2015,stage-1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:webpack": "webpack --watch",
+    "dev:fullstart": "npm run dev:start & npm run dev:webpack"
   },
   "repository": {
     "type": "git"
