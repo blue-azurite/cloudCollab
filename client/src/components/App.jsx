@@ -9,7 +9,7 @@ export default class App extends Component {
           <TextEditor />
         </div>
         <div>
-          <h2>Video Will be here...</h2>
+          <Video />
         </div>
       </div>
     );
