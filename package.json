@@ -17,9 +17,13 @@
   "license": "ISC",
   "dependencies": {
     "babel-loader": "^6.2.4",
+    "brace": "^0.8.0",
+    "eslint": "^3.2.2",
+    "eslint-plugin-react": "^6.0.0",
     "express": "^4.14.0",
     "mongoose": "^4.5.8",
     "react": "^15.3.0",
+    "react-ace": "^3.5.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
