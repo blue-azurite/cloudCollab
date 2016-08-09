@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TextEditor from '../container/TextEditor';
-import Video from '../container/Video';
 
 export default class App extends Component {
   render() {
@@ -10,10 +9,9 @@ export default class App extends Component {
           <TextEditor />
         </div>
         <div>
-          <Video />
+          <h2>Video Will be here...</h2>
         </div>
       </div>
     );
   }
 }
-
