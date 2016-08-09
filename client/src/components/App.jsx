@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextEditor from '../container/TextEditor';
+import VideoChat from '../container/Video';
 
 export default class App extends Component {
   render() {
@@ -9,7 +10,7 @@ export default class App extends Component {
           <TextEditor />
         </div>
         <div>
-          <Video />
+          <VideoChat />
         </div>
       </div>
     );
