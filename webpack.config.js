@@ -16,7 +16,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react', 'stage-2']
         }
       }
     ]
@@ -25,4 +25,8 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.css'], // in import statements default to these file types if none specified
     modulesDirectories: ['node_modules']
   }
+  ,
+   plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };

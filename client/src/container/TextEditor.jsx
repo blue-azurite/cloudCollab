@@ -11,7 +11,7 @@ class TextEditor extends Component {
   render() {
     return (
       <div>
-        <textarea onKeyUp={this.handleChange.bind(this)}></textarea>
+        <textarea onChange={this.handleChange.bind(this)} value={this.props.textBox}></textarea>
       </div>
     )
   }
@@ -19,7 +19,7 @@ class TextEditor extends Component {
 
 function mapStateToProps(state) {
   return {
-    textBox: state.text
+    textBox: state.Text.userInput
   }
 }
 
