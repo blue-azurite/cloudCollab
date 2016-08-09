@@ -1,7 +1,7 @@
 import { FETCH_TEXT_INPUT } from '../actions';
 
 const initialState = {
-  collection: ''
+  userInput: ''
 };
 
 export default function (state = initialState, action) {
@@ -9,7 +9,7 @@ export default function (state = initialState, action) {
     case FETCH_TEXT_INPUT:
       return {
         ...state,
-        collection: action.payload
+        userInput: action.payload
       };
       default:
         return state;
