@@ -8,7 +8,7 @@ export default function (state = initialState, action) {
   switch(action.type) {
     case FETCH_TEXT_INPUT:
       return {
-        state: state,
+        ...state,
         collection: action.payload
       };
       default:
