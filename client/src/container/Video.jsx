@@ -45,7 +45,6 @@ class VideoChat extends Component {
       this.props.initVid();
     } else {
       // if receiver...initAsReceiver
-      console.log('trying to enable video as receiver...', this.props.peerId);
       this.props.initVid(this.props.peerId)
     }
   }
