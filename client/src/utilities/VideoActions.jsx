@@ -1,4 +1,10 @@
 const peer = new Peer({key: 'lwjd5qra8257b9'});
+let peerId;
+
+peer.on('open', function(id) {
+  console.log('peer connected! peerId is:', id)
+  peerId = id;
+})
 
 // Returns a Promise that is resolved with this peer's ID, assigned by the signaling server.
 const getMyId = () => new Promise((resolve, reject) => {
@@ -91,8 +97,9 @@ const establishPeerCall = (mediaStream, sourceId) => new Promise((resolve, rejec
 });
 
  export {
-  peer,
+  peerId,
   getMyId,
+  peer,
   establishPeerConnection,
   establishPeerCall
 };
