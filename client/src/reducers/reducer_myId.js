@@ -1,13 +1,13 @@
-import { INIT_VID } from '../actions';
+import { SET_MY_ID } from '../actions';
 
 const initialState = {
   myId: ''
-};
-
+}
 
 export default function (state = initialState, action) {
+  console.log('i\'m here!!!!', action);
   switch(action.type) {
-    case INIT_VID:
+    case SET_MY_ID:
       return {
         ...state,
         myId: action.payload
@@ -16,4 +16,3 @@ export default function (state = initialState, action) {
         return state;
     }
 }
-

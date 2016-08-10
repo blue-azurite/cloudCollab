@@ -1,4 +1,6 @@
-import { peer, getMyId, establishPeerConnetion, establishPeerCall, establishPeerConnection } from './VideoActions';
+import { peerId, peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
+
+const params = new URLSearchParams(location.search.slice(1));
 
 const constraints = {
   audio: true,
@@ -14,11 +16,6 @@ const constraints = {
   }
 };
 
-navigator.getUserMedia = ( navigator.getUserMedia ||
-                       navigator.webkitGetUserMedia ||
-                       navigator.mozGetUserMedia ||
-                       navigator.msGetUserMedia );
-
 
 export function updateText(data) {
   return {
@@ -28,33 +25,26 @@ export function updateText(data) {
 } 
 
 
-
-export function initializeVideo() {
-  let id = 0;
+export function initVid(id) {
 
   navigator.mediaDevices.getUserMedia(constraints) 
-    .then(setUpVideo)
+    .then((stream) => {
+      setUpLocalVideo(stream, id)
+    })
     .catch(console.error.bind(console));
-  getMyId( (peerId) => (
-    id = peerId
-  ));
-
 
   return {
-      type: INITIALIZE,
-      payload: {
-        peerId: id
-      }
+      type: INIT_VID,
+      payload: peerId
   };
 }
 
-
-function setUpVideo(localStream) {
+function setUpLocalVideo(localStream, id) {
   const localVideo = document.querySelector('#local-video');
   localVideo.srcObject = localStream;
   console.log('Setting up video.');
 
-  establishPeerCall(localStream, this.props.isHost ? null : this.props.peerId)
+  establishPeerCall(localStream, id)
     .then((remoteStream) => {
       const remoteVideo = document.querySelector('.remote-video');
       remoteVideo.srcObject = remoteStream;
@@ -63,8 +53,49 @@ function setUpVideo(localStream) {
 }
 
 
+export function amIHost() {
+  const isHost = !params.has('id');
+  return {
+    type: CHECK_IF_HOST,
+    payload: isHost
+  }
+}
+
+export function getPeerId() {
+
+  return {
+    type: GET_PEER_ID,
+    payload: params.get('id')
+  }
+}
+
+export function setMyId(myId) {
+  console.log('within the setMyId action', myId);
+  return {
+    type: SET_MY_ID,
+    payload: myId
+  }
+}
+
+
+export function showLink(boolean) {
+
+  if (boolean === true) {
+    boolean = false;
+  } else {
+    boolean = true;
+  }
+  console.log(boolean)
+  return {
+    type: CHANGE_LINK_STATE,
+    payload: boolean
+  }
+}
 
 export const FETCH_TEXT_INPUT = 'FETCH_TEXT_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';
-export const INITIALIZE = 'INITIALIZE';
+export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';
+export const CHECK_IF_HOST = 'CHECK_IF_HOST';
+export const CHANGE_LINK_STATE = 'CHANGE_LINK_STATE';
+export const SET_MY_ID = 'SET_MY_ID';
