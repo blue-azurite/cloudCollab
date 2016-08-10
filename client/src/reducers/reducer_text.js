@@ -1,7 +1,7 @@
 import { FETCH_TEXT_INPUT } from '../actions';
 
 const initialState = {
-  userInput: ''
+  userInput: '//start your document here'
 };
 
 export default function (state = initialState, action) {

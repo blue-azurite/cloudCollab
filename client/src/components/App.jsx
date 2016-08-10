@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import VideoChat from '../container/Video';
-import CodeEditor from './Editor'
+import CodeEditor from '../container/Editor';
 
 export default class App extends Component {
   render() {

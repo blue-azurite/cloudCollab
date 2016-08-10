@@ -13,7 +13,12 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname,'../compiled')));
 app.use(express.static(path.join(__dirname,'../client')));
 
-io.on('connection', socket => console.log('Connected on the server side!'));
+io.on('connection', function(socket){
+  console.log('Connected on the server side!');
+  socket.on('change text', function(text){
+    io.emit('change text', text)
+  });
+});
 
 server.listen(port, () => {
   console.log('----------------------------------------');
