@@ -9,14 +9,9 @@ import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } fro
 
 class VideoChat extends Component {
 
-  constructor(props) {
-    super(props)
-
-  }
-
   componentDidMount() {
     const sourceId = params.get('id');
-    console.log('Am I Host?', this.props.amIHost())
+
     if (this.props.amIHost().payload) {
       this.initAsSource()
     } else {
@@ -26,7 +21,7 @@ class VideoChat extends Component {
   }
 
   componentWillMount() {    
-    this.props.getPeerId();
+    this.props.getPeerId(); 
 
     getMyId().then((id) => {
       this.props.setMyId(id)
@@ -34,11 +29,11 @@ class VideoChat extends Component {
   }
 
   initAsSource() {
-      establishPeerConnection().then( conn => console.log('Connected!', conn));
+      establishPeerConnection().then( conn => console.log('Peer connection: connected as host!', conn));
   }
 
   initAsReceiver(sourceId) {
-      establishPeerConnection(sourceId).then( conn => console.log('Connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
+      establishPeerConnection(sourceId).then( conn => console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
 
   }
 
@@ -46,7 +41,7 @@ class VideoChat extends Component {
     this.renderLink();
 
     // if host...initAsHost
-    if (this.props.amIHost()) {
+    if (this.props.amIHost().payload) {
       this.props.initVid();
     } else {
       // if receiver...initAsReceiver

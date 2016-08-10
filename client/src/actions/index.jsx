@@ -42,12 +42,14 @@ export function initVid(id) {
 function setUpLocalVideo(localStream, id) {
   const localVideo = document.querySelector('#local-video');
   localVideo.srcObject = localStream;
-  console.log('Setting up video.');
+  console.log('in setUpLocalVideo. id is:', id)
 
+  // after setting up local video
   establishPeerCall(localStream, id)
+  //what is id? :( )
     .then((remoteStream) => {
-      const remoteVideo = document.querySelector('.remote-video');
-      remoteVideo.srcObject = remoteStream;
+      const remoteVideo = document.querySelector('#remote-video');
+      remoteVideo.srcObject = remoteStream; 
     })
     .catch(console.error.bind(console)); 
 }
