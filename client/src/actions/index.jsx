@@ -70,7 +70,7 @@ export function getPeerId() {
 }
 
 export function setMyId(myId) {
-  console.log('within the setMyId action', myId);
+
   return {
     type: SET_MY_ID,
     payload: myId
@@ -85,7 +85,7 @@ export function showLink(boolean) {
   } else {
     boolean = true;
   }
-  console.log(boolean)
+
   return {
     type: CHANGE_LINK_STATE,
     payload: boolean

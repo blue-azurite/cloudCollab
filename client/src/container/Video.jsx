@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Link from '../components/Link';
 // import any other actions as well
-import { initVidAsHost, amIHost, getPeerId, getLink, showLink, setMyId } from '../actions';
+import { initVid, amIHost, getPeerId, getLink, showLink, setMyId } from '../actions';
 import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
 const constraints = {
@@ -38,24 +38,11 @@ class VideoChat extends Component {
 
     // if host...initAsHost
     if (this.props.amIHost()) {
-      this.props.initVidAsHost();
+      this.props.initVid();
     } else {
       // if receiver...initAsReceiver
-      this.props.initVidAsHost(this.props.myId)
+      this.props.initVid(this.props.peerId)
     }
-  }
-
-  setUpLocalVideo(localStream) {
-  const localVideo = document.querySelector('#local-video');
-  localVideo.srcObject = localStream;
-  console.log('Setting up video.');
-
-  establishPeerCall(localStream, this.props.amIHost() ? null : this.props.peerId)
-    .then((remoteStream) => {
-      const remoteVideo = document.querySelector('#remote-video');
-      remoteVideo.srcObject = remoteStream;
-    })
-    .catch(console.log('error')); 
   }
 
   renderLink() {
@@ -66,7 +53,6 @@ class VideoChat extends Component {
   render() {
     return(
       <div id="video" className="mediaDiv"> 
-        {console.log('my id is:', this.props.myId)}
         { this.props.link ? <Link myId={this.props.myId} /> : null }
         <button onClick={this.renderLink.bind(this)}>Invite a friend</button>
         <button onClick={this.enableVideo.bind(this)}>Enable video chat</button>
@@ -91,7 +77,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
-    initVidAsHost: initVidAsHost, 
+    initVid: initVid, 
     amIHost: amIHost, 
     getPeerId: getPeerId, 
     getLink: getLink,
