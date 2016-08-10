@@ -5,7 +5,6 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-  console.log('i\'m here!!!!', action);
   switch(action.type) {
     case SET_MY_ID:
       return {
