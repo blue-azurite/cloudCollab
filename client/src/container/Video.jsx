@@ -11,8 +11,10 @@ class VideoChat extends Component {
 
   componentDidMount() {
     const sourceId = params.get('id');
+    
+    this.props.amIHost(); // this will update global state
 
-    if (this.props.amIHost().payload) {
+    if (this.props.isHost) { // this is grabbing global state
       this.initAsSource()
     } else {
       this.initAsReceiver(sourceId)
@@ -41,7 +43,7 @@ class VideoChat extends Component {
     this.renderLink();
 
     // if host...initAsHost
-    if (this.props.amIHost().payload) {
+    if (this.props.isHost) {
       this.props.initVid();
     } else {
       // if receiver...initAsReceiver
@@ -70,7 +72,7 @@ class VideoChat extends Component {
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
-    isHost: true,
+    isHost: state.Host.isHost,
     localStream: null, 
     link: state.Link.link ,
     peerId: state.PeerId.peerId,

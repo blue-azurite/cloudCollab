@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import VideoChat from '../container/Video';
-// import TextEditor from '../container/TextEditor';
 import CodeEditor from './Editor'
 
 export default class App extends Component {
@@ -13,7 +12,6 @@ export default class App extends Component {
         <div>
           <VideoChat />
         </div>
-        {this.props.children}
       </div>
     );
   }
