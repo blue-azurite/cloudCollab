@@ -1,4 +1,5 @@
 import { peerId, peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
+import req from 'axios';
 
 export const params = new URLSearchParams(location.search.slice(1));
 
@@ -93,6 +94,14 @@ export function showLink(boolean) {
   }
 }
 
+export function fetchRepos() {
+  const userRepos = req.get('api/github');
+
+  return {
+    type: FETCH_GITHUB_REPOS,
+    payload: userRepos
+  }
+}
 
 export const FETCH_TEXT_INPUT = 'FETCH_TEXT_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';
@@ -101,3 +110,4 @@ export const SET_UP_VIDEO = 'SET_UP_VIDEO';
 export const CHECK_IF_HOST = 'CHECK_IF_HOST';
 export const CHANGE_LINK_STATE = 'CHANGE_LINK_STATE';
 export const SET_MY_ID = 'SET_MY_ID';
+export const FETCH_GITHUB_REPOS = 'FETCH_GITHUB_REPOS';
