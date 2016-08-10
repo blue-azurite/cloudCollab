@@ -19,13 +19,13 @@ const getMyId = () => new Promise((resolve, reject) => {
 });
 
 // Returns a Promise that is resolved with an active peer.js DataConnection.
-// If sourceId is specified, this will connect to an existing ppeer with that source ID.
+// If sourceId is specified, this will connect to an existing peer with that source ID.
 // If sourceId is not specified, this will listen for an incoming connection.
 const establishPeerConnection = (sourceId) => new Promise((resolve, reject) => {
   const connect = () => {
     if (sourceId) {
       const conn = peer.connect(sourceId, { reliable: true });
-
+      console.log('sourceId is:', sourceId)
       conn.on('open', () => {
         console.log('RTC data connection established - acting as receiver');
         resolve(conn);
@@ -35,6 +35,7 @@ const establishPeerConnection = (sourceId) => new Promise((resolve, reject) => {
         reject(error);
       });
     } else {
+      console.log('Listening for connections...')
       peer.on('connection', (conn) => {
         conn.on('open', () => {
           console.log('RTC data connection established - acting as source');

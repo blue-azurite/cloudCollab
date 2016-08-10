@@ -1,9 +1,9 @@
 import { peerId, peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
-const params = new URLSearchParams(location.search.slice(1));
+export const params = new URLSearchParams(location.search.slice(1));
 
 const constraints = {
-  audio: true,
+  audio: false, // setting to false for testing purposes
   video: {
     width: {
       min: 250,
@@ -70,7 +70,6 @@ export function getPeerId() {
 }
 
 export function setMyId(myId) {
-
   return {
     type: SET_MY_ID,
     payload: myId
@@ -91,6 +90,7 @@ export function showLink(boolean) {
     payload: boolean
   }
 }
+
 
 export const FETCH_TEXT_INPUT = 'FETCH_TEXT_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';

@@ -3,34 +3,43 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Link from '../components/Link';
 // import any other actions as well
-import { initVid, amIHost, getPeerId, getLink, showLink, setMyId } from '../actions';
+import { params, initVid, amIHost, getPeerId, getLink, showLink, setMyId } from '../actions';
 import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
-const constraints = {
-  audio: true,
-  video: {
-    width: {
-      min: 250,
-      max: 250
-    }, 
-    height: {
-      min: 189,
-      max: 190
-    }
-  }
-};
 
 class VideoChat extends Component {
 
+  constructor(props) {
+    super(props)
+
+  }
+
   componentDidMount() {
-    this.props.getPeerId();
+    const sourceId = params.get('id');
+    console.log('Am I Host?', this.props.amIHost())
+    if (this.props.amIHost().payload) {
+      this.initAsSource()
+    } else {
+      this.initAsReceiver(sourceId)
+    }
+    
   }
 
   componentWillMount() {    
+    this.props.getPeerId();
+
     getMyId().then((id) => {
       this.props.setMyId(id)
-      console.log('id is:', id)
     }).catch((err) => console.error(err))
+  }
+
+  initAsSource() {
+      establishPeerConnection().then( conn => console.log('Connected!', conn));
+  }
+
+  initAsReceiver(sourceId) {
+      establishPeerConnection(sourceId).then( conn => console.log('Connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
+
   }
 
   enableVideo() {
@@ -41,12 +50,12 @@ class VideoChat extends Component {
       this.props.initVid();
     } else {
       // if receiver...initAsReceiver
+      console.log('trying to enable video as receiver...', this.props.peerId);
       this.props.initVid(this.props.peerId)
     }
   }
 
   renderLink() {
-    console.log(this.props)
     this.props.showLink(this.props.link);
   }
 
