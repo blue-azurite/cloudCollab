@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './container/App';
+import App from './components/App';
 import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxPromise from 'redux-promise';
 import rootReducer from './reducers';
-import thunk from 'redux-thunk';
 
 function configureStore(initialState) {
   const store = createStore(
     rootReducer, 
     initialState, 
     compose(
-      applyMiddleware(ReduxPromise, thunk), 
+      applyMiddleware(ReduxPromise), 
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   )

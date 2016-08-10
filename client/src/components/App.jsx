@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import VideoChat from '../container/Video';
+import VideoChat from '../container/Video';
 // import TextEditor from '../container/TextEditor';
 import CodeEditor from './Editor'
 

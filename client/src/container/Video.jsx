@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Link from '../components/Link';
 // import any other actions as well
-import { initVidAsHost, amIHost, getPeerId, getLink } from '../actions';
-import { peer, peerId, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
+import { initVidAsHost, amIHost, getPeerId, getLink, showLink, setMyId } from '../actions';
+import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
 const constraints = {
   audio: true,
@@ -23,35 +23,26 @@ const constraints = {
 class VideoChat extends Component {
 
   componentDidMount() {
+    this.props.getPeerId();
+  }
 
-    // let's initialize.
-
-    // check if host or receiver!
-    if (this.props.amIHost()) {
-      // if host...initAsHost
-      console.log('yeeeee you are host')
-    } else {
-      // if receiver...initAsReceiver
-    }
+  componentWillMount() {    
+    getMyId().then((id) => {
+      this.props.setMyId(id)
+      console.log('id is:', id)
+    }).catch((err) => console.error(err))
   }
 
   enableVideo() {
-    this.props.initVidAsHost();
     this.renderLink();
-  }
 
-  initAsSource() {
-    establishPeerConnection().then( (conn) => {
-      // Now connected to receiver as source
-      console.log('now connected to a peer')
-    })
-  }
-
-  initAsReceiver(peerId) {
-    establishPeerConnection(peerId).then( (conn) => {
-      // Now connected to source as receiver
-      console.log('now connected to source')
-    })
+    // if host...initAsHost
+    if (this.props.amIHost()) {
+      this.props.initVidAsHost();
+    } else {
+      // if receiver...initAsReceiver
+      this.props.initVidAsHost(this.props.myId)
+    }
   }
 
   setUpLocalVideo(localStream) {
@@ -68,12 +59,15 @@ class VideoChat extends Component {
   }
 
   renderLink() {
-    console.log(this.props.myId)
+    console.log(this.props)
+    this.props.showLink(this.props.link);
   }
 
   render() {
     return(
       <div id="video" className="mediaDiv"> 
+        {console.log('my id is:', this.props.myId)}
+        { this.props.link ? <Link myId={this.props.myId} /> : null }
         <button onClick={this.renderLink.bind(this)}>Invite a friend</button>
         <button onClick={this.enableVideo.bind(this)}>Enable video chat</button>
         <video id="local-video" autoPlay></video>
@@ -87,16 +81,23 @@ class VideoChat extends Component {
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
-    myId: null,
     isHost: true,
     localStream: null, 
-    showLink: true,
-    peerId: null
+    link: state.Link.link ,
+    peerId: state.PeerId.peerId,
+    myId: state.MyId.myId
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ initVidAsHost: initVidAsHost, amIHost: amIHost, getPeerId: getPeerId, getLink: getLink }, dispatch)
+  return bindActionCreators({ 
+    initVidAsHost: initVidAsHost, 
+    amIHost: amIHost, 
+    getPeerId: getPeerId, 
+    getLink: getLink,
+    showLink: showLink,
+    setMyId: setMyId
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoChat);

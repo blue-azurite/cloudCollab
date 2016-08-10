@@ -1,19 +1,18 @@
-import { GET_PEER_ID } from '../actions';
+import { SET_MY_ID } from '../actions';
 
 const initialState = {
-  peerId: ''
-};
-
+  myId: ''
+}
 
 export default function (state = initialState, action) {
+  console.log('i\'m here!!!!', action);
   switch(action.type) {
-    case GET_PEER_ID:
+    case SET_MY_ID:
       return {
         ...state,
-        peerId: action.payload
+        myId: action.payload
       }
       default:
         return state;
     }
 }
-

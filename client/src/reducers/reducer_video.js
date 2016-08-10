@@ -1,13 +1,13 @@
-import { INIT_VID_AS_HOST } from '../actions';
+import { INIT_VID } from '../actions';
 
 const initialState = {
-  myId: null
+  myId: ''
 };
 
 
 export default function (state = initialState, action) {
   switch(action.type) {
-    case INIT_VID_AS_HOST:
+    case INIT_VID:
       return {
         ...state,
         myId: action.payload

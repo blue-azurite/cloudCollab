@@ -1,4 +1,4 @@
-import { peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
+import { peerId, peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
 const params = new URLSearchParams(location.search.slice(1));
 
@@ -25,29 +25,31 @@ export function updateText(data) {
 } 
 
 
-export function initVidAsHost() {
+export function initVid(id) {
 
   navigator.mediaDevices.getUserMedia(constraints) 
-    .then(setUpLocalVideo)
+    .then((stream) => {
+      setUpLocalVideo(stream, id)
+    })
     .catch(console.error.bind(console));
 
   return {
-      type: INIT_VID_AS_HOST,
+      type: INIT_VID,
       payload: peerId
   };
 }
 
-export function setUpLocalVideo(localStream) {
+function setUpLocalVideo(localStream, id) {
   const localVideo = document.querySelector('#local-video');
   localVideo.srcObject = localStream;
   console.log('Setting up video.');
 
-  // establishPeerCall(localStream, this.props.isHost ? null : this.props.peerId)
-  //   .then((remoteStream) => {
-  //     const remoteVideo = document.querySelector('.remote-video');
-  //     remoteVideo.srcObject = remoteStream;
-  //   })
-  //   .catch(console.error.bind(console)); 
+  establishPeerCall(localStream, id)
+    .then((remoteStream) => {
+      const remoteVideo = document.querySelector('.remote-video');
+      remoteVideo.srcObject = remoteStream;
+    })
+    .catch(console.error.bind(console)); 
 }
 
 
@@ -60,21 +62,40 @@ export function amIHost() {
 }
 
 export function getPeerId() {
+
   return {
     type: GET_PEER_ID,
     payload: params.get('id')
   }
 }
 
-
-export function getLink() {
+export function setMyId(myId) {
+  console.log('within the setMyId action', myId);
   return {
-    type: FETCH_LINK
+    type: SET_MY_ID,
+    payload: myId
+  }
+}
+
+
+export function showLink(boolean) {
+
+  if (boolean === true) {
+    boolean = false;
+  } else {
+    boolean = true;
+  }
+  console.log(boolean)
+  return {
+    type: CHANGE_LINK_STATE,
+    payload: boolean
   }
 }
 
 export const FETCH_TEXT_INPUT = 'FETCH_TEXT_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';
-export const INIT_VID_AS_HOST = 'INIT_VID_AS_HOST';
+export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';
 export const CHECK_IF_HOST = 'CHECK_IF_HOST';
+export const CHANGE_LINK_STATE = 'CHANGE_LINK_STATE';
+export const SET_MY_ID = 'SET_MY_ID';
