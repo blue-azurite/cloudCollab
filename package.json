@@ -16,6 +16,7 @@
   "author": "blueazurite",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.13.1",
     "babel-loader": "^6.2.4",
     "brace": "^0.8.0",
     "eslint": "^3.2.2",
