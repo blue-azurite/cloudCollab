@@ -19,13 +19,15 @@ export default class CodeEditor extends Component {
 
 	render() {
 		return (
-			<AceEditor
-				width="100%"
-				mode="javascript"
-				theme="github"
-				value={this.state.text}
-				onChange={this.change.bind(this)}
-			/>
+			<div>
+				<AceEditor
+					width="100%"
+					mode="javascript"
+					theme="github"
+					value={this.state.text}
+					onChange={this.change.bind(this)}
+				/>
+			</div>
 		);
 	}
 }
