@@ -1,9 +1,9 @@
 import { peerId, peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
-const params = new URLSearchParams(location.search.slice(1));
+export const params = new URLSearchParams(location.search.slice(1));
 
 const constraints = {
-  audio: true,
+  audio: false, // setting to false for testing purposes
   video: {
     width: {
       min: 250,
@@ -42,12 +42,14 @@ export function initVid(id) {
 function setUpLocalVideo(localStream, id) {
   const localVideo = document.querySelector('#local-video');
   localVideo.srcObject = localStream;
-  console.log('Setting up video.');
+  console.log('in setUpLocalVideo. id is:', id)
 
+  // after setting up local video
   establishPeerCall(localStream, id)
+  //what is id? :( )
     .then((remoteStream) => {
-      const remoteVideo = document.querySelector('.remote-video');
-      remoteVideo.srcObject = remoteStream;
+      const remoteVideo = document.querySelector('#remote-video');
+      remoteVideo.srcObject = remoteStream; 
     })
     .catch(console.error.bind(console)); 
 }
@@ -70,7 +72,6 @@ export function getPeerId() {
 }
 
 export function setMyId(myId) {
-
   return {
     type: SET_MY_ID,
     payload: myId
@@ -91,6 +92,7 @@ export function showLink(boolean) {
     payload: boolean
   }
 }
+
 
 export const FETCH_TEXT_INPUT = 'FETCH_TEXT_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';
