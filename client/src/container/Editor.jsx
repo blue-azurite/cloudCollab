@@ -44,7 +44,7 @@ export default class CodeEditor extends Component {
 		return (
 			<div>
 				<AceEditor
-					width="100%"
+					width="45%"
 					mode="javascript"
 					theme="github"
 					value={this.state.input}
