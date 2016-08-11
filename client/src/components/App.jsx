@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import VideoChat from '../container/Video';
 import Github from '../container/Github';
-import CodeEditor from '../container/Editor'
+import CodeEditor from '../container/Editor';
+import GitCLI from '../container/GitCLI'
 
 export default class App extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class App extends Component {
             <CodeEditor />
             <VideoChat />
             <Github />
+            <GitCLI />
           </div>
         </div>
       </div>
