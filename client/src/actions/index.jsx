@@ -43,7 +43,6 @@ export function initVid(id) {
 function setUpLocalVideo(localStream, id) {
   const localVideo = document.querySelector('#local-video');
   localVideo.srcObject = localStream;
-  console.log('in setUpLocalVideo. id is:', id)
 
   // after setting up local video
 
