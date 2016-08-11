@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import keydown from 'react-keydown';
 // import any other actions as well ^___^ 
 
 class GitCLI extends Component {
-
-  submit() {
-    console.log('haiii there ^_____^')
+ handleKeyPress(e) {
+  if (e.key === 'Enter') {
+    console.log('Enter keypress detected')
   }
+ }
+
 
   render() {
     return(
-      <textarea defaultValue="hello" onEnter={this.submit.bind(this)}></textarea>
+      <textarea defaultValue="git" onKeyPress={this.handleKeyPress.bind(this)}></textarea>
     )
   }
 }
