@@ -48,6 +48,11 @@ function setUpLocalVideo(localStream, id) {
 
   // can we set up remote without passing in localstream??
 
+  // bug: if source peer does not enable video but remote peer does, 
+  // when source peer enables video it will not render remote peer's video
+  // on remote peer's end, source peer's video will not render either.
+  // it involves another 'enable video' click on both ends for both videos to render. 
+
   establishPeerCall(localStream, id)
     .then((remoteStream) => {
       const remoteVideo = document.querySelector('#remote-video');
