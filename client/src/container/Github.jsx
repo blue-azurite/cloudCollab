@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { action } from '../actions';
+import { fetchRepos } from '../actions';
 
 class Github extends Component {
+  handleClick() {
+    console.log('hello click');
+  }
   render(){
     return (
       <div>
-        { this.props.Repos.map((repo) => {
-          <Repository name={repo}/>
-          });
-        }
+        <button onClick={this.handleClick.bind(this)}></button>
       </div>
     )
   }

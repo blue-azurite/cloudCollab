@@ -3,7 +3,7 @@ import path from 'path';
 import db from './config/db';
 import http, { Server } from 'http';
 import Io from 'socket.io';
-
+import apiRoutes from './routes/apiRoutes';
 const app = express();
 const server = Server(app);
 const io = Io(server);
@@ -19,6 +19,9 @@ io.on('connection', function(socket){
     io.emit('change text', text)
   });
 });
+
+// RESTful routes for app
+apiRoutes(app);
 
 server.listen(port, () => {
   console.log('----------------------------------------');
