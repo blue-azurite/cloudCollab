@@ -46,8 +46,10 @@ function setUpLocalVideo(localStream, id) {
   console.log('in setUpLocalVideo. id is:', id)
 
   // after setting up local video
+
+  // can we set up remote without passing in localstream??
+
   establishPeerCall(localStream, id)
-  //what is id? :( )
     .then((remoteStream) => {
       const remoteVideo = document.querySelector('#remote-video');
       remoteVideo.srcObject = remoteStream; 
