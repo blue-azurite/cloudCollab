@@ -7,14 +7,13 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <h1 className="header">CloudCollab</h1>
         <div>
-          <CodeEditor />
-        </div>
-        <div>
-          <Github />
-        </div>
-        <div>
-          <VideoChat />
+          <div className="app">
+            <CodeEditor />
+            <VideoChat />
+            <Github />
+          </div>
         </div>
       </div>
     );

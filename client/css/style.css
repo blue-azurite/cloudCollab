@@ -4,5 +4,23 @@
   width: 250px;
   text-align: center;
   padding: 10px;
+  overflow: hidden;
+  background-color: pink;
+  margin-right: 10%;
+  /*position: relative;*/
 }
 
+.app {
+  /*text-align: center;*/
+}
+
+#brace-editor {
+  margin-left: 18.5%;
+  float: left;
+  display: inline-block;
+  width: 500px;
+}
+
+h1.header {
+  text-align: center;
+}
