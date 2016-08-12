@@ -58,8 +58,8 @@ io.on('connection', function(socket){
   
   //create a new time stamp, and save new session 10sec apart
   // var time = new Date().getTime();
-  // var username = 'something'; //I need to update this
-  // var sessionId = 'someID'; //I need to update this
+  // var username = 'something'; //need to update this later
+  // var sessionId = 'someID'; //need to update this later
 
   socket.on('change text', function(text){
     io.emit('change text', text);
