@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchRepos } from '../actions';
+import axios from 'axios';
 
 class Github extends Component {
-  handleClick() {
-    console.log('hello click');
-  }
   render(){
     return (
       <div>
-        <button onClick={this.handleClick.bind(this)}></button>
+        <a href="/api/github">Login with GitHub</a>
       </div>
     )
   }
