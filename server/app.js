@@ -19,12 +19,13 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname,'../compiled')));
 app.use(express.static(path.join(__dirname,'../client')));
 
-
+// Initialize passport
 app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Create GitHubStrategy
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,

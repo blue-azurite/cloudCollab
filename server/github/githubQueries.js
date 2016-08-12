@@ -3,9 +3,6 @@ import request from 'request';
 import Promise from 'bluebird';
 import axios from 'axios';
 
-const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-
 const endPoint = 'https://github.com/login/oauth/authorize';
 
 export const requestGithub = () => {
