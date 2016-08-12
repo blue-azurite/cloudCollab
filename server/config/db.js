@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost/blueazurite');
+const url = process.env.DATABASEURL || 'mongodb://localhost/blueazurite';
 
+mongoose.connect(url);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));

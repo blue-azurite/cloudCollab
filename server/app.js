@@ -7,6 +7,7 @@ import apiRoutes from './routes/apiRoutes';
 import passport from 'passport';
 import GitHubStrategy, { Strategy } from 'passport-github2';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 
 const app = express();
 const server = Server(app);
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname,'../client')));
 app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
