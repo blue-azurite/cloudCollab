@@ -38,6 +38,10 @@ class CodeEditor extends Component {
 		this.props.socket.emit('change text', text);
 	}
 
+	handleclick() {
+		this.state.emit('run code', this.state.input)
+	}
+
 	render() {
 		return (
 			<div>
@@ -48,6 +52,7 @@ class CodeEditor extends Component {
 					value={this.state.input}
 					onChange={this.change.bind(this)}
 				/>
+				<button onClick="this.handleclick.bind(this)">Run da code</button>
 			</div>
 		);
 	}
