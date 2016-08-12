@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import nodegit from 'nodegit';
+// import nodegit from 'nodegit';
 // import any other actions as well ^___^ 
 
 class GitCLI extends Component {
