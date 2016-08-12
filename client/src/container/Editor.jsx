@@ -24,7 +24,6 @@ export default class CodeEditor extends Component {
 		
 		// Listener for the "server event"
 		this.state.socket.on('change text', function(text){
-			console.log("receive text event", text);
 			changeState({input: text});
 		});
 	}
