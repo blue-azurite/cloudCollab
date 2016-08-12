@@ -30,7 +30,7 @@ export default class CodeEditor extends Component {
 
 	componentWillMount() {
 		this.state.socket.on('connect', function(){
-			console.log('Connected on the client-side');
+			console.log('Connected on the client-side: editor');
 		});
 	}
 	

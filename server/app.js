@@ -53,7 +53,6 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-
 io.on('connection', function(socket){
   console.log('Connected on the server side!');
   

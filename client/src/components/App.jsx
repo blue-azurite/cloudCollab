@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import VideoChat from '../container/Video';
 import Github from '../container/Github';
 import CodeEditor from '../container/Editor';
-import GitCLI from '../container/GitCLI'
+import GitCLI from '../container/GitCLI';
+import Chatbox from '../container/Chatbox';
 
 export default class App extends Component {
   render() {
