@@ -63,14 +63,9 @@ io.on('connection', function(socket){
 
   socket.on('change text', function(text){
     io.emit('change text', text);
-
     // var newTime = new Date().getTime();
     // if(newTime - time >= 10000){
-    //   saveSession({
-    //     username: username,
-    //     sessionId: sessionId, 
-    //     sessionContent: text 
-    //   });
+    //   saveSession({ username: username, sessionId: sessionId, sessionContent: text });
     //   time = newTime;
     }
   });
