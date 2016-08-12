@@ -102,7 +102,6 @@ export function showLink(boolean) {
 
 export function fetchRepos() {
   const userRepos = req.get('api/github');
-
   return {
     type: FETCH_GITHUB_REPOS,
     payload: userRepos
