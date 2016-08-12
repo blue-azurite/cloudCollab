@@ -8,6 +8,7 @@ import passport from 'passport';
 import GitHubStrategy, { Strategy } from 'passport-github2';
 import session from 'express-session';
 import bodyParser from 'body-parser';
+import saveSession from './routes/userRoutes'
 
 const app = express();
 const server = Server(app);
@@ -54,9 +55,27 @@ passport.deserializeUser((obj, done) => {
 
 io.on('connection', function(socket){
   console.log('Connected on the server side!');
+  
+  //create a new time stamp, and save new session 10sec apart
+  var time = new Date().getTime();
+  var username = 'something'; //need to update this later
+  var sessionId = 'someID'; //need to update this later
+  var contents; 
+
   socket.on('change text', function(text){
-    io.emit('change text', text)
+    io.emit('change text', text);
+    contents = text;
+    var newTime = new Date().getTime();
+    if(newTime - time >= 10000){
+      saveSession({ username: username, sessionId: sessionId, sessionContent: text });
+      time = newTime;
+    }
   });
+
+  socket.on('disconnect', function(){
+    saveSession({ username: username, sessionId: sessionId, sessionContent: contents});    
+  })
+
 });
 
 // RESTful routes for app
