@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { FETCH_TEXT_INPUT } from '../actions';
-import { updateText } from '../actions';
+// import { FETCH_TEXT_INPUT } from '../actions';
+// import { updateText } from '../actions';
 // import io from 'socket.io-client'
 import AceEditor from 'react-ace';
 import brace from 'brace';
