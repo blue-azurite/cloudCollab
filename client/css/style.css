@@ -1,27 +1,10 @@
-.mediaDiv {
-  display: inline-block;
-  border: 2px solid black;
-  width: 250px;
-  text-align: center;
+#console {
   padding: 10px;
-  overflow: hidden;
-  background-color: pink;
-  margin-right: 10%;
-  /*position: relative;*/
+  margin: 10px 0 10px 0;
+  border: 2px solid #DDDDDD;
 }
 
-.app {
-  /*text-align: center;*/
-}
-
-#brace-editor {
-  margin-left: 18.5%;
-  float: left;
-  display: inline-block;
-  width: 500px;
-}
-
-h1.header {
+.mediaDiv {
   text-align: center;
 }
 

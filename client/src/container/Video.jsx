@@ -59,8 +59,8 @@ class VideoChat extends Component {
     return(
       <div id="video" className="mediaDiv"> 
         { this.props.link ? <Link myId={this.props.myId} /> : null }
-        <button onClick={this.renderLink.bind(this)}>Invite a friend</button>
-        <button onClick={this.enableVideo.bind(this)}>Enable video chat</button>
+        <button className="btn btn-default" onClick={this.renderLink.bind(this)}>Invite a friend</button> <br />
+        <button className="btn btn-default" onClick={this.enableVideo.bind(this)}>Enable video chat</button>
         <video id="local-video" autoPlay></video>
         <video id="remote-video" autoPlay></video>
       </div>

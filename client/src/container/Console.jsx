@@ -7,15 +7,18 @@ class Console extends Component {
     super(props);
     this.state = {
       socket: io(), 
-      output: 'Output will show up hurr'
+      output: ''
     }
 
     var changeState = function(obj){
+      console.log('state is changing!', obj)
+      console.log('new state is:', this.state.output)
       this.setState(obj);
     }.bind(this);
     
-    this.state.socket.on('run code', function(text){
-      changeState({input: text});
+    this.state.socket.on('output', function(output){
+      changeState({output: output});
+
     });
 
   }

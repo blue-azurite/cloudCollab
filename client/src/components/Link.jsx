@@ -6,7 +6,7 @@ const Link = (props) => (
     <div id="link-message">
       <span id="link-url">http://localhost:3000/?id={props.myId}</span>
       <CopyToClipboard text={`http://localhost:3000/?id=${props.myId}`}>
-        <button>Copy to clipboard</button>
+        <button className="btn btn-primary btn-xs">Copy share link to clipboard</button>
       </CopyToClipboard>
     </div>
   </div>
