@@ -18,9 +18,9 @@ const constraints = {
 };
 
 
-export function updateText(data) {
+export function createSocket(data) {
   return {
-    type: FETCH_TEXT_INPUT,
+    type: SOCKET_IO,
     payload: data
   };
 } 
@@ -108,7 +108,7 @@ export function fetchRepos() {
   }
 }
 
-export const FETCH_TEXT_INPUT = 'FETCH_TEXT_INPUT';
+export const SOCKET_IO = 'SOCKET_IO';
 export const GET_PEER_ID = 'GET_PEER_ID';
 export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';

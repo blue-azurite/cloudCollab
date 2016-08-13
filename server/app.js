@@ -53,7 +53,6 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-
 io.on('connection', function(socket){
   console.log('Connected on the server side!');
   
@@ -74,7 +73,13 @@ io.on('connection', function(socket){
   });
 
   socket.on('disconnect', function(){
+    console.log("a client just disconnect");
     saveSession({ username: username, sessionId: sessionId, sessionContent: contents});    
+  })
+
+  socket.on('new message', function(message) {
+    console.log('server receivd new chat message', message);
+    io.emit('new message', message);
   })
 
 });

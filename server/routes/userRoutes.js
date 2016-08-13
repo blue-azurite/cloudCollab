@@ -35,7 +35,7 @@ const saveSession = function (session){
           console.log('fail to update sessions because of: ', err);
         }
         if(newResult){
-          console.log('sucessufully update', newResult);
+          // console.log('sucessufully update', newResult);
         }
       });
     }
