@@ -24,3 +24,11 @@
 h1.header {
   text-align: center;
 }
+
+.me {
+  background-color: #DDDDDD;
+}
+
+.collaborator {
+  background-color: #0000DD;
+}

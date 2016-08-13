@@ -77,6 +77,11 @@ io.on('connection', function(socket){
     saveSession({ username: username, sessionId: sessionId, sessionContent: contents});    
   })
 
+  socket.on('new message', function(message) {
+    console.log('server receivd new chat message', message);
+    io.emit('new message', message);
+  })
+
 });
 
 // RESTful routes for app

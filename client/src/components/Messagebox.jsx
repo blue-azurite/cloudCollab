@@ -12,10 +12,21 @@ class Messagebox extends Component {
     });
   }
 
+  sendMessage(e){
+    if(e.keyCode == 13){
+      var newMessage = {
+        id: this.props.myId, 
+        message: e.target.value
+      };
+      this.props.socket.emit('new message', newMessage);
+      e.target.value = '';
+    }
+  }
+
   render(){
     return (
       <div className="messages_box">
-       <input ref="new_message" />
+       <input type='text' onKeyDown={this.sendMessage.bind(this)} />
       </div>
     );
   }
@@ -23,7 +34,7 @@ class Messagebox extends Component {
 
 function mapStateToProps(state) {
   return {
-    peerId: state.PeerId.peerId, 
+    myId: state.MyId.myId, 
     socket: state.Socket.socket
   }
 }

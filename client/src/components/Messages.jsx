@@ -3,14 +3,21 @@ import { connect } from 'react-redux';
 import MessageEntry from './MessageEntry';
 
 class Messages extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     this.state = {
-      messages: [
-        {name: 'Yuyi', message: 'Hello, there'}, 
-        {name: 'Melanie', message: 'Hi Dad'}
-      ] 
+      messages: [] 
     }
+
+    var addMessage = function (msg){
+      var messages = this.state.messages.slice();
+      messages.push(msg);
+      this.setState({messages: messages});
+    }.bind(this);
+
+    this.props.socket.on('new message', function(newMessage){
+      addMessage(newMessage);
+    });
   }
 
   componentWillMount() {
@@ -18,6 +25,7 @@ class Messages extends Component {
       console.log('Connected on the client-side: MessageDisplay');
     });
   }
+
 
   render(){
     return (
@@ -32,7 +40,6 @@ class Messages extends Component {
 
 function mapStateToProps(state) {
   return {
-    peerId: state.PeerId.peerId, 
     socket: state.Socket.socket
   }
 }
