@@ -4,17 +4,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FETCH_TEXT_INPUT } from '../actions';
 import { updateText } from '../actions';
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import AceEditor from 'react-ace';
 import brace from 'brace';
 import 'brace/theme/github';
 import 'brace/mode/javascript';
 
-export default class CodeEditor extends Component {
+class CodeEditor extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			socket: io(), 
+		this.state = { 
 			input: ''
 		}
 
@@ -23,20 +22,20 @@ export default class CodeEditor extends Component {
 		}.bind(this);
 		
 		// Listener for the "server event"
-		this.state.socket.on('change text', function(text){
+		this.props.socket.on('change text', function(text){
 			changeState({input: text});
 		});
 	}
 
 	componentWillMount() {
-		this.state.socket.on('connect', function(){
+		this.props.socket.on('connect', function(){
 			console.log('Connected on the client-side: editor');
 		});
 	}
 	
 	change(text) {
 		// Emit on change event with the text
-		this.state.socket.emit('change text', text);
+		this.props.socket.emit('change text', text);
 	}
 
 	render() {
@@ -55,15 +54,15 @@ export default class CodeEditor extends Component {
 }
 
 // TODO: Either delete or make available
-// function mapStateToProps(state) {
-//   return {
-//     textBox: state.Text.userInput
-//   }
-// }
+function mapStateToProps(state) {
+  return {
+    socket: state.Socket.socket
+  }
+}
 
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({ updateText: updateText }, dispatch);
 // }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(CodeEditor);
+export default connect(mapStateToProps)(CodeEditor);
 

@@ -1,15 +1,16 @@
-import { FETCH_TEXT_INPUT } from '../actions';
+import { SOCKET_IO } from '../actions';
+import io from 'socket.io-client';
 
 const initialState = {
-  userInput: '//start your document here'
+  socket: io()
 };
 
 export default function (state = initialState, action) {
   switch(action.type) {
-    case FETCH_TEXT_INPUT:
+    case SOCKET_IO:
       return {
         ...state,
-        userInput: action.payload
+        socket: action.payload
       };
       default:
         return state;

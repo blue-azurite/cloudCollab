@@ -73,6 +73,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('disconnect', function(){
+    console.log("a client just disconnect");
     saveSession({ username: username, sessionId: sessionId, sessionContent: contents});    
   })
 

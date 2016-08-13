@@ -16,6 +16,7 @@ export default class App extends Component {
             <VideoChat />
             <Github />
             <GitCLI />
+            <Chatbox />
           </div>
         </div>
       </div>
