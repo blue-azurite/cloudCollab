@@ -9,15 +9,15 @@ class MessageEntry extends Component {
   render(){
     if(this.props.message.id === this.props.myId){
       return (
-        <p className="me">
-          {this.props.message.message}
-        </p>
+        <div className="me chat_message">
+          <p>{this.props.message.message}</p>
+        </div>
       );
     } else {
       return (
-        <p className="collaborator">
-            {this.props.message.message}
-        </p>
+        <div className="collaborator chat_message">
+          <p>{this.props.message.message}</p>
+        </div>
       );
     }
   }

@@ -26,7 +26,7 @@ class Messagebox extends Component {
   render(){
     return (
       <div className="messages_box">
-       <input type='text' onKeyDown={this.sendMessage.bind(this)} />
+       <textarea type='text' placeholder="new message here" onKeyDown={this.sendMessage.bind(this)}></textarea>
       </div>
     );
   }
