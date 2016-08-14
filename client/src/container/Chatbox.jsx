@@ -7,7 +7,7 @@ import Messagebox from '../components/Messagebox';
 export default class Chatbox extends Component {
   render(){
     return (
-      <div>
+      <div className="chat_box">
         <div className="chat_header">Chatbox</div>
         <Messages />
         <Messagebox />

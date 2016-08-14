@@ -25,10 +25,59 @@ h1.header {
   text-align: center;
 }
 
+/* =================== **
+    Chat_Box
+** =================== */
+
+.chat_box {
+  clear: both;
+  height: 300px;
+  width: 200px;
+  background: #00BFFF;
+  color: white;
+  text-align: center;
+  border: 1px solid #00BFFF;
+  border-radius: 10px;
+}
+
+.messages_display {
+  height: 80%;
+  overflow: scroll;
+  background: white;
+}
+
+.chat_message {
+  width: 70%;
+  padding: 0px 5px;
+  /*display: block;*/
+  border: 1px solid white;
+  border-radius: 5px;
+}
 .me {
-  background-color: #DDDDDD;
+  float: right;
+  background-color: #00CED1;
+  font: 14px/14px Helvetica, Arial, sans-serif;  
 }
 
 .collaborator {
-  background-color: #0000DD;
+  float: left;
+  background-color: #DCDCDC;
+  color: black;
+  font: 14px/14px Helvetica, Arial, sans-serif;
+}
+.messages_box {
+  margin: 2px 0px;
+  padding: 0px;
+}
+
+.messages_box textarea {
+  width: 94%;
+  font: 14px/14px Helvetica, Arial, sans-serif;
+  border-radius: 0px 0px 5px 5px;
+  border: 1px solid white;
+}
+
+.chat_header {
+  font-size: 20px;
+  font-weight: bold; 
 }
