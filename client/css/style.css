@@ -2,6 +2,8 @@
   padding: 10px;
   margin: 10px 0 10px 0;
   border: 2px solid #DDDDDD;
+  border-radius: 5px;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .mediaDiv {
@@ -13,14 +15,15 @@
 ** =================== */
 
 .chat_box {
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   clear: both;
   height: 300px;
-  width: 200px;
-  background: #00BFFF;
+  background: #DDDDDD;
   color: white;
   text-align: center;
-  border: 1px solid #00BFFF;
+  border: 1px solid #DDDDDD;
   border-radius: 10px;
+  width: 100%;
 }
 
 .messages_display {
@@ -30,23 +33,27 @@
 }
 
 .chat_message {
-  width: 70%;
+  min-width: 60%;
   padding: 0px 5px;
-  /*display: block;*/
+  display: block;
   border: 1px solid white;
   border-radius: 5px;
 }
 .me {
   float: right;
-  background-color: #00CED1;
-  font: 14px/14px Helvetica, Arial, sans-serif;  
+  text-align: right;
+  background-color: #4582ec;
+  font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .collaborator {
   float: left;
-  background-color: #DCDCDC;
+  text-align: left;
+  padding-right: 5px;
+  padding-top: 3px;
+  background-color: #DDDDDD;
   color: black;
-  font: 14px/14px Helvetica, Arial, sans-serif;
+  font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .messages_box {
   margin: 2px 0px;
@@ -55,7 +62,7 @@
 
 .messages_box textarea {
   width: 94%;
-  font: 14px/14px Helvetica, Arial, sans-serif;
+  font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 0px 0px 5px 5px;
   border: 1px solid white;
 }
@@ -63,4 +70,19 @@
 .chat_header {
   font-size: 20px;
   font-weight: bold; 
+}
+
+.chat_message > p {
+  padding: 10px;
+  margin: 2px;
+}
+
+/** run code button **/
+.run-code {
+  margin-top: 4px;
+}
+
+.vid-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

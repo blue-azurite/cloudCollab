@@ -39,20 +39,20 @@ class CodeEditor extends Component {
 	}
 
 	handleClick() {
-		this.state.socket.emit('run code', this.state.input)
+		this.props.socket.emit('run code', this.state.input)
 	}
 
 	render() {
 		return (
 			<div>
 				<AceEditor
-					width="45%"
+					width="100%"
 					mode="javascript"
 					theme="github"
 					value={this.state.input}
 					onChange={this.change.bind(this)}
 				/>
-				<button className="btn btn-default" onClick={this.handleClick.bind(this)}>Run da code</button>
+				<button className="btn btn-primary run-code" onClick={this.handleClick.bind(this)}>Run da code</button>
 			</div>
 		);
 	}

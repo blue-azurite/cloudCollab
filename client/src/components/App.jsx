@@ -26,12 +26,12 @@ export default class App extends Component {
             <br />
             {/* Start Editor && Video Container*/} 
             <div className="row">
-              <div className="col-lg-7">
+              <div className="col-lg-8">
                 <br />
                 <br />
                 <CodeEditor />
               </div>
-              <div className="col-lg-5">
+              <div className="col-lg-4">
                 <br />
                 <br />
                 
@@ -50,9 +50,12 @@ export default class App extends Component {
 
             <Chatbox />
 
-            </div>
           </div>
         </div>
+
+
+        </div>
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import io from 'socket.io-client' // temp fix for now. should refactor for using global state socket
 
 class Console extends Component {
   constructor(props) {
