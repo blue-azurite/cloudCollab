@@ -87,10 +87,18 @@ export function setMyId(myId) {
 
 
 
-export function fetchRepos() {
-  const userRepos = req.get('api/github');
+export function fetchUser() {
+  const user = req.get('api/github');
   return {
-    type: FETCH_GITHUB_REPOS,
+    type: FETCH_USER_GITHUB,
+    payload: user
+  }
+}
+
+export function fetchUserRepos() {
+  const userRepos = req.get('/api/github/repos');
+  return {
+    type: FETCH_USER_GITHUB_REPOS,
     payload: userRepos
   }
 }
@@ -101,4 +109,5 @@ export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';
 export const CHECK_IF_HOST = 'CHECK_IF_HOST';
 export const SET_MY_ID = 'SET_MY_ID';
-export const FETCH_GITHUB_REPOS = 'FETCH_GITHUB_REPOS';
+export const FETCH_USER_GITHUB = 'FETCH_GITHUB_REPOS';
+export const FETCH_USER_GITHUB_REPOS = 'FETCH_GITHUB_REPOS';
