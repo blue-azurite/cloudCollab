@@ -86,19 +86,6 @@ export function setMyId(myId) {
 }
 
 
-export function showLink(boolean) {
-
-  if (boolean === true) {
-    boolean = false;
-  } else {
-    boolean = true;
-  }
-
-  return {
-    type: CHANGE_LINK_STATE,
-    payload: boolean
-  }
-}
 
 export function fetchRepos() {
   const userRepos = req.get('api/github');
@@ -113,6 +100,5 @@ export const GET_PEER_ID = 'GET_PEER_ID';
 export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';
 export const CHECK_IF_HOST = 'CHECK_IF_HOST';
-export const CHANGE_LINK_STATE = 'CHANGE_LINK_STATE';
 export const SET_MY_ID = 'SET_MY_ID';
 export const FETCH_GITHUB_REPOS = 'FETCH_GITHUB_REPOS';

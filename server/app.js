@@ -82,6 +82,12 @@ io.on('connection', function(socket){
     io.emit('new message', message);
   })
 
+  socket.on('run code', function(text)  {
+    console.log('run code:', text)
+    const code = eval(text)
+    io.emit('output', code);
+  });
+
 });
 
 // RESTful routes for app

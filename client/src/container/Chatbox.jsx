@@ -8,7 +8,7 @@ export default class Chatbox extends Component {
   render(){
     return (
       <div className="chat_box">
-        <div className="chat_header">Chatbox</div>
+        <div className="chat_header modal-header">Chatbox</div>
         <Messages />
         <Messagebox />
       </div>

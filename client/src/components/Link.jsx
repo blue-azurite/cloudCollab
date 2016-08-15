@@ -4,9 +4,8 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 const Link = (props) => (
   <div id="link">
     <div id="link-message">
-      <span id="link-url">http://localhost:3000/?id={props.myId}</span>
       <CopyToClipboard text={`http://localhost:3000/?id=${props.myId}`}>
-        <button>Copy to clipboard</button>
+        <button className="btn btn-primary btn-sm">Copy share link</button>
       </CopyToClipboard>
     </div>
   </div>
