@@ -13,7 +13,7 @@ class Messagebox extends Component {
   }
 
   sendMessage(e){
-    if(e.keyCode == 13){
+    if(e.keyCode === 13){
       var newMessage = {
         id: this.props.myId, 
         message: e.target.value

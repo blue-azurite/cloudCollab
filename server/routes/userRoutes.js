@@ -19,7 +19,7 @@ const saveSession = function (session){
       var sessions = user.sessions;
       var notFound = true; 
       sessions.forEach((pastSession) => {
-        if(pastSession.id = session.sessionId){
+        if(pastSession.id === session.sessionId){
           pastSession.contents = session.sessionContent;
           notFound = false;
         }
