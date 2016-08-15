@@ -77,7 +77,7 @@ io.on('connection', function(socket){
   })
 
   socket.on('new message', function(message) {
-    console.log('server receivd new chat message', message);
+    // console.log('server receivd new chat message', message);
     io.emit('new message', message);
   })
 
