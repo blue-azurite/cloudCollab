@@ -1,5 +1,5 @@
 import { peerId, peer, establishPeerConnetion, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
-import req from 'axios';
+import axios from 'axios';
 
 export const params = new URLSearchParams(location.search.slice(1));
 
@@ -85,12 +85,42 @@ export function setMyId(myId) {
   }
 }
 
+export function showLink(boolean) {
+  if (boolean === true) {
+    boolean = false;
+  } else {
+    boolean = true;
+  }
 
-
-export function fetchRepos() {
-  const userRepos = req.get('api/github');
   return {
-    type: FETCH_GITHUB_REPOS,
+    type: CHANGE_LINK_STATE,
+    payload: boolean
+  }
+}
+
+// Sign in user
+export function fetchUser() {
+  const user = axios.get('api/github');
+  return {
+    type: FETCH_USER_GITHUB,
+    payload: user
+  }
+}
+
+// If user is signed in, fetch list of repos
+export function fetchUserRepos() {
+  const userRepos = axios.get('api/github/repos')
+    .then(response => {
+      return response.data;
+    })
+    .then(json => {
+      return json;
+    })
+    .catch(error => {
+      console.warn(error);
+    });
+  return {
+    type: FETCH_USER_GITHUB_REPOS,
     payload: userRepos
   }
 }
@@ -101,4 +131,5 @@ export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';
 export const CHECK_IF_HOST = 'CHECK_IF_HOST';
 export const SET_MY_ID = 'SET_MY_ID';
-export const FETCH_GITHUB_REPOS = 'FETCH_GITHUB_REPOS';
+export const FETCH_USER_GITHUB = 'FETCH_USER_GITHUB';
+export const FETCH_USER_GITHUB_REPOS = 'FETCH_USER_GITHUB_REPOS';
