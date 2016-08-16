@@ -14,12 +14,13 @@ class Github extends Component {
     return (
       <div>
           <a href="/api/github">Login with GitHub</a>
-          <button onClick={this.fetchRepos.bind(this)}>Get User Repos</button>
+          <p></p>
+          <a href="#" onClick={this.fetchRepos.bind(this)}>Get User Repos</a>
         <div>
           <ul>
             {
               this.props.Repos.map((repo, index) => 
-                <li key={index}><a href="#">{repo}</a></li>
+                <li key={index}><a href="/">{repo}</a></li>
               )
             }
           </ul>
