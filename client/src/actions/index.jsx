@@ -98,6 +98,7 @@ export function showLink(boolean) {
   }
 }
 
+// Sign in user
 export function fetchUser() {
   const user = axios.get('api/github');
   return {
@@ -106,6 +107,7 @@ export function fetchUser() {
   }
 }
 
+// If user is signed in, fetch list of repos
 export function fetchUserRepos() {
   const userRepos = axios.get('/api/github/repos')
     .then(response => {
