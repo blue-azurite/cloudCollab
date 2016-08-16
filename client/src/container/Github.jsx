@@ -5,21 +5,9 @@ import { fetchUsers, fetchUserRepos } from '../actions';
 import axios from 'axios';
 
 class Github extends Component {
-  constructor(props) {
-
-    this.state = {
-      data: ''
-    }
-  }
 
   fetchRepos() {
-    axios.get('/api/github/repos')
-      .then(response => {
-        // console.log(response.data[0].name);
-        this.setState({
-          data: response.data
-        });
-      });
+    this.props.fetchUserRepos();
   }
 
   render(){
@@ -29,10 +17,19 @@ class Github extends Component {
           <a href="/api/github">Login with GitHub</a>
         </div>
         <div>
+          <p></p>
+        </div>
+        <div>
           <div onClick={this.fetchRepos.bind(this)}>Get User Repos</div>
-          <ul>
-            <li data={this}></li>
-          </ul>
+          <div>
+            <ul>
+              {
+                this.props.Repos.map((repo, index) => 
+                  <li key={index}><a href={repo.html_url}>{repo.name}</a></li>
+                )
+              }
+            </ul>
+          </div>
         </div>
       </div>
     )
@@ -41,7 +38,8 @@ class Github extends Component {
 
 function mapStateToProps(state) {
   return {
-    Repos: state.Repos.collection
+    Repos: state.Repos.collection,
+    Username: state.Repos.username
   }
 }
 

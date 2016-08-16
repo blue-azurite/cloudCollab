@@ -2,11 +2,15 @@ import passport from 'passport';
 import GitHubStrategy, { Strategy } from 'passport-github2';
 import { requestGithub } from '../github/githubQueries';
 import request from 'request';
+import fetch from 'node-fetch';
 
 export default function(app) {
+  // Authenticate user 
+  // TODO: grab the username
   app.get('/api/github', 
     passport.authenticate('github', {scope: ['repo','user:email', 'read:org']})
   );
+
   app.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
@@ -37,20 +41,18 @@ export default function(app) {
       }
     };
 
-    const cb = (err, response, body) => {
-      // let newBody = JSON.parse(body); // Parse body string
-      // newBody.forEach(item => {
-      //   console.log('Repo name: ' + item.name + ' and repo description: ' + item.description);
-      // });
-      console.log("this is body: ", body);
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(body);
-      }
-    };
-
-    request(options,cb);
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        let collection = [];
+        for (let keys in json) {
+          collection.push(json[keys]);
+        }
+        console.log(collection);
+        res.send(collection);
+      });
   });
 
   // GET orgs user belongs to
@@ -66,11 +68,13 @@ export default function(app) {
       }
     };
 
-    const cb = (err, res, body) => {
-      console.log(body);
-    };
-
-    request(options,cb);
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        res.send(json);
+      });
   });
 
   // Test to get user files
@@ -79,6 +83,3 @@ export default function(app) {
     res.send('hello');
   });
 };  
-
-
-// GET https://api.github.com/user/repos?access_token:

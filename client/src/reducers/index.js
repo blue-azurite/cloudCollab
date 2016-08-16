@@ -14,5 +14,6 @@ const rootReducer = combineReducers({
   Repos: Repos,
   Socket: Socket
 });
-
+// Change name of Repos to something more 
+// generic for github requests/responses?
 export default rootReducer;
