@@ -20,7 +20,7 @@ class Github extends Component {
           <p></p>
         </div>
         <div>
-          <div onClick={this.fetchRepos.bind(this)}>Get User Repos</div>
+          <a onClick={this.fetchRepos.bind(this)}>Get User Repos</a>
           <div>
             <ul>
               {
