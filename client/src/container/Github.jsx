@@ -6,7 +6,8 @@ import axios from 'axios';
 
 class Github extends Component {
 
-  fetchRepos() {
+  fetchRepos(e) {
+    e.preventDefault();
     this.props.fetchUserRepos();
   }
 
@@ -15,7 +16,7 @@ class Github extends Component {
       <div>
           <a href="/api/github">Login with GitHub</a>
           <p></p>
-          <a href="#" onClick={this.fetchRepos.bind(this)}>Get User Repos</a>
+          <button onClick={this.fetchRepos.bind(this)}>Get User Repos</button>
         <div>
           <ul>
             {
