@@ -28,6 +28,19 @@ class Github extends Component {
     let repo = this.state.selectedRepo;
     if (type === 'blob') {
       this.props.fetchFileContents(path, repo);
+      console.log(typeof this.props.Content);
+      setTimeout(() => {
+        var content = this.props.Content;
+        if(typeof content !== 'string'){
+          content = JSON.stringify(content);
+        }
+        var contentToRoom = {
+          text: content,
+          room: this.props.roomId
+        };
+        this.props.socket.emit('change text', contentToRoom);
+      }, 1000);
+
     } else if (type === 'tree') {
       // do something
 
@@ -72,7 +85,10 @@ function mapStateToProps(state) {
   return {
     Repos: state.Repos.repos,
     Username: state.Repos.username,
-    Trees: state.Repos.trees
+    Trees: state.Repos.trees,
+    Content: state.Repos.contents, 
+    roomId: state.RoomId.roomId,
+    socket: state.Socket.socket
   }
 }
 
