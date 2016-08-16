@@ -13,23 +13,16 @@ class Github extends Component {
   render(){
     return (
       <div>
-        <div>
           <a href="/api/github">Login with GitHub</a>
-        </div>
+          <button onClick={this.fetchRepos.bind(this)}>Get User Repos</button>
         <div>
-          <p></p>
-        </div>
-        <div>
-          <a onClick={this.fetchRepos.bind(this)}>Get User Repos</a>
-          <div>
-            <ul>
-              {
-                this.props.Repos.map((repo, index) => 
-                  <li key={index}><a href={repo.html_url}>{repo.name}</a></li>
-                )
-              }
-            </ul>
-          </div>
+          <ul>
+            {
+              this.props.Repos.map((repo, index) => 
+                <li key={index}><a href="#">{repo}</a></li>
+              )
+            }
+          </ul>
         </div>
       </div>
     )
