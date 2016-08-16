@@ -5,8 +5,7 @@ import request from 'request';
 import fetch from 'node-fetch';
 
 export default function(app) {
-  // Authenticate user 
-  // TODO: grab the username
+  // Authenticate user
   app.get('/api/github', 
     passport.authenticate('github', {scope: ['repo','user:email', 'read:org']})
   );
@@ -32,7 +31,7 @@ export default function(app) {
   app.get('/api/github/repos', (req, res) => {
     let access_token = req.user.accessToken;
     let user = req.user.username;
-    let url = `https://api.github.com/users/${user}/repos?access_token=${access_token}`;
+    let url = `https://api.github.com/user/repos?access_token=${access_token}`;
 
     let options = {
       url: url,
@@ -45,12 +44,11 @@ export default function(app) {
       .then(response => {
         return response.json();
       })
-      .then(json => {
+      .then(data => {
         let collection = [];
-        for (let keys in json) {
-          collection.push(json[keys]);
+        for (let keys in data) {
+          collection.push(data[keys].name);
         }
-        console.log(collection);
         res.send(collection);
       });
   });
