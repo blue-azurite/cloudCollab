@@ -109,12 +109,15 @@ export function fetchUser() {
 
 // If user is signed in, fetch list of repos
 export function fetchUserRepos() {
-  const userRepos = axios.get('/api/github/repos')
+  const userRepos = axios.get('api/github/repos')
     .then(response => {
       return response.data;
     })
     .then(json => {
       return json;
+    })
+    .catch(error => {
+      console.warn(error);
     });
   return {
     type: FETCH_USER_GITHUB_REPOS,
