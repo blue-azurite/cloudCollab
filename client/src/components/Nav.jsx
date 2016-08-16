@@ -19,7 +19,7 @@ const Nav = () => {
           {/*------------------- more nav elements here if necessary -----------------------*/}            
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="#" target="blank"><Github /></a></li>
+            <li><a href="/api/github">Login with GitHub</a></li>
           </ul>
         </div>
       </div>
