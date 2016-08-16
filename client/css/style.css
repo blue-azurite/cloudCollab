@@ -19,7 +19,6 @@
   clear: both;
   height: 300px;
   background: #DDDDDD;
-  color: white;
   text-align: center;
   border: 1px solid #DDDDDD;
   border-radius: 10px;
@@ -42,6 +41,7 @@
 .me {
   float: right;
   text-align: right;
+  color: white;
   background-color: #4582ec;
   font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
