@@ -31,7 +31,7 @@ export default function(app) {
   app.get('/api/github/repos', (req, res) => {
     let access_token = req.user.accessToken;
     let user = req.user.username;
-    let url = `https://api.github.com/user/repos?access_token=${access_token}`;
+    let url = `https://api.github.com/users/${user}/repos?access_token=${access_token}`;
 
     let options = {
       url: url,
