@@ -86,3 +86,10 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.overflowControl {
+  margin-top: 45px;
+  width: 150px;
+  height: 500px;
+  overflow: scroll;
+}

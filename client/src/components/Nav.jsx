@@ -1,5 +1,4 @@
 import React from 'react';
-import Github from '../container/Github';
 
 const Nav = () => {
   return (
@@ -19,7 +18,7 @@ const Nav = () => {
           {/*------------------- more nav elements here if necessary -----------------------*/}            
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="#" target="blank"><Github /></a></li>
+            <li><a href="/api/github">Login with Github</a></li>
           </ul>
         </div>
       </div>
