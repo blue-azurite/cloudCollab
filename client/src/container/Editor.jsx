@@ -68,7 +68,6 @@ function mapStateToProps(state) {
     input: state.Text.text,
     peerId: state.PeerId.peerId,
     myId: state.MyId.myId,
-    output: state.Output.Output
   }
 }
 
