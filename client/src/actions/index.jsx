@@ -33,7 +33,6 @@ export function updateText(text) {
   }
 }
 
-
 ////************************ PEERJS COMMUNICATION ************************////
 export function initVid(id) {
 
@@ -93,18 +92,6 @@ export function setMyId(myId) {
   }
 }
 
-export function showLink(boolean) {
-  if (boolean === true) {
-    boolean = false;
-  } else {
-    boolean = true;
-  }
-
-  return {
-    type: CHANGE_LINK_STATE,
-    payload: boolean
-  }
-}
 
 ////************************ Github API ************************////
 
@@ -116,6 +103,8 @@ export function fetchUser() {
     payload: user
   }
 }
+
+////************************ Github API ************************////
 
 // If user is signed in, fetch list of repos
 export function fetchUserRepos() {
