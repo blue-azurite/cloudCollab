@@ -4,8 +4,7 @@ import Github from '../container/Github';
 import CodeEditor from '../container/Editor';
 import GitCLI from '../container/GitCLI';
 import Chatbox from '../container/Chatbox';
-import Console from '../container/Console'
-import Nav from '../components/Nav'
+import Nav from '../components/Nav';
 
 export default class App extends Component {
   render() {
@@ -32,6 +31,7 @@ export default class App extends Component {
               <div className="col-lg-6">
                 <br />
                 <br />
+
                 <CodeEditor />
               </div>
               <div className="col-lg-4">
@@ -45,7 +45,7 @@ export default class App extends Component {
             {/* Start Console */} 
             <div className="row">
               <div className="col-lg-12">
-                <Console />
+                { /* <Console /> */ }
               </div>
             </div>
             {/* End Console */} 

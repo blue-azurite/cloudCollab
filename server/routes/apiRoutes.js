@@ -80,4 +80,5 @@ export default function(app) {
     console.log(req.user)
     res.send('hello');
   });
+
 };  

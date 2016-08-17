@@ -40,7 +40,6 @@
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-promise": "^0.5.3",
-    "replit-client": "^0.6.0",
     "request": "^2.74.0",
     "socket.io": "^1.4.8",
     "socket.io-client": "^1.4.8"

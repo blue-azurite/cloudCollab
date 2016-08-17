@@ -2,44 +2,44 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { FETCH_TEXT_INPUT } from '../actions';
-// import { updateText } from '../actions';
-// import io from 'socket.io-client'
 import AceEditor from 'react-ace';
 import brace from 'brace';
 import 'brace/theme/github';
 import 'brace/mode/javascript';
+//actions
+import { updateText, amIHost, getPeerId } from '../actions'
+
+const initialValue = `function helloWorld() {
+	return 'Hello, world!';
+}
+
+console.log(helloWorld())`
 
 class CodeEditor extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { 
-			input: ''
-		}
+	componentDidMount () {
 
-		var changeState = function(obj){
-			this.setState(obj);
-		}.bind(this);
-		
-		// Listener for the "server event"
-		this.props.socket.on('change text', function(text){
-			changeState({input: text});
-		});
-	}
-
-	componentWillMount() {
-		this.props.socket.on('connect', function(){
-			console.log('Connected on the client-side: editor');
-		});
+		$('#editor').codeblock({
+	    editable: true,
+	    //initial console text
+	    consoleText: "> Your output shows here",
+	    consoleClass: "codeblock-console-text",
+	    runButtonText: "run",
+	    runButtonClass: "codeblock-console-run, btn, btn-primary, btn-xs",
+	    console: true,
+	    resetable: true,
+	    runnable: true,
+	    //The ace theme to use
+	    editorTheme: "ace/theme/github",
+	    lineNumbers: true
+  	}); 
+		const editor = ace.edit("editor")
+		editor.setValue(initialValue);
 	}
 	
 	change(text) {
 		// Emit on change event with the text
 		this.props.socket.emit('change text', text);
-	}
-
-	handleClick() {
-		this.props.socket.emit('run code', this.state.input)
+		this.props.updateText(text)
 	}
 
 	render() {
@@ -49,10 +49,13 @@ class CodeEditor extends Component {
 					width="100%"
 					mode="javascript"
 					theme="github"
-					value={this.state.input}
+					name="editor"
 					onChange={this.change.bind(this)}
+				  onLoad={(editor) => {
+				    editor.setValue(' ');
+				  }}
 				/>
-				<button className="btn btn-primary run-code" onClick={this.handleClick.bind(this)}>Run da code</button>
+				{/* <button className="btn btn-primary run-code" onClick={this.handleClick.bind(this)}>Run da code</button> */ }
 			</div>
 		);
 	}
@@ -61,13 +64,16 @@ class CodeEditor extends Component {
 // TODO: Either delete or make available
 function mapStateToProps(state) {
   return {
-    socket: state.Socket.socket
+    socket: state.Socket.socket,
+    input: state.Text.text,
+    peerId: state.PeerId.peerId,
+    myId: state.MyId.myId,
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ updateText: updateText }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ updateText: updateText, amIHost: amIHost, getPeerId: getPeerId }, dispatch);
+}
 
-export default connect(mapStateToProps)(CodeEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(CodeEditor);
 
