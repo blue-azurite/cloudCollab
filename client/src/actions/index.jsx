@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const params = new URLSearchParams(location.search.slice(1));
 
+// constraints for video
 const constraints = {
   audio: false, // setting to false for testing purposes
   video: {
@@ -17,7 +18,7 @@ const constraints = {
   }
 };
 
-
+////************************ Text editor ************************////
 export function createSocket(data) {
   return {
     type: SOCKET_IO,
@@ -25,7 +26,15 @@ export function createSocket(data) {
   };
 } 
 
+export function updateText(text) {
+  return {
+    type: CHANGE_INPUT,
+    payload: text
+  }
+}
 
+
+////************************ PEERJS COMMUNICATION ************************////
 export function initVid(id) {
 
   navigator.mediaDevices.getUserMedia(constraints) 
@@ -71,7 +80,6 @@ export function amIHost() {
 }
 
 export function getPeerId() {
-
   return {
     type: GET_PEER_ID,
     payload: params.get('id')
@@ -97,6 +105,8 @@ export function showLink(boolean) {
     payload: boolean
   }
 }
+
+////************************ Github API ************************////
 
 // Sign in user
 export function fetchUser() {
@@ -126,6 +136,7 @@ export function fetchUserRepos() {
 }
 
 export const SOCKET_IO = 'SOCKET_IO';
+export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';
 export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';

@@ -9,6 +9,14 @@ import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } fro
 
 class VideoChat extends Component {
 
+  componentWillMount() {    
+    this.props.getPeerId(); 
+
+    getMyId().then((id) => {
+      this.props.setMyId(id)
+    }).catch((err) => console.error(err))
+  }
+
   componentDidMount() {
     const sourceId = params.get('id');
     
@@ -20,14 +28,6 @@ class VideoChat extends Component {
       this.initAsReceiver(sourceId)
     }
     
-  }
-
-  componentWillMount() {    
-    this.props.getPeerId(); 
-
-    getMyId().then((id) => {
-      this.props.setMyId(id)
-    }).catch((err) => console.error(err))
   }
 
   initAsSource() {

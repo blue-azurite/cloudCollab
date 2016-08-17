@@ -17,10 +17,14 @@ class Console extends Component {
       this.setState(obj);
     }.bind(this);
     
-    this.state.socket.on('output', function(output){
+    this.props.socket.on('output', function(output){
       changeState({output: output});
 
     });
+
+    this.props.socket.on('run code', function(input) {
+      console.log('got eeeeemmm:', input)
+    })
 
   }
 
@@ -38,7 +42,7 @@ class Console extends Component {
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
-
+    socket: state.Socket.socket
   }
 }
 

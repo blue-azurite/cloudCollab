@@ -52,7 +52,7 @@
   padding-right: 5px;
   padding-top: 3px;
   background-color: #DDDDDD;
-  color: black;
+  color: #4582ec;
   font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .messages_box {
@@ -70,6 +70,7 @@
 .chat_header {
   font-size: 20px;
   font-weight: bold; 
+  color: #4582ec;
 }
 
 .chat_message > p {
