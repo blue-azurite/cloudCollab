@@ -23,8 +23,7 @@ app.use(express.static(path.join(__dirname,'../client')));
 app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json())
 // Create GitHubStrategy
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
