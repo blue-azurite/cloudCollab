@@ -6,12 +6,12 @@ class Messagebox extends Component {
     super()
   }
 
-  componentDidMount() {
-    this.props.socket.on('connect', function(){
-      console.log('Connected on the client-side: MessageBox');
+  // componentDidMount() {
+  //   this.props.socket.on('connect', function(){
+  //     console.log('Connected on the client-side: MessageBox');
 
-    });
-  }
+  //   });
+  // }
 
   sendMessage(e){
     if(e.keyCode === 13){

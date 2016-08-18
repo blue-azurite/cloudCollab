@@ -62,7 +62,6 @@ io.on('connection', function(socket){
   var contents; 
 
   socket.on('room', function(room){
-    console.log('we got a client join room:', room);
     socket.join(room);
   })
 
@@ -82,7 +81,6 @@ io.on('connection', function(socket){
   })
 
   socket.on('new message', function(message) {
-    // console.log('server receivd new chat message', message);
     io.to(message.room).emit('new message', message);
   })
 

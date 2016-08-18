@@ -35,6 +35,12 @@ class CodeEditor extends Component {
 		const editor = ace.edit("editor")
 		editor.setValue(initialValue);
 	}
+	// componentWillMount() {
+	// 	this.props.socket.on('connect', function(){
+	// 		console.log('Connected on the client-side: editor');
+	// 	});
+	// }
+
 	
 	change(text) {
 		// Emit on change event with the text

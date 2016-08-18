@@ -20,11 +20,11 @@ class Messages extends Component {
     });
   }
 
-  componentWillMount() {
-    this.props.socket.on('connect', function(){
-      console.log('Connected on the client-side: MessageDisplay');
-    });
-  }
+  // componentWillMount() {
+  //   this.props.socket.on('connect', function(){
+  //     console.log('Connected on the client-side: MessageDisplay');
+  //   });
+  // }
 
 
   render(){
