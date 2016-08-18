@@ -98,6 +98,8 @@
     CodeBlock Console
 ** =================== **/
 /*Structure*/
+
+
 .codeblock-console-run {
     float: right;
     padding: 0 10px;
@@ -184,3 +186,6 @@
 }
 /** END CONSOLE OUTPUT **/
 
+.ghost_editor {
+  display: none;
+}

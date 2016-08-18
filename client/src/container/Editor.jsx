@@ -16,6 +16,23 @@ const initialValue = `function helloWorld() {
 console.log(helloWorld())`
 
 class CodeEditor extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			input: initialValue
+		}
+
+		var changeState = function(obj){
+			this.setState(obj);
+		}.bind(this);
+		
+		this.props.socket.on('change text', function(text){
+			changeState({input: text});
+		});
+	}
+
 	componentDidMount () {
 
 		$('#editor').codeblock({
@@ -34,7 +51,9 @@ class CodeEditor extends Component {
   	}); 
 		const editor = ace.edit("editor")
 		editor.setValue(initialValue);
+
 	}
+
 	// componentWillMount() {
 	// 	this.props.socket.on('connect', function(){
 	// 		console.log('Connected on the client-side: editor');
@@ -44,12 +63,12 @@ class CodeEditor extends Component {
 	
 	change(text) {
 		// Emit on change event with the text
-		this.props.socket.emit('change text', text);
-		this.props.updateText(text)
+		// this.props.socket.emit('change text', text);
+		// this.props.updateText(text)
 		var textToRoom = {
 			text: text, 
 			room: this.props.roomId
-		}
+		};
 		this.props.socket.emit('change text', textToRoom);
 	}
 
@@ -64,13 +83,24 @@ class CodeEditor extends Component {
 					width="100%"
 					mode="javascript"
 					theme="github"
-					name="editor"
 					onChange={this.change.bind(this)}
-				  onLoad={(editor) => {
-				    editor.setValue(' ');
-				  }}
+				  value={ this.state.input }
 				/>
 				{/* <button className="btn btn-primary run-code" onClick={this.handleClick.bind(this)}>Run da code</button> */ }
+				<div className="ghost_editor">
+					<AceEditor
+						width="100%"
+						mode="javascript"
+						theme="github"
+						name="editor"
+						onLoad={(editor) => {
+							editor.setValue(' ');
+						}}
+					/>
+				</div>
+				<div className="ghost_editor">
+					{ " this should not show" }
+				</div>
 			</div>
 		);
 	}
