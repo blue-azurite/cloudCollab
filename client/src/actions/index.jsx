@@ -124,6 +124,27 @@ export function fetchUserRepos() {
   }
 }
 
+// If user is signed in, fetch list of repos
+export function fetchSha(userRepo) {
+  const data = {
+    repo: userRepo
+  }
+  const userSha = axios.post('/api/github/repo/sha',data)
+    .then(response => {
+      return response.data;
+    })
+    .then(json => {
+      return json;
+    })
+    .catch(error => {
+      console.warn(error);
+    });
+  return {
+    type: FETCH_USER_GITHUB_REPO_CONTENTS,
+    payload: userSha
+  }
+}
+
 export const SOCKET_IO = 'SOCKET_IO';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const GET_PEER_ID = 'GET_PEER_ID';
@@ -133,3 +154,4 @@ export const CHECK_IF_HOST = 'CHECK_IF_HOST';
 export const SET_MY_ID = 'SET_MY_ID';
 export const FETCH_USER_GITHUB = 'FETCH_USER_GITHUB';
 export const FETCH_USER_GITHUB_REPOS = 'FETCH_USER_GITHUB_REPOS';
+export const FETCH_USER_GITHUB_REPO_CONTENTS = 'FETCH_USER_GITHUB_REPO_CONTENTS';
