@@ -39,7 +39,6 @@ export default function(app) {
         'User-Agent': user
       }
     };
-
     fetch(url, options)
       .then(response => {
         return response.json();
@@ -73,12 +72,29 @@ export default function(app) {
       .then(json => {
         res.send(json);
       });
-  });
+  });  
 
-  // Test to get user files
-  app.get('/test', (req,res) => {
-    console.log(req.user)
-    res.send('hello');
+  // GET sha for repo
+  app.post('/api/github/repo/sha', (req, res) => {
+    let user = req.user.username;
+    let repo = req.body.repo;
+    let url = `https://api.github.com/repos/${user}/${repo}/git/refs/heads/master`;
+
+    let options = {
+      url: url,
+      headers: {
+        'User-Agent': user
+      }
+    };
+
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data.object.sha)
+        res.send([data.object.sha]);
+      });
   });
 
 };  
