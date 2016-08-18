@@ -40,6 +40,15 @@ class CodeEditor extends Component {
 		// Emit on change event with the text
 		this.props.socket.emit('change text', text);
 		this.props.updateText(text)
+		var textToRoom = {
+			text: text, 
+			room: this.props.roomId
+		}
+		this.props.socket.emit('change text', textToRoom);
+	}
+
+	handleClick() {
+		this.props.socket.emit('run code', this.state.input)
 	}
 
 	render() {
@@ -68,6 +77,7 @@ function mapStateToProps(state) {
     input: state.Text.text,
     peerId: state.PeerId.peerId,
     myId: state.MyId.myId,
+    roomId: state.RoomId.roomId
   }
 }
 

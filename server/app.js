@@ -61,12 +61,17 @@ io.on('connection', function(socket){
   var sessionId = 'someID'; //need to update this later
   var contents; 
 
-  socket.on('change text', function(text){
-    io.emit('change text', text);
-    contents = text;
+  socket.on('room', function(room){
+    console.log('we got a client join room:', room);
+    socket.join(room);
+  })
+
+  socket.on('change text', function(textToRoom){
+    contents = textToRoom.text;
+    io.to(textToRoom.room).emit('change text', contents);
     var newTime = new Date().getTime();
     if(newTime - time >= 10000){
-      saveSession({ username: username, sessionId: sessionId, sessionContent: text });
+      saveSession({ username: username, sessionId: sessionId, sessionContent: contents});
       time = newTime;
     }
   });
@@ -78,7 +83,7 @@ io.on('connection', function(socket){
 
   socket.on('new message', function(message) {
     // console.log('server receivd new chat message', message);
-    io.emit('new message', message);
+    io.to(message.room).emit('new message', message);
   })
 
   socket.on('run code', function(text)  {

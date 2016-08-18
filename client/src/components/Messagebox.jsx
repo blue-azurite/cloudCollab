@@ -6,9 +6,10 @@ class Messagebox extends Component {
     super()
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.socket.on('connect', function(){
       console.log('Connected on the client-side: MessageBox');
+
     });
   }
 
@@ -16,7 +17,8 @@ class Messagebox extends Component {
     if(e.keyCode === 13){
       var newMessage = {
         id: this.props.myId, 
-        message: e.target.value
+        message: e.target.value, 
+        room: this.props.roomId
       };
       this.props.socket.emit('new message', newMessage);
       e.target.value = '';
@@ -24,6 +26,7 @@ class Messagebox extends Component {
   }
 
   render(){
+
     return (
       <div className="messages_box">
        <textarea type='text' placeholder="new message here" onKeyDown={this.sendMessage.bind(this)}></textarea>
@@ -35,7 +38,9 @@ class Messagebox extends Component {
 function mapStateToProps(state) {
   return {
     myId: state.MyId.myId, 
-    socket: state.Socket.socket
+    socket: state.Socket.socket, 
+    peerId: state.PeerId.peerId,
+    roomId: state.RoomId.roomId
   }
 }
 

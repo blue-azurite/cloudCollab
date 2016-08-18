@@ -21,12 +21,21 @@ class VideoChat extends Component {
     const sourceId = params.get('id');
     
     this.props.amIHost(); // this will update global state
-
+        
     if (this.props.isHost) { // this is grabbing global state
-      this.initAsSource()
+      this.initAsSource();
     } else {
-      this.initAsReceiver(sourceId)
+      this.initAsReceiver(sourceId);
     }
+      
+  }
+
+  componentWillMount() {    
+    this.props.getPeerId(); 
+
+    getMyId().then((id) => {
+      this.props.setMyId(id)
+    }).catch((err) => console.error(err))
     
   }
 
@@ -52,6 +61,7 @@ class VideoChat extends Component {
 
 
   render() {
+
     return(
       <div id="video" className="mediaDiv"> 
         <Link myId={this.props.myId} /><button className="btn btn-primary btn-sm vid-btn" onClick={this.enableVideo.bind(this)}>Enable video chat</button>
