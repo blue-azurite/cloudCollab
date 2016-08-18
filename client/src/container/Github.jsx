@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchUsers, fetchUserRepos } from '../actions';
+import { fetchUsers, fetchUserRepos, fetchSha } from '../actions';
 import axios from 'axios';
 
 class Github extends Component {
   componentWillMount() {
     this.props.fetchUserRepos();
   }
-
+  handleClick(userRepo){
+    this.props.fetchSha(userRepo);
+  }
   render(){
     return (
       <div>
@@ -16,7 +18,7 @@ class Github extends Component {
           <ul>
             {
               this.props.Repos.map((repo, index) => 
-                <li key={index}><a href="/">{repo}</a></li>
+                <li onClick={this.handleClick.bind(this,repo)} key={index}><a>{repo}</a></li>
               )
             }
           </ul>
@@ -34,7 +36,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchUsers: fetchUsers, fetchUserRepos: fetchUserRepos },dispatch)
+  return bindActionCreators({ fetchUsers: fetchUsers, fetchUserRepos: fetchUserRepos, fetchSha: fetchSha },dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Github);
