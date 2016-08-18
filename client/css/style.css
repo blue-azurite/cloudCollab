@@ -1,3 +1,7 @@
+body {
+  background: #272822;
+}
+
 /** =================== **
         Video Div
 ** =================== **/
@@ -114,6 +118,7 @@
 }
 
 .codeblock-console-text {
+    color: #66d9ef;
     display: inline-block;
     word-break: break-all;
 }
@@ -145,7 +150,7 @@
 }
 
 .codeblock-container {
-    border: 1px solid #AAA;
+    /*border: 1px solid #AAA;*/
 }
 
 .codeblock-console {
@@ -171,7 +176,7 @@
 }
 
 .codeblock-console-text.placeholder {
-    color: #666;
+    color: #66d9ef;
 }
 
 #basic-codeblock-example { 
@@ -181,5 +186,15 @@
   bottom: 0;
   left: 0;
 }
-/** END CONSOLE OUTPUT **/
 
+/** =================== **
+       Screenshare
+** =================== **/
+.screenshare-container {
+  margin: 30px;
+  padding: 20px;
+  border: 2px solid #66d9ef;
+  width: 100%;
+  height: 200px;
+}
+  

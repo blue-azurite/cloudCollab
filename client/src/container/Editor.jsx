@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AceEditor from 'react-ace';
 import brace from 'brace';
-import 'brace/theme/github';
+import 'brace/theme/monokai';
 import 'brace/mode/javascript';
 //actions
 import { updateText, amIHost, getPeerId } from '../actions'
@@ -16,6 +16,7 @@ const initialValue = `function helloWorld() {
 console.log(helloWorld())`
 
 class CodeEditor extends Component {
+
 	componentDidMount () {
 
 		$('#editor').codeblock({
@@ -26,14 +27,16 @@ class CodeEditor extends Component {
 	    runButtonText: "run",
 	    runButtonClass: "codeblock-console-run, btn, btn-primary, btn-xs",
 	    console: true,
-	    resetable: true,
+	    resetable: false,
 	    runnable: true,
 	    //The ace theme to use
-	    editorTheme: "ace/theme/github",
+	    editorTheme: "ace/theme/monokai",
 	    lineNumbers: true
   	}); 
 		const editor = ace.edit("editor")
 		editor.setValue(initialValue);
+
+		$('.codeblock-editor-wrapper').css('height', '500px') // shim for getting rid of the lower margin of ace editor & codeblock
 	}
 	
 	change(text) {
@@ -46,10 +49,11 @@ class CodeEditor extends Component {
 		return (
 			<div>
 				<AceEditor
-					width="100%"
+					// width="100%"
+					height="500px"
 					mode="javascript"
-					theme="github"
 					name="editor"
+					value={this.props.input}
 					onChange={this.change.bind(this)}
 				  onLoad={(editor) => {
 				    editor.setValue(' ');

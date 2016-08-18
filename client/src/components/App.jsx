@@ -5,6 +5,7 @@ import CodeEditor from '../container/Editor';
 import GitCLI from '../container/GitCLI';
 import Chatbox from '../container/Chatbox';
 import Nav from '../components/Nav';
+import Screenshare from '../container/Screenshare';
 
 export default class App extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class App extends Component {
 
         {/* Navigation */}
         <Nav />
-        <div className="container">
+        <div className="container header">
           <div className="page-header" id="banner">
             {/* Start Header */} 
             <div className="row">
@@ -49,6 +50,8 @@ export default class App extends Component {
               </div>
             </div>
             {/* End Console */} 
+
+            <Screenshare />
 
             <Chatbox />
 

@@ -31,7 +31,13 @@ class VideoChat extends Component {
   }
 
   initAsSource() {
-      establishPeerConnection().then( conn => console.log('Peer connection: connected as host!', conn));
+      establishPeerConnection().then( (conn) => {
+        console.log('Peer connection: connected as host!', conn)
+        conn.on('data', (data) => {
+          // if the data is the SCREENSHARE DATA....
+            // append it to the screenshare div. 
+        })
+      });
   }
 
   initAsReceiver(sourceId) {
@@ -67,7 +73,6 @@ function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
     isHost: state.Host.isHost,
-    localStream: null, 
     peerId: state.PeerId.peerId,
     myId: state.MyId.myId
   }
