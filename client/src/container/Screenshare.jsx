@@ -11,8 +11,8 @@ class Screenshare extends Component {
       // populate screen once ready
   }
 
-  handleClick: function() {
-    // start screen share
+  handleClick() {
+    // start screen share 
 
     if (this.props.amIHost()) {
       // start screenshare w/ myId broadcast name
