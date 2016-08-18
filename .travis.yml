@@ -1,5 +1,10 @@
 deploy:
   provider: heroku
+  language: node_js
+  node_js:
+    - "6"
+    - "6.1"
+    - "5.11"
   api_key:
     secure: jxMTZzpD03jnxRYKwp3ZVqufyqArTgBh6UPKxFg5uEsaXa65NZlBDjWq2gqdHePIGfOkvq+8zs3TWEW1ayxgJp2a60dcOKI7E0KbhQ7eIGl6cdnVbOdB8Vadg82NghNsIYPOxvvRirMzo2zUiBtpaJe1fsTUseqJIib6f20uE0iwvCm+fww8dsetTSM2omCUJkLDSrvgUHEey/Gl97yQmY4erx20me5hKpIRXwqChBSodR3Ef3isyv5ga96u+BFC++670hszp5m7Dmq8ysJIaOBHJTOVxIgzt5GNCh9tX0PWeJ4CdEghYESr8KXqUwsKBTSelEBZxFY7suWquNY024Tv6KaVzKHsSIHyYkeWdu0UmG2E+aGnzS8wgzKTb9Xs0q7Jhm56jWpuIzfP+XxqZQBzMddxrx4v0JN52JsMr70s06NiQp/cwb9FBjvpJeXWNAYHRbTY1pulIQCKWpEKXPWFEuDvh4KEm/wCRPz8sox2nNmRXxUcOkTpP4ToZy85c/QU5sCKV+AN67rmuGSDvQPjzulLGGa7Mzz4WOoLQuRUcq1GfNsZq7eNyplRdO9ku3Jt2Y5LF0Ef4GkgeKcur9Sy6DaEAKOFKWse+0fjWuoGzpAH+SEdDxRvM7sSKG03w1mVRN1bTaUH6d7aD9R0HzJjPZWNzXozOkcDJ1oWHLg=
     app: blueazurite
