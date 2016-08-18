@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./server-dist/app.js",
+    "start": "node ./server/app.js",
     "prod:buildclient": "webpack",
     "prod:buildserver": "babel ./server -d ./server-dist --presets es2015,stage-2 --copy-files",
     "dev:start": "nodemon ./server/app.js --exec babel-node --presets es2015,stage-2",
