@@ -107,6 +107,7 @@
 
 .codeblock-editor-wrapper {
     position: relative;
+    display: none;
 }
 .codeblock-editor { 
     position: absolute;
@@ -186,6 +187,6 @@
 }
 /** END CONSOLE OUTPUT **/
 
-.ghost_editor {
+/*.ghost_editor {
   display: none;
-}
+}*/

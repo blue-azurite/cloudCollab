@@ -24,13 +24,13 @@ class CodeEditor extends Component {
 			input: initialValue
 		}
 
-		var changeState = function(obj){
-			this.setState(obj);
-		}.bind(this);
+		// var changeState = function(obj){
+		// 	this.setState(obj);
+		// }.bind(this);
 		
-		this.props.socket.on('change text', function(text){
-			changeState({input: text});
-		});
+		// this.props.socket.on('change text', function(text){
+		// 	changeState({input: text});
+		// });
 	}
 
 	componentDidMount () {
@@ -49,8 +49,17 @@ class CodeEditor extends Component {
 	    editorTheme: "ace/theme/github",
 	    lineNumbers: true
   	}); 
+
 		const editor = ace.edit("editor")
-		editor.setValue(initialValue);
+
+		var changeState = function(obj){
+			this.setState(obj);
+		}.bind(this);
+		
+		this.props.socket.on('change text', function(text){
+			changeState({input: text});
+			editor.setValue(text);
+		});
 
 	}
 
@@ -59,7 +68,6 @@ class CodeEditor extends Component {
 	// 		console.log('Connected on the client-side: editor');
 	// 	});
 	// }
-
 	
 	change(text) {
 		// Emit on change event with the text
@@ -87,20 +95,14 @@ class CodeEditor extends Component {
 				  value={ this.state.input }
 				/>
 				{/* <button className="btn btn-primary run-code" onClick={this.handleClick.bind(this)}>Run da code</button> */ }
-				<div className="ghost_editor">
-					<AceEditor
-						width="100%"
-						mode="javascript"
-						theme="github"
-						name="editor"
-						onLoad={(editor) => {
-							editor.setValue(' ');
-						}}
-					/>
-				</div>
-				<div className="ghost_editor">
-					{ " this should not show" }
-				</div>
+			
+				<AceEditor
+					width="100%"
+					mode="javascript"
+					theme="github"
+					name="editor"
+				/>
+	
 			</div>
 		);
 	}
