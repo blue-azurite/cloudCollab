@@ -8,7 +8,7 @@ class Github extends Component {
   componentWillMount() {
     this.props.fetchUserRepos();
   }
-  
+
   handleClick(userRepo){
     this.props.fetchSha(userRepo);
   }
@@ -20,6 +20,7 @@ class Github extends Component {
           <ul>
             {
               this.props.Repos.map((repo, index) => 
+            {/* Create another component here that will take in the paths */}
                 <li onClick={this.handleClick.bind(this,repo)} key={index}><a>{repo}</a></li>
               )
             }
