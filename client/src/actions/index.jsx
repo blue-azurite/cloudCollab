@@ -33,6 +33,13 @@ export function updateText(text) {
   }
 }
 
+export function setSocketRoom(roomId) {
+  return {
+    type: SET_SOCKET_ROOM,
+    payload: roomId
+  };
+} 
+
 ////************************ PEERJS COMMUNICATION ************************////
 export function initVid(id) {
 
@@ -147,6 +154,7 @@ export function fetchSha(userRepo) {
 
 export const SOCKET_IO = 'SOCKET_IO';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
+export const SET_SOCKET_ROOM = 'SET_SOCKET_ROOM';
 export const GET_PEER_ID = 'GET_PEER_ID';
 export const INIT_VID = 'INIT_VID';
 export const SET_UP_VIDEO = 'SET_UP_VIDEO';

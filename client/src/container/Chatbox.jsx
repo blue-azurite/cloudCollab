@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Messages from '../components/Messages';
 import Messagebox from '../components/Messagebox';
-// import { connect } from 'react-redux';
-// import io from 'socket.io-client';
+import { setSocketRoom } from '../actions';
 
-export default class Chatbox extends Component {
+class Chatbox extends Component {
+  
+  componentDidUpdate(){
+    if(this.props.peerId){
+    // if client is not-host (peerId exist), set RoomId to "peerId"
+      this.props.setSocketRoom(this.props.peerId);
+    } else if (this.props.myId){
+    // else set RoomId to "myId"
+      this.props.setSocketRoom(this.props.myId);
+    }
+    if(this.props.roomId){
+      var room = this.props.roomId;
+      this.props.socket.on('connect', function(){
+        console.log('client join room:', room);
+        this.emit('room', room);
+      })
+    }
+  }
+
   render(){
+
     return (
       <div className="chat_box">
         <div className="chat_header modal-header">Chatbox</div>
@@ -16,14 +36,22 @@ export default class Chatbox extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     peerId: state.PeerId.peerId, 
-//     socket: state.Socket.socket
-//   }
-// }
+function mapStateToProps(state) {
+  return {
+    myId: state.MyId.myId,
+    peerId: state.PeerId.peerId,
+    roomId: state.RoomId.roomId,
+    socket: state.Socket.socket
+  }
+}
 
-// export default connect(mapStateToProps)(Chatbox);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    setSocketRoom: setSocketRoom
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chatbox);
 
 
 

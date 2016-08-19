@@ -5,6 +5,7 @@ import PeerId from './reducer_peerId';
 import MyId from './reducer_myId';
 import Repos from './reducer_github';
 import Socket from './reducer_socket';
+import RoomId from './reducer_setSocketRoom';
 
 const rootReducer = combineReducers({
   Text: Text,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   PeerId: PeerId,
   MyId: MyId,
   Repos: Repos,
-  Socket: Socket
+  Socket: Socket,
+  RoomId: RoomId
 });
 // Change name of Repos to something more 
 // generic for github requests/responses?
