@@ -15,12 +15,11 @@ class Chatbox extends Component {
     // else set RoomId to "myId"
       this.props.setSocketRoom(this.props.myId);
     }
+
     if(this.props.roomId){
-      var room = this.props.roomId;
-      this.props.socket.on('connect', function(){
-        console.log('client join room:', room);
-        this.emit('room', room);
-      })
+        var room = this.props.roomId;
+        this.props.socket.emit('room', room);
+        //the "emit(room)" was originall wrap on io.connect, which did not fire consistenly
     }
   }
 

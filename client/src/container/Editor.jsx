@@ -9,11 +9,7 @@ import 'brace/mode/javascript';
 //actions
 import { updateText, amIHost, getPeerId } from '../actions'
 
-const initialValue = `function helloWorld() {
-	return 'Hello, world!';
-}
-
-console.log(helloWorld())`
+const initialValue = `//Start Code Here`
 
 class CodeEditor extends Component {
 
