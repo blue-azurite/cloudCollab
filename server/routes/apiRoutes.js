@@ -49,6 +49,72 @@ export default function(app) {
           collection.push(data[keys].name);
         }
         res.send(collection);
+      })
+      .catch(error => {
+        console.log('GET user repos error', error);
+      });
+  });
+
+  // GET sha for repo
+  app.post('/api/github/repo/sha', (req, res) => {
+    let access_token = req.user.accessToken;
+    let user = req.user.username;
+    let repo = req.body.repo;
+    let url = `https://api.github.com/repos/${user}/${repo}/git/refs/heads/master?access_token=${access_token}`;
+    let options = {
+      url: url,
+      headers: {
+        'User-Agent': user
+      }
+    };
+
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        let sha = data.object.sha;
+        let url = `https://api.github.com/repos/${user}/${repo}/git/trees/${sha}?access_token=${access_token}`
+        fetch(url, {
+          url: url,
+          headers: {
+            'User-Agent': user
+          }
+        })
+        .then(response => {
+          return response.json();
+        })
+        .then(tree => {
+          console.log(tree);
+        });
+      })
+      .catch(error => {
+        console.log('GET user sha error', error);
+      });
+  });
+
+  // GET user tree
+  // /repos/:owner/:repo/git/trees/:sha
+  app.get('/api/github/tree', (req, res) => {
+    let user = req.user.username;
+    let repo = req.body.repo;
+    let sha = req.body.sha;
+    let url = `https://api.github.com/repos/${user}/${repo}/git/trees/${sha}`;
+    let options = {
+      url: url,
+      headers: {
+        'User-Agent': user
+      }
+    };
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log('GET user tree error', error);
       });
   });
 
@@ -71,30 +137,9 @@ export default function(app) {
       })
       .then(json => {
         res.send(json);
+      })
+      .catch(error => {
+        console.log('GET user orgs error', error);
       });
   });  
-
-  // GET sha for repo
-  app.post('/api/github/repo/sha', (req, res) => {
-    let user = req.user.username;
-    let repo = req.body.repo;
-    let url = `https://api.github.com/repos/${user}/${repo}/git/refs/heads/master`;
-
-    let options = {
-      url: url,
-      headers: {
-        'User-Agent': user
-      }
-    };
-
-    fetch(url, options)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        console.log(data.object.sha)
-        res.send([data.object.sha]);
-      });
-  });
-
 };  

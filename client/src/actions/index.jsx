@@ -131,12 +131,12 @@ export function fetchUserRepos() {
   }
 }
 
-// If user is signed in, fetch list of repos
+// If user is signed in, fetch sha
 export function fetchSha(userRepo) {
   const data = {
     repo: userRepo
   }
-  const userSha = axios.post('/api/github/repo/sha',data)
+  const userSha = axios.post('/api/github/repo/sha', data)
     .then(response => {
       return response.data;
     })
@@ -151,6 +151,9 @@ export function fetchSha(userRepo) {
     payload: userSha
   }
 }
+
+// Once sha is obtained, get
+
 
 export const SOCKET_IO = 'SOCKET_IO';
 export const CHANGE_INPUT = 'CHANGE_INPUT';

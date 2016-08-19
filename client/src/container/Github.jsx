@@ -8,9 +8,11 @@ class Github extends Component {
   componentWillMount() {
     this.props.fetchUserRepos();
   }
+  
   handleClick(userRepo){
     this.props.fetchSha(userRepo);
   }
+
   render(){
     return (
       <div>

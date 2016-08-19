@@ -1,4 +1,4 @@
-import { FETCH_USER_GITHUB, FETCH_USER_GITHUB_REPOS, FETCH_USER_GITHUB_REPO_CONTENTS } from '../actions';
+import { FETCH_USER_GITHUB, FETCH_USER_GITHUB_REPOS, FETCH_USER_GITHUB_REPO_CONTENTS, FETCH_USER_GITHUB_REPO_TREE } from '../actions';
 
 const initialState = {
   collection: [],
@@ -18,6 +18,11 @@ export default function (state = initialState, action) {
         collection: action.payload
       }
     case FETCH_USER_GITHUB_REPO_CONTENTS:
+      return {
+        ...state,
+        collection: action.payload
+      }
+    case FETCH_USER_GITHUB_REPO_TREE:
       return {
         ...state,
         collection: action.payload
