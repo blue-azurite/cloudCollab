@@ -63,6 +63,7 @@ io.on('connection', function(socket){
 
   socket.on('room', function(room){
     socket.join(room);
+    io.to(room).emit("new guest", null);
   })
 
   socket.on('change text', function(textToRoom){

@@ -9,28 +9,15 @@ import 'brace/mode/javascript';
 //actions
 import { updateText, amIHost, getPeerId } from '../actions'
 
-const initialValue = `function helloWorld() {
-	return 'Hello, world!';
-}
-
-console.log(helloWorld())`
+const initialValue = `//Start Code Here`
 
 class CodeEditor extends Component {
 
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			input: initialValue
-		}
-
-		// var changeState = function(obj){
-		// 	this.setState(obj);
-		// }.bind(this);
-		
-		// this.props.socket.on('change text', function(text){
-		// 	changeState({input: text});
-		// });
+		};
 	}
 
 	componentDidMount () {
@@ -50,10 +37,17 @@ class CodeEditor extends Component {
 	    lineNumbers: true
   	}); 
 
-		const editor = ace.edit("editor")
-
+		const editor = ace.edit("editor");
+		editor.setValue(this.state.input);
+		
 		var changeState = function(obj){
 			this.setState(obj);
+		}.bind(this);
+		
+		var newGuestUpdate = function(text){
+			if(this.props.peerId === null){
+				this.change(text);
+			}
 		}.bind(this);
 		
 		this.props.socket.on('change text', function(text){
@@ -61,18 +55,13 @@ class CodeEditor extends Component {
 			editor.setValue(text);
 		});
 
-	}
+		this.props.socket.on('new guest', function(){
+			newGuestUpdate(editor.getValue());						
+		});
 
-	// componentWillMount() {
-	// 	this.props.socket.on('connect', function(){
-	// 		console.log('Connected on the client-side: editor');
-	// 	});
-	// }
+	}
 	
 	change(text) {
-		// Emit on change event with the text
-		// this.props.socket.emit('change text', text);
-		// this.props.updateText(text)
 		var textToRoom = {
 			text: text, 
 			room: this.props.roomId
