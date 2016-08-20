@@ -4,76 +4,29 @@ import { bindActionCreators } from 'redux';
 import { params, amIHost, getPeerId, setMyId } from '../actions';
 import getScreenMedia from 'getScreenMedia';
 
+
 class Screenshare extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    // listen for incoming connections for screen share
-      // populate screen once ready
-
-      var webrtc = new SimpleWebRTC({
-        // the id/element dom element that will hold "our" video
-        localVideoEl: 'localVideo',
-        // the id/element dom element that will hold remote videos
-        remoteVideosEl: 'remotesVideos',
-        // immediately ask for camera access
-        autoRequestMedia: true
-      });
-      var button = document.getElementById('screenShareButton'),
-          setButton = function (bool) {
-              button.innerText = bool ? 'share screen' : 'stop sharing';
-          };
-      if (!webrtc.capabilities.screenSharing) {
-          button.disabled = 'disabled';
-      }
-      webrtc.on('localScreenRemoved', function () {
-          setButton(true);
-      });
-
-      setButton(true);
-
-      button.click(function () {
-          if (webrtc.getLocalScreen()) {
-              webrtc.stopScreenShare();
-              setButton(true);
-          } else {
-              webrtc.shareScreen(function (err) {
-                  if (err) {
-                      setButton(true);
-                  } else {
-                      setButton(false);
-                  }
-              });
-
-          }
-      });
-
-      webrtc.on('localScreenAdded', function (video) {
-          video.onclick = function () {
-              video.style.width = video.videoWidth + 'px';
-              video.style.height = video.videoHeight + 'px';
-          };
-          document.getElementById('localScreenContainer').appendChild(video);
-          $('#localScreenContainer').show();
-      });
-      // local screen removed
-      webrtc.on('localScreenRemoved', function (video) {
-          document.getElementById('localScreenContainer').removeChild(video);
-          $('#localScreenContainer').hide();
-      });
   }
 
 
   handleClick() {
-    // start screen share 
-    var broadcastId;
-    if (this.props.amIHost()) {
-      // start screenshare w/ myId broadcast name
-      broadcastId = this.props.myId;
-    } else {
-      // start screenshare w/ peerId broadcast name
-      broadcastId = this.props.peerId;
-    }
+    
+    console.log('clicked')
+    getScreenMedia(function (err, stream) {
+        // if the browser doesn't support user media
+        // or the user says "no" the error gets passed
+        // as the first argument.
+        if (err) {
+           console.log('failed');
+        } else {
+           console.log('got a stream', stream);  
+        }
+    });
+
+
   }
 
 
@@ -90,8 +43,6 @@ class Screenshare extends Component {
   }
 }
 
-
-
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
@@ -104,8 +55,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ 
-    amIHost: amIHost, 
-    getPeerId: getPeerId, 
+    amIHost: amIHost,
+    getPeerId: getPeerId,
     setMyId: setMyId
   }, dispatch)
 }

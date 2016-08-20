@@ -24,6 +24,7 @@ app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: fals
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json())
+
 // Create GitHubStrategy
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
@@ -85,10 +86,8 @@ io.on('connection', function(socket){
     io.to(message.room).emit('new message', message);
   })
 
-  socket.on('run code', function(text)  {
-    console.log('run code:', text)
-    const code = eval(text)
-    io.emit('output', code);
+  socket.on('message', function (data) {
+      socket.broadcast.emit('message', data);
   });
 
 });

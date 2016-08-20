@@ -8,14 +8,16 @@
 </head>
 <body>
   <div id='app'></div>
-  <button id="screenShareButton">hello</button>
-  <div id="localScreenContainer"></div>
-  <script src="https://simplewebrtc.com/latest-v2.js"></script> 
+<!--   <button id="open-or-join">Open or Join Broadcast</button>
+  <hr>
+  <div id="videos-container"></div> -->
+  <script src="/socket.io/socket.io.js"></script>
+<!--   <script src="https://webrtcexperiment-webrtc.netdna-ssl.com/getScreenId.js"></script>
+  <script src="https://webrtcexperiment-webrtc.netdna-ssl.com/screen.js"></script> -->
+  <!-- <script src="./lib/screenshare.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.14/peer.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
   <script src="./lib/codeblock.js"></script>
   <script src='./app.bundle.js'></script>
-  <script src="/socket.io/socket.io.js"></script>
 </body>
 </html>
