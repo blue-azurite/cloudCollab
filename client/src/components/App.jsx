@@ -50,7 +50,6 @@ export default class App extends Component {
             </div>
             {/* End Chat */} 
 
-
           </div>
         </div>
 

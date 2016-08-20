@@ -59,8 +59,7 @@ class CodeEditor extends Component {
 			newGuestUpdate(editor.getValue());						
 		});
 
-		// shim for getting rid of the lower margin of ace editor & codeblock
-		$('.codeblock-editor-wrapper').css('height', '500px') 
+		$('.codeblock-editor-wrapper').css('height', '500px') // shim for getting rid of the lower margin of ace editor & codeblock
 
 	}
 	
