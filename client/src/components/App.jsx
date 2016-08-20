@@ -14,7 +14,7 @@ export default class App extends Component {
 
         {/* Navigation */}
         <Nav />
-        <div className="container">
+        <div className="container header">
           <div className="page-header" id="banner">
             {/* Start Header */} 
             <div className="row">
@@ -42,15 +42,14 @@ export default class App extends Component {
             </div>
             {/* End Editor && Video Container*/} 
             
-            {/* Start Console */} 
+            {/* Start Chat */} 
             <div className="row">
               <div className="col-lg-12">
-                { /* <Console /> */ }
+                <Chatbox />
               </div>
             </div>
-            {/* End Console */} 
+            {/* End Chat */} 
 
-            <Chatbox />
 
           </div>
         </div>
