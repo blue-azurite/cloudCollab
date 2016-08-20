@@ -80,7 +80,7 @@ class CodeEditor extends Component {
 		return (
 			<div>
 				<AceEditor
-					// width="100%"
+					width="100%"
 					height="500px"
 					mode="javascript"
 					// name="editor"
