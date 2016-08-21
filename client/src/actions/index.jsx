@@ -141,6 +141,7 @@ export function fetchSha(userRepo) {
       return response.data;
     })
     .then(json => {
+      console.log('this is the json obj', json);
       return json;
     })
     .catch(error => {

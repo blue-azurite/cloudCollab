@@ -87,7 +87,6 @@ export default function(app) {
         })
         .then(tree => {
           // console.log(tree);
-          //
         });
       })
       .catch(error => {

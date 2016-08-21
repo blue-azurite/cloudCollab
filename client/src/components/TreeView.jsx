@@ -9,15 +9,10 @@ class GithubTree extends Component {
 		super(props);
 	}
 
-	// handleClick(repo) {
-	// 	console.log('Hey Yuyi! Julius is mean!');
-	// 	return this.props.handleClickedItem(repo);
-	// }
-
   render(){
     return (
       <div>
-        <h1>HELLO</h1>
+      	<li onClick={()=> this.props.handleClickedItem(this.props.data)}><a>{this.props.data}</a></li>
       </div>
     )
   }

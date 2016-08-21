@@ -19,7 +19,11 @@ class Github extends Component {
       <div>
         <div>
           <ul>
-      
+           {
+             this.props.Repos.map((repo, index) =>
+               <GithubTree handleClickedItem={this.handleClickedItem.bind(this, repo)} data={repo} key={index}/>
+             )
+           }
           </ul>
         </div>
       </div>
