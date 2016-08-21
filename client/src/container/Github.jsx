@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUsers, fetchUserRepos, fetchSha } from '../actions';
+import GithubTree from '../components/TreeView';
 import axios from 'axios';
 
 class Github extends Component {
@@ -9,7 +10,7 @@ class Github extends Component {
     this.props.fetchUserRepos();
   }
 
-  handleClick(userRepo){
+  handleClickedItem(userRepo){
     this.props.fetchSha(userRepo);
   }
 
@@ -18,12 +19,7 @@ class Github extends Component {
       <div>
         <div>
           <ul>
-            {
-              this.props.Repos.map((repo, index) => 
-            {/* Create another component here that will take in the paths */}
-                <li onClick={this.handleClick.bind(this,repo)} key={index}><a>{repo}</a></li>
-              )
-            }
+      
           </ul>
         </div>
       </div>

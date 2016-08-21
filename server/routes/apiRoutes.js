@@ -44,6 +44,7 @@ export default function(app) {
         return response.json();
       })
       .then(data => {
+        // console.log('data from apiroutes', data);
         let collection = [];
         for (let keys in data) {
           collection.push(data[keys].name);
@@ -85,7 +86,8 @@ export default function(app) {
           return response.json();
         })
         .then(tree => {
-          console.log(tree);
+          // console.log(tree);
+          //
         });
       })
       .catch(error => {
