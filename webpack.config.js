@@ -24,8 +24,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.css'], // in import statements default to these file types if none specified
     modulesDirectories: ['node_modules']
-  }
-  ,
+  },
    plugins: [
     new webpack.HotModuleReplacementPlugin()
   ]

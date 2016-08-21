@@ -2,25 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUsers, fetchUserRepos, fetchSha } from '../actions';
+import GithubTree from '../components/TreeView';
 import axios from 'axios';
 
 class Github extends Component {
   componentWillMount() {
     this.props.fetchUserRepos();
   }
-  handleClick(userRepo){
+
+  handleClickedItem(userRepo){
     this.props.fetchSha(userRepo);
   }
+
   render(){
     return (
       <div>
         <div>
           <ul>
-            {
-              this.props.Repos.map((repo, index) => 
-                <li onClick={this.handleClick.bind(this,repo)} key={index}><a>{repo}</a></li>
-              )
-            }
+           {
+             this.props.Repos.map((repo, index) =>
+               <GithubTree handleClickedItem={this.handleClickedItem.bind(this, repo)} data={repo} key={index}/>
+             )
+           }
           </ul>
         </div>
       </div>
