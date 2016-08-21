@@ -19,34 +19,37 @@ body {
 ** =================== **/
 
 .chat_box {
+  margin-top: 20px;
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   clear: both;
   height: 300px;
-  background: #DDDDDD;
+  background: #272822;
   text-align: center;
-  border: 1px solid #DDDDDD;
-  border-radius: 10px;
+  border: 1px solid #66d9ef;
+  border-radius: 3px;
   width: 100%;
 }
 
 .messages_display {
   height: 80%;
   overflow: scroll;
-  background: white;
+  background: #272822;
 }
 
 .chat_message {
   min-width: 60%;
-  padding: 0px 5px;
+  padding: 2px 5px;
   display: block;
-  border: 1px solid white;
+  border: 0px;
   border-radius: 5px;
 }
 .me {
+  padding: 2px;
+  margin: 5px;
   float: right;
   text-align: right;
-  color: white;
-  background-color: #4582ec;
+  color: #a6e22e;
+  background-color: #272822;
   font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -55,27 +58,36 @@ body {
   text-align: left;
   padding-right: 5px;
   padding-top: 3px;
-  background-color: #DDDDDD;
-  color: #4582ec;
+  background-color: #272822;
+  color: #f92672;
   font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .messages_box {
   margin: 2px 0px;
-  padding: 0px;
+  padding: 2px;
+  margin-bottom: 20px;
+  background-color: #66d9ef;
+  border: 2px solid #66d9ef;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .messages_box textarea {
-  width: 94%;
+  width: 99%;
+  color: #4acdef;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: #66d9ef;
   font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 0px 0px 5px 5px;
-  border: 1px solid white;
+  border: 0px;
 }
 
 .chat_header {
   text-align: center;
   font-size: 20px;
   font-weight: bold; 
-  color: #4582ec;
+  color: #a6e22e;
+  border-bottom: 0px;
 }
 
 .chat_message > p {
