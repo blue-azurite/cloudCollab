@@ -96,7 +96,5 @@ io.on('connection', function(socket){
 apiRoutes(app);
 
 server.listen(port, () => {
-  console.log('----------------------------------------');
-  console.log(`| app.js has been served on port: ${port} |`);
-  console.log('----------------------------------------');
+  console.log(`app.js has been served on port: ${port}`);
 });
