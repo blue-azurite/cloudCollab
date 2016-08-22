@@ -6,6 +6,7 @@ import MyId from './reducer_myId';
 import Repos from './reducer_github';
 import Socket from './reducer_socket';
 import RoomId from './reducer_setSocketRoom';
+import SaveName from './reducer_savename';
 
 const rootReducer = combineReducers({
   Text: Text,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   MyId: MyId,
   Repos: Repos,
   Socket: Socket,
-  RoomId: RoomId
+  RoomId: RoomId,
+  Name: SaveName
 });
 // Change name of Repos to something more 
 // generic for github requests/responses?

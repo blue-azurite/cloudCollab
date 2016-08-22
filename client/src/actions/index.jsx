@@ -18,6 +18,15 @@ const constraints = {
   }
 };
 
+////************************ Modal ************************////
+export function saveName(name) {
+  return {
+    type: SAVE_NAME,
+    payload: name
+  }
+}
+
+
 ////************************ Text editor ************************////
 export function createSocket(data) {
   return {
@@ -194,7 +203,7 @@ export function fetchInput(input, hostId) {
 }
 
 
-
+export const SAVE_NAME = 'SAVE_NAME';
 export const SOCKET_IO = 'SOCKET_IO';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SET_SOCKET_ROOM = 'SET_SOCKET_ROOM';

@@ -63,7 +63,7 @@ body {
   font: 16px/18px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .messages_box {
-  margin: 2px 0px;
+  margin: 2px;
   padding: 2px;
   margin-bottom: 20px;
   background-color: #66d9ef;
@@ -72,7 +72,7 @@ body {
 }
 
 .messages_box textarea {
-  width: 99%;
+  width: 100%;
   color: #4acdef;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -179,10 +179,15 @@ body {
 }
 
 .codeblock-console-run {
-    background-color: #51A351;
+    background-color: #a3e22e;
     color: #FFF;
     border-radius: 2px;
     cursor: pointer;
+}
+
+.codeblock-console-run:hover {
+    background-color: #fd9720;
+    
 }
 
 .codeblock-console-run.disabled {
@@ -202,9 +207,3 @@ body {
   bottom: 0;
   left: 0;
 }
-
-
-/*.ghost_editor {
-  display: none;
-}*/
-
