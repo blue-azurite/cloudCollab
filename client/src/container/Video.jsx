@@ -7,7 +7,6 @@ import axios from 'axios';
 import { params, initVid, amIHost, getPeerId, setMyId } from '../actions';
 import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
-const sourceId = params.get('id');
 
 class VideoChat extends Component {
 
@@ -19,6 +18,7 @@ class VideoChat extends Component {
   }
 
   componentDidMount() {
+    const sourceId = params.get('id')
     this.props.amIHost(); // this will update global state
     if (this.props.isHost) { // this is grabbing global state
       this.initAsSource();
@@ -28,32 +28,17 @@ class VideoChat extends Component {
   }
 
   initAsSource() {
-      establishPeerConnection().then( (conn) => {
-        console.log('Peer connection: connected as host!', conn)
-        conn.on('data', (data) => {
-          // if the data is the SCREENSHARE DATA....
-            // append it to the screenshare div. 
-        })
-      });
+    establishPeerConnection().then( (conn) => {
+      console.log('Peer connection: connected as host!', conn)
+      conn.on('data', (data) => {
+        // if the data is the SCREENSHARE DATA....
+          // append it to the screenshare div. 
+      })
+    });
   }
 
   initAsReceiver(sourceId) {
-      establishPeerConnection(sourceId).then( conn => console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
-  }
-
-  saveInput() {
-
-    const data = {
-      hostId: sourceId ? sourceId : this.props.myId,
-      input: this.props.input
-    }
-    axios.post('/session/save', data)
-      .then(response => {
-        console.log('session saved successfully');
-      })
-      .catch(error => {
-        console.warn('error saving session');
-      });
+    establishPeerConnection(sourceId).then( conn => console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
   }
 
   enableVideo() {
@@ -70,7 +55,7 @@ class VideoChat extends Component {
   render() {
     return(
       <div id="video" className="mediaDiv"> 
-        <Link onClick={this.saveInput.bind(this)} myId={this.props.myId} />
+        <Link />
         <button className="btn btn-primary btn-sm vid-btn" onClick={this.enableVideo.bind(this)}>Enable video chat</button>
         <video id="local-video" autoPlay></video>
         <video id="remote-video" autoPlay></video>

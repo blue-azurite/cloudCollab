@@ -6,8 +6,9 @@ import AceEditor from 'react-ace';
 import brace from 'brace';
 import 'brace/theme/monokai';
 import 'brace/mode/javascript';
+import axios from 'axios';
 //actions
-import { updateText, amIHost, getPeerId } from '../actions'
+import { params, updateText, amIHost, getPeerId } from '../actions'
 
 const initialValue = `//Start Code Here`
 
@@ -37,9 +38,10 @@ class CodeEditor extends Component {
 	    lineNumbers: true
   	}); 
 
-		const editor = ace.edit("editor");
+		// editor view
+		const editor = ace.edit("editor"); 
 		editor.setValue(this.state.input);
-		
+
 		var changeState = function(obj){
 			this.setState(obj);
 		}.bind(this);
@@ -60,7 +62,13 @@ class CodeEditor extends Component {
 		});
 
 		$('.codeblock-editor-wrapper').css('height', '500px') // shim for getting rid of the lower margin of ace editor & codeblock
+		editor.$blockScrolling = Infinity
 
+	}
+
+	componentWillUpdate() {
+		// on update - this is showing up correctly
+		this.props.updateText(this.state.input);
 	}
 	
 	change(text) {
@@ -82,11 +90,11 @@ class CodeEditor extends Component {
 					width="100%"
 					height="500px"
 					mode="javascript"
-					// name="editor"
+					name="ghosteditor"
 					theme="monokai"
 					value={this.props.input}
 					onChange={this.change.bind(this)}
-				  value={ this.state.input }
+				  value={this.state.input}
 				/>
 			
 				<AceEditor

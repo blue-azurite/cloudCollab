@@ -151,6 +151,7 @@ export default function(app) {
       });
   });
 
+
   // GET orgs user belongs to
   app.get('/api/github/orgs', (req, res) => {
     let access_token = req.user.accessToken;
@@ -175,5 +176,6 @@ export default function(app) {
         console.log('GET user orgs error', error);
       });
   });  
+
 
 };  
