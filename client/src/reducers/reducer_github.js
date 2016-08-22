@@ -1,7 +1,9 @@
 import { FETCH_USER_GITHUB, FETCH_USER_GITHUB_REPOS, FETCH_USER_GITHUB_REPO_CONTENTS, FETCH_USER_GITHUB_REPO_TREE } from '../actions';
 
 const initialState = {
-  collection: [],
+  trees: [],
+  repos: [],
+  contents: [],
   username: ''
 }
 
@@ -15,17 +17,17 @@ export default function (state = initialState, action) {
     case FETCH_USER_GITHUB_REPOS:
       return {
         ...state,
-        collection: action.payload
+        repos: action.payload
       }
     case FETCH_USER_GITHUB_REPO_CONTENTS:
       return {
         ...state,
-        collection: action.payload
+        contents: action.payload
       }
     case FETCH_USER_GITHUB_REPO_TREE:
       return {
         ...state,
-        collection: action.payload
+        trees: action.payload
       }
     default:
       return state;

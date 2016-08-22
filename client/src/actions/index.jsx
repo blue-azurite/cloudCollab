@@ -138,17 +138,15 @@ export function fetchSha(userRepo) {
   }
   const userSha = axios.post('/api/github/repo/sha', data)
     .then(response => {
-      return response.data;
-    })
-    .then(json => {
-      console.log('this is the json obj', json);
-      return json;
+      let tree = JSON.stringify(response.data);
+      console.log(tree);
+      return tree;
     })
     .catch(error => {
       console.warn(error);
     });
   return {
-    type: FETCH_USER_GITHUB_REPO_CONTENTS,
+    type: FETCH_USER_GITHUB_REPO_TREE,
     payload: userSha
   }
 }
@@ -166,4 +164,5 @@ export const CHECK_IF_HOST = 'CHECK_IF_HOST';
 export const SET_MY_ID = 'SET_MY_ID';
 export const FETCH_USER_GITHUB = 'FETCH_USER_GITHUB';
 export const FETCH_USER_GITHUB_REPOS = 'FETCH_USER_GITHUB_REPOS';
+export const FETCH_USER_GITHUB_REPO_TREE = 'FETCH_USER_GITHUB_REPO_TREE';
 export const FETCH_USER_GITHUB_REPO_CONTENTS = 'FETCH_USER_GITHUB_REPO_CONTENTS';
