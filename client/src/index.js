@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App';
 import Github from './container/Github';
-import GithubTree from './component/TreeView';
+import GithubTree from './components/TreeView';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Router, Route, hashHistory } from 'react-router';
 import ReduxPromise from 'redux-promise';
@@ -35,7 +35,7 @@ ReactDOM.render((
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <Route path="/" component={Github}>
-          <Route path="/" component={TreeView}/>
+          <Route path="/" component={GithubTree}/>
         </Route>
       </Route>
     </Router>
