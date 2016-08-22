@@ -15,7 +15,7 @@ const success = ['(っ◕‿◕)っ', '㋡', '-`ღ´-', 'ᕦ(ò_óˇ)ᕤ', '\ō
 let random = success[Math.floor(Math.random() * (success.length - 0)) + 0];
 
 db.once('open', () => {
-  console.log(`db is connected ${random}`);
+  console.log(`mongodb is connected ${random}`);
 });
 
 
@@ -23,5 +23,5 @@ db.once('open', () => {
 //------------------------------- Redis
 
 client.on('connect', function() {
-    console.log('connected');
+    console.log(`redis is connected ${random}`);
 });

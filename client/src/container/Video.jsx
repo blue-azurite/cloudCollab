@@ -2,41 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Link from '../components/Link';
+import axios from 'axios';
 // import any other actions as well
 import { params, initVid, amIHost, getPeerId, setMyId } from '../actions';
 import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
+const sourceId = params.get('id');
 
 class VideoChat extends Component {
 
   componentWillMount() {    
     this.props.getPeerId(); 
-
     getMyId().then((id) => {
       this.props.setMyId(id)
     }).catch((err) => console.error(err))
   }
 
   componentDidMount() {
-    const sourceId = params.get('id');
-    
     this.props.amIHost(); // this will update global state
-        
     if (this.props.isHost) { // this is grabbing global state
       this.initAsSource();
     } else {
       this.initAsReceiver(sourceId);
     }
-      
-  }
-
-  componentWillMount() {    
-    this.props.getPeerId(); 
-
-    getMyId().then((id) => {
-      this.props.setMyId(id)
-    }).catch((err) => console.error(err))
-    
   }
 
   initAsSource() {
@@ -51,11 +39,24 @@ class VideoChat extends Component {
 
   initAsReceiver(sourceId) {
       establishPeerConnection(sourceId).then( conn => console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
+  }
 
+  saveInput() {
+
+    const data = {
+      hostId: sourceId ? sourceId : this.props.myId,
+      input: this.props.input
+    }
+    axios.post('/session/save', data)
+      .then(response => {
+        console.log('session saved successfully');
+      })
+      .catch(error => {
+        console.warn('error saving session');
+      });
   }
 
   enableVideo() {
-
     // if host...initAsHost
     if (this.props.isHost) {
       this.props.initVid();
@@ -67,10 +68,10 @@ class VideoChat extends Component {
 
 
   render() {
-
     return(
       <div id="video" className="mediaDiv"> 
-        <Link myId={this.props.myId} /><button className="btn btn-primary btn-sm vid-btn" onClick={this.enableVideo.bind(this)}>Enable video chat</button>
+        <Link onClick={this.saveInput.bind(this)} myId={this.props.myId} />
+        <button className="btn btn-primary btn-sm vid-btn" onClick={this.enableVideo.bind(this)}>Enable video chat</button>
         <video id="local-video" autoPlay></video>
         <video id="remote-video" autoPlay></video>
       </div>
@@ -84,7 +85,8 @@ function mapStateToProps(state) {
   return {
     isHost: state.Host.isHost,
     peerId: state.PeerId.peerId,
-    myId: state.MyId.myId
+    myId: state.MyId.myId,
+    input: state.Text.text
   }
 }
 
