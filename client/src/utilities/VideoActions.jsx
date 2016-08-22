@@ -2,7 +2,6 @@ const peer = new Peer({key: 'lwjd5qra8257b9'});
 let peerId;
 
 peer.on('open', function(id) {
-  console.log('peer connected! peerId is:', id)
   peerId = id;
 })
 
@@ -35,7 +34,6 @@ const establishPeerConnection = (sourceId) => new Promise((resolve, reject) => {
         reject(error);
       });
     } else {
-      console.log('Listening for connections...')
       peer.on('connection', (conn) => {
         conn.on('open', () => {
           console.log('RTC data connection established - acting as source');

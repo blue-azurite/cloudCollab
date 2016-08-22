@@ -6,9 +6,6 @@ import GithubTree from '../components/TreeView';
 import axios from 'axios';
 
 class Github extends Component {
-  componentWillMount() {
-    this.props.fetchUserRepos();
-  }
 
   handleClickedItem(userRepo){
     this.props.fetchSha(userRepo);

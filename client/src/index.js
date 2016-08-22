@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App';
+import Github from './container/Github';
+import GithubTree from './components/TreeView';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { Router, Route, hashHistory } from 'react-router';
 import ReduxPromise from 'redux-promise';
 import rootReducer from './reducers';
 
@@ -27,8 +30,14 @@ function configureStore(initialState) {
 
 let store = configureStore();
 
-ReactDOM.render(
+ReactDOM.render((
   <Provider store={store}>
-    <App />
+    <Router history={hashHistory}>
+      <Route path="/" component={App}>
+        <Route path="/" component={Github}>
+          <Route path="/" component={GithubTree}/>
+        </Route>
+      </Route>
+    </Router>
   </Provider>
-  , document.querySelector('#app'));
+  ), document.querySelector('#app'));
