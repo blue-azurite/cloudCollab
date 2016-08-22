@@ -40,7 +40,6 @@
     "isomorphic-fetch": "^2.2.1",
     "mongoose": "^4.5.8",
     "node-fetch": "^1.6.0",
-    "nodegit": "^0.14.1",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
     "querystring": "^0.2.0",
