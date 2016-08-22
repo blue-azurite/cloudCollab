@@ -13,6 +13,7 @@ class GithubTree extends Component {
     return (
       <div>
       	<li onClick={()=> this.props.handleClickedItem(this.props.data)}><a>{this.props.data}</a></li>
+        <div>Hey{this.props.tree}</div>
       </div>
     )
   }

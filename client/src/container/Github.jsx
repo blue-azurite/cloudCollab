@@ -21,7 +21,7 @@ class Github extends Component {
           <ul>
            {
              this.props.Repos.map((repo, index) =>
-               <GithubTree handleClickedItem={this.handleClickedItem.bind(this, repo)} data={repo} key={index}/>
+               <GithubTree handleClickedItem={this.handleClickedItem.bind(this, repo)} data={repo} tree={this.props.Trees} key={index}/>
              )
            }
           </ul>
@@ -33,8 +33,9 @@ class Github extends Component {
 
 function mapStateToProps(state) {
   return {
-    Repos: state.Repos.collection,
-    Username: state.Repos.username
+    Repos: state.Repos.repos,
+    Username: state.Repos.username,
+    Trees: state.Repos.trees
   }
 }
 
