@@ -86,7 +86,7 @@ export default function(app) {
           return response.json();
         })
         .then(tree => {
-          // console.log(tree);
+          res.send(tree.tree);
         });
       })
       .catch(error => {
