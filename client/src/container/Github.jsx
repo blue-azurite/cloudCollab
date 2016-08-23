@@ -15,6 +15,24 @@ class Github extends Component {
   }
 
   render(){
+    if (!this.props.Repos) {
+      return (
+        <div>Please Login</div>
+      )
+    }
+    if (this.props.Trees.length > 0) {
+      return (
+          <div>
+            <ul>
+              {
+                this.props.Trees.map((file, index) =>
+                  <li key={index}><a>{file.path}</a></li>
+                )
+              }
+            </ul>
+          </div>
+        )
+      }
     return (
       <div>
         <div>
