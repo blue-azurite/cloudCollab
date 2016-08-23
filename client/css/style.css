@@ -1,5 +1,7 @@
 body {
   background: #272822;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 /** =================== **
@@ -172,7 +174,6 @@ body {
 .codeblock-console {
     border-top: 1px solid #CCC;
     font-family: monospace;
-
     padding: 2px 2px 2px 8px;
     line-height: 28px;
     min-height: 26px;
@@ -186,7 +187,7 @@ body {
 }
 
 .codeblock-console-run:hover {
-    background-color: #fd9720;
+    background-color: #83b623;
     
 }
 
@@ -206,4 +207,171 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+/** =================== **
+        Chat
+** =================== **/
+
+#chatcontainer {
+    position: fixed;
+    z-index: 1000;
+    bottom: 31px;
+    right: 16px;
+    width: 302px;
+    box-shadow: -3px -6px 15px #BDBCBC;
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    padding: 0px;
+}
+
+#chatcontainer > .tab-content {
+    padding-bottom: 0px;
+}
+
+#chatcontainer .tab-content {
+    width: 100%;
+}
+
+.tab-content {
+    padding-bottom: 10px;
+    border-bottom: 0px;
+}
+
+.tab-content>.active {
+    display: block;
+}
+
+.chatbox {
+    height: 100%;
+    border-top: 0px;
+    margin-top: -1px;
+}
+
+#chatcontainer .panel {
+    border: 0px;
+}
+
+.chatbox > .panel {
+    margin-bottom: 0px;
+    border-radius: 0;
+    height: 100%;
+}
+
+.chatbox .panel {
+    display: block !important;
+}
+
+.chatbox .panel-body {
+    overflow-y: auto;
+    height: calc(100vh - 118px);
+    overflow-y: scroll;
+    padding: 0px;
+}
+
+.chat {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.chat li {
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    transition: all 1.5s ease;
+    background-color: #272822;
+    color: #51cfef;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #51cfef;
+    padding: 15px 5px;
+    font-weight: normal;
+}
+
+.chathelpmessage {
+    text-align: center;
+    margin-left: 0px !important;
+}
+
+#chatcontainer .panel-footer {
+    padding: 8px 6px;
+    border-top: 1px solid #66d9d7;
+}
+
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #272822;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+/* chat button */
+.nav {
+    font-size: 13px;
+    margin-right: 0;
+}
+
+@media (min-width: 768px)
+.navbar-right {
+    float: right;
+}
+
+@media (min-width: 768px)
+.navbar-nav>li {
+    float: left;
+    display: block;
+}
+
+#button_chat {
+    margin-right: 10px;
+    width: 314px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#button_chat a {
+    padding: 7px;
+}
+
+#button_chat > a, #button_chat > a:hover {
+    background-color: #428bca !important;
+    color: #ffffff;
+    border-radius: 0;
+    border: 0px;
+    margin-bottom: 0;
 }
