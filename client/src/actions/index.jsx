@@ -18,6 +18,15 @@ const constraints = {
   }
 };
 
+////************************ Modal ************************////
+export function saveName(name) {
+  return {
+    type: SAVE_NAME,
+    payload: name
+  }
+}
+
+
 ////************************ Text editor ************************////
 export function createSocket(data) {
   return {
@@ -40,7 +49,7 @@ export function setSocketRoom(roomId) {
   };
 } 
 
-////************************ PEERJS COMMUNICATION ************************////
+////************************ Peerjs Communication ************************////
 export function initVid(id) {
 
   navigator.mediaDevices.getUserMedia(constraints) 
@@ -111,8 +120,6 @@ export function fetchUser() {
   }
 }
 
-////************************ Github API ************************////
-
 // If user is signed in, fetch list of repos
 export function fetchUserRepos() {
   const userRepos = axios.get('api/github/repos')
@@ -174,7 +181,29 @@ export function fetchFileContents(path, repo) {
 }
 // Once sha is obtained, get
 
+////************************ Redis ************************////
 
+export function fetchInput(input, hostId) {
+  const data = {
+    host: hostId,
+    input: input
+  }
+
+  const abcde = axios.get('/session/join', data)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(erro => {
+      console.warn(error);
+    });
+  return {
+    type: SAVE_INPUT,
+    input: abcde
+  }
+}
+
+
+export const SAVE_NAME = 'SAVE_NAME';
 export const SOCKET_IO = 'SOCKET_IO';
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SET_SOCKET_ROOM = 'SET_SOCKET_ROOM';

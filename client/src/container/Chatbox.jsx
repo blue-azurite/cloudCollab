@@ -23,13 +23,41 @@ class Chatbox extends Component {
     }
   }
 
+// chatcontainer should be auto hidden !! 
+
   render(){
 
     return (
-      <div className="chat_box">
-        <div className="chat_header modal-header">Chatbox</div>
-        <Messages />
-        <Messagebox />
+      <div>
+
+        <ul className="nav navbar-nav navbar-right">
+          <li id="button_chat">
+            <a className="withborder ">
+              <i className="glyphicon glyphicon-comment">
+                <span className="text">
+                  <span>Chat</span>
+                </span>
+              </i>
+            </a>
+          </li>
+        </ul>
+
+          <div id="chatcontainer" className="col-xs-12 col-sm-4 col-md-3 col-lg-3 pull-left chatcontainer">
+            <div className="tab-content pull-left">
+              <div className="tab-pane active" id="public">
+                <div id="chat" className="chatbox">
+                  <div className="panel">
+
+                      {/* This is where messages show up */}  
+                      <Messages /> 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
       </div>
       )
   }
