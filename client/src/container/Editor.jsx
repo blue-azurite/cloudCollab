@@ -79,10 +79,6 @@ class CodeEditor extends Component {
 		this.props.socket.emit('change text', textToRoom);
 	}
 
-	handleClick() {
-		this.props.socket.emit('run code', this.state.input)
-	}
-
 	render() {
 		return (
 			<div>

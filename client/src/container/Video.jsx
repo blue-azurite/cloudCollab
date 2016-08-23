@@ -28,8 +28,18 @@ class VideoChat extends Component {
   }
 
   initAsSource() {
+    var date = new Date(), 
+    var time = '';
+    if (date.getHours() > 12) {
+      time.concat(date.getHours() - 12 + ':' + date.getMinutes() + 'pm');
+    } else {
+      time.concat(date.getHours() + ':' + date.getMinutes() + 'am');
+    }
     establishPeerConnection().then( (conn) => {
       console.log('Peer connection: connected as host!', conn)
+      this.props.socket.emit('online', {
+
+      })
       conn.on('data', (data) => {
         // if the data is the SCREENSHARE DATA....
           // append it to the screenshare div. 
@@ -68,6 +78,7 @@ class VideoChat extends Component {
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
+    socket: state.Socket.socket,
     isHost: state.Host.isHost,
     peerId: state.PeerId.peerId,
     myId: state.MyId.myId,
