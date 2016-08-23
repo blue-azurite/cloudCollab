@@ -6,19 +6,31 @@ import GithubTree from '../components/TreeView';
 import axios from 'axios';
 
 class Github extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      selectedRepo: ''
+    }
+  }
   componentWillMount() {
     this.props.fetchUserRepos();
   }
 
   handleClickedItem(userRepo){
     this.props.fetchSha(userRepo);
+    this.setState({
+      selectedRepo: userRepo
+    });
   }
-  handleFileClick(path, sha, type){
-    console.log(path)
+  handleFileClick(path, type){
+    console.log(path);
+    console.log(this.state.selectedRepo);
+    let repo = this.state.selectedRepo;
     if (type === 'blob') {
-      // this.props.fetchFileContents();
+      this.props.fetchFileContents(path, repo);
     } else if (type === 'tree') {
       // do something
+
     }
   } 
   render(){
@@ -33,7 +45,7 @@ class Github extends Component {
             <ul>
               {
                 this.props.Trees.map((file, index) =>
-                  <li onClick={this.handleFileClick.bind(this,file.path, file.sha, file.type)} key={index}><a>{file.path}</a></li>
+                  <li onClick={this.handleFileClick.bind(this, file.path, file.type)} key={index}><a>{file.path}</a></li>
                 )
               }
             </ul>

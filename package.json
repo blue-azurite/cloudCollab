@@ -18,6 +18,7 @@
   "author": "blueazurite",
   "license": "ISC",
   "dependencies": {
+    "atob": "^2.0.3",
     "axios": "^0.13.1",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",

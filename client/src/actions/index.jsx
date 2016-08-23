@@ -150,8 +150,14 @@ export function fetchSha(userRepo) {
 }
 
 // Fetch contents of file
-export function fetchFileContents() {
-  const fileContents = axios.get('api/github/contents')
+export function fetchFileContents(path, repo) {
+
+  const data = {
+    path: path,
+    repo: repo
+  }
+  console.log(path, repo);
+  const fileContents = axios.post('/api/github/contents', data)
     .then(response => {
       return response.data;
     })
