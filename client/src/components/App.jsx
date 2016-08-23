@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import VideoChat from '../container/Video';
 import Github from '../container/Github';
 import CodeEditor from '../container/Editor';
-import GitCLI from '../container/GitCLI';
 import Chatbox from '../container/Chatbox';
-import Nav from '../components/Nav';
+import Nav from './Nav';
+import Modal from '../container/Modal';
 
 export default class App extends Component {
   render() {
     return (
       <div>
         <div>
-
+        <Modal />
         {/* Navigation */}
         <Nav />
         <div className="container header">

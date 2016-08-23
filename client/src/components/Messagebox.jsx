@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+      // <div className="messages_box">
+      //  <textarea type='text' placeholder="new message here" onKeyDown={this.sendMessage.bind(this)}></textarea>
+      // </div>
+
 class Messagebox extends Component {
-  constructor () {
-    super()
-  }
-
-  // componentDidMount() {
-  //   this.props.socket.on('connect', function(){
-  //     console.log('Connected on the client-side: MessageBox');
-
-  //   });
-  // }
 
   sendMessage(e){
     if(e.keyCode === 13){
       var newMessage = {
         id: this.props.myId, 
         message: e.target.value, 
-        room: this.props.roomId
+        room: this.props.roomId,
+        name: this.props.name
       };
       this.props.socket.emit('new message', newMessage);
       e.target.value = '';
@@ -26,10 +21,14 @@ class Messagebox extends Component {
   }
 
   render(){
-
     return (
-      <div className="messages_box">
-       <textarea type='text' placeholder="new message here" onKeyDown={this.sendMessage.bind(this)}></textarea>
+      <div className="panel-footer">
+          <div className="input-group">
+              <input onKeyDown={this.sendMessage.bind(this)} id="btn-input" type="text" className="mousetrap form-control input-sm" placeholder="Type your message here..." value="" />
+              <span className="input-group-btn">
+                  <button id="button_send" className="btn btn-primary btn-sm" onKeyDown={this.sendMessage.bind(this)} >Send</button>
+              </span>
+          </div>
       </div>
     );
   }
@@ -40,7 +39,8 @@ function mapStateToProps(state) {
     myId: state.MyId.myId, 
     socket: state.Socket.socket, 
     peerId: state.PeerId.peerId,
-    roomId: state.RoomId.roomId
+    roomId: state.RoomId.roomId,
+    name: state.Name.name
   }
 }
 

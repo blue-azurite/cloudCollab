@@ -2551,16 +2551,18 @@ output {
   color: #333333;
 }
 .form-control {
+  text-align: center;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: block;
   width: 100%;
   height: 40px;
   padding: 8px 12px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.42857143;
-  color: #333333;
-  background-color: #ffffff;
+  color: #fd9720;
+  background-color: #272822;
   background-image: none;
-  border: 1px solid #dddddd;
+  border: 1px solid #73cbce;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -3119,26 +3121,26 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #4582ec;
-  border-color: #4582ec;
+  background-color: #86dc2e;
+  border-color: #86dc2e;
 }
 .btn-primary:focus,
 .btn-primary.focus {
   color: #ffffff;
-  background-color: #1863e6;
-  border-color: #1045a1;
+  background-color: #83b623;
+  border-color: #83b623;
 }
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #1863e6;
-  border-color: #175fdd;
+  background-color: #83b623;
+  border-color: #83b623;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #1863e6;
-  border-color: #175fdd;
+  background-color: #83b623;
+  border-color: #83b623;
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -3150,8 +3152,8 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #ffffff;
-  background-color: #1455c6;
-  border-color: #1045a1;
+  background-color: #83b623;
+  border-color: #83b623;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -4498,14 +4500,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #272822;
-  border-color: #66d9ef;
+  border-color: #a3e22e;
 }
 .navbar-default .navbar-brand {
   color: #66d9ef;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #66d9ef;
+  color: #a6e22e;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
@@ -4516,7 +4518,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #66d9ef;
+  color: #a6e22e;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -5453,7 +5455,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel {
   margin-bottom: 22px;
-  background-color: #ffffff;
+  background-color: #272822;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -5486,8 +5488,8 @@ button.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #ffffff;
-  border-top: 1px solid #dddddd;
+  /*background-color: #ffffff;*/
+  border-top: 1px solid #66d9d7;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -5871,6 +5873,7 @@ button.close {
   overflow: hidden;
 }
 .modal {
+  text-align: center;
   display: none;
   overflow: hidden;
   position: fixed;
@@ -5902,15 +5905,16 @@ button.close {
   overflow-y: auto;
 }
 .modal-dialog {
+  vertical-align: middle;
+  display: inline-block;
   position: relative;
   width: auto;
   margin: 10px;
 }
 .modal-content {
   position: relative;
-  background-color: #ffffff;
-  border: 1px solid #999999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #272822;
+  border: 1px solid #73cbce;
   border-radius: 6px;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
@@ -5937,12 +5941,13 @@ button.close {
 }
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 0px solid #fd9720;
 }
 .modal-header .close {
   margin-top: -2px;
 }
 .modal-title {
+  color: #86dc2e;
   margin: 0;
   line-height: 1.42857143;
 }
@@ -5953,7 +5958,7 @@ button.close {
 .modal-footer {
   padding: 20px;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
+  border-top: 0px solid #fd9720;
 }
 .modal-footer .btn + .btn {
   margin-left: 5px;
@@ -6458,6 +6463,12 @@ button.close {
   .carousel-indicators {
     bottom: 20px;
   }
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
 }
 .clearfix:before,
 .clearfix:after,
@@ -6787,6 +6798,8 @@ button.close {
   padding-bottom: 12.5px;
   line-height: 1.9;
 }
+
+
 @media (min-width: 768px) {
   .navbar .navbar-nav > li > a {
     padding: 8px 12px;
