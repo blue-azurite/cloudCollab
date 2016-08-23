@@ -86,6 +86,7 @@ export default function(app) {
           return response.json();
         })
         .then(tree => {
+          console.log(tree.tree)
           res.send(tree.tree);
         });
       })

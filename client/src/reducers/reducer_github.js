@@ -3,7 +3,7 @@ import { FETCH_USER_GITHUB, FETCH_USER_GITHUB_REPOS, FETCH_USER_GITHUB_REPO_CONT
 const initialState = {
   trees: [],
   repos: [],
-  contents: [],
+  contents: 'This is test',
   username: ''
 }
 
