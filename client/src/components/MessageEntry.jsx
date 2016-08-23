@@ -31,16 +31,28 @@ class MessageEntry extends Component {
               <div className="header">
                 <span id="date" className="primary-font pull-right"></span>
               </div>
-
+              <p id="message">Message goes here: {this.props.message.message}</p>
             </div>
           </span>
         </li>
-
-
       );
+    } else {
+      return (
+        <li className="left clearfix infomsg">
+          <span className="chat-img">
+            <img src={avatarUrl} className="img-circle" />
+            <div className="chat-body clearfix">
+              <div className="header">
+                <span id="date" className="primary-font pull-right"></span>
+              </div>
+              <p id="message">{this.props.message.message}</p>
+            </div>
+          </span>
+        </li>
+      )
     }
-    
   }
+    
 }
 
 function mapStateToProps(state) {

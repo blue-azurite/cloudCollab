@@ -54,24 +54,35 @@ class Messages extends Component {
   render(){
     return (
 
-    <div className="panel-body">
-        <ul className="chat">
-            <li id="chatmessage" className="whitebg clearfix">
-                <div className="chat-body clearfix chathelpmessage">
-                    <div className="header">
-                        <strong id="name" className="primary-font">{ this.randomGreeting() }</strong>
-                    </div>
+      <div id="chatcontainer" className="col-xs-12 col-sm-4 col-md-3 col-lg-3 pull-left chatcontainer">
+        <div className="tab-content pull-left">
+          <div className="tab-pane active" id="public">
+            <div id="chat" className="chatbox">
+              <div className="panel">
+
+                <div className="panel-body">
+                    <ul className="chat">
+                        <li id="chatmessage" className="whitebg clearfix">
+                            <div className="chat-body clearfix chathelpmessage">
+                                <div className="header">
+                                    <strong id="name" className="primary-font">{ this.randomGreeting() }</strong>
+                                </div>
+                            </div>
+                        </li>
+                      {this.state.messages.map((message, index) => 
+                        <MessageEntry key={index} message={message} />
+                      )}
+
+                      <Messagebox />
+
+                    </ul>
                 </div>
-            </li>
-          {this.state.messages.map((message, index) => 
-            <MessageEntry key={index} message={message} />
-          )}
 
-          <Messagebox />
-
-        </ul>
-    </div>
-
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     );
   }

@@ -6,7 +6,12 @@ import Messagebox from '../components/Messagebox';
 import { setSocketRoom } from '../actions';
 
 class Chatbox extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      chatDisplay: false
+    }
+  }
   componentDidUpdate(){
     if(this.props.peerId){
     // if client is not-host (peerId exist), set RoomId to "peerId"
@@ -23,6 +28,11 @@ class Chatbox extends Component {
     }
   }
 
+  toggleChat() {
+    this.state.chatDisplay ? this.setState({ chatDisplay: false }) : this.setState({ chatDisplay: true })
+    console.log('chatDisplay is ', this.state.chatDisplay)
+  }
+
 // chatcontainer should be auto hidden !! 
 
   render(){
@@ -30,7 +40,7 @@ class Chatbox extends Component {
     return (
       <div>
 
-        <ul className="nav navbar-nav navbar-right">
+        <ul className="nav navbar-nav navbar-right" onClick={this.toggleChat.bind(this)}>
           <li id="button_chat">
             <a className="withborder ">
               <i className="glyphicon glyphicon-comment">
@@ -42,21 +52,8 @@ class Chatbox extends Component {
           </li>
         </ul>
 
-          <div id="chatcontainer" className="col-xs-12 col-sm-4 col-md-3 col-lg-3 pull-left chatcontainer">
-            <div className="tab-content pull-left">
-              <div className="tab-pane active" id="public">
-                <div id="chat" className="chatbox">
-                  <div className="panel">
+        { this.state.chatDisplay ? <Messages /> : null }
 
-                      {/* This is where messages show up */}  
-                      <Messages /> 
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-        </div>
 
       </div>
       )

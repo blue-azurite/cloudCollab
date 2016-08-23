@@ -24,7 +24,7 @@ class Messagebox extends Component {
     return (
       <div className="panel-footer">
           <div className="input-group">
-              <input onKeyDown={this.sendMessage.bind(this)} id="btn-input" type="text" className="mousetrap form-control input-sm" placeholder="Type your message here..." value="" />
+              <input onKeyDown={this.sendMessage.bind(this)} id="btn-input" type="text" className="mousetrap form-control input-sm" placeholder="Type your message here..." />
               <span className="input-group-btn">
                   <button id="button_send" className="btn btn-primary btn-sm" onKeyDown={this.sendMessage.bind(this)} >Send</button>
               </span>
