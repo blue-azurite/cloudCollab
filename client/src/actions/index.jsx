@@ -149,6 +149,23 @@ export function fetchSha(userRepo) {
   }
 }
 
+// Fetch contents of file
+export function fetchFileContents() {
+  const fileContents = axios.get('api/github/contents')
+    .then(response => {
+      return response.data;
+    })
+    .then(json => {
+      return json;
+    })
+    .catch(error => {
+      console.warn(error);
+    });
+  return {
+    type: FETCH_USER_GITHUB_REPO_CONTENTS,
+    payload: fileContents
+  }
+}
 // Once sha is obtained, get
 
 

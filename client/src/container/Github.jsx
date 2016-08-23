@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchUsers, fetchUserRepos, fetchSha } from '../actions';
+import { fetchUsers, fetchUserRepos, fetchSha, fetchFileContents } from '../actions';
 import GithubTree from '../components/TreeView';
 import axios from 'axios';
 
@@ -13,7 +13,14 @@ class Github extends Component {
   handleClickedItem(userRepo){
     this.props.fetchSha(userRepo);
   }
-
+  handleFileClick(path, sha, type){
+    console.log(path)
+    if (type === 'blob') {
+      // this.props.fetchFileContents();
+    } else if (type === 'tree') {
+      // do something
+    }
+  } 
   render(){
     if (!this.props.Repos) {
       return (
@@ -26,7 +33,7 @@ class Github extends Component {
             <ul>
               {
                 this.props.Trees.map((file, index) =>
-                  <li key={index}><a>{file.path}</a></li>
+                  <li onClick={this.handleFileClick.bind(this,file.path, file.sha, file.type)} key={index}><a>{file.path}</a></li>
                 )
               }
             </ul>
@@ -58,7 +65,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchUsers: fetchUsers, fetchUserRepos: fetchUserRepos, fetchSha: fetchSha },dispatch)
+  return bindActionCreators({ fetchUsers: fetchUsers, fetchUserRepos: fetchUserRepos, fetchSha: fetchSha, fetchFileContents: fetchFileContents },dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Github);
