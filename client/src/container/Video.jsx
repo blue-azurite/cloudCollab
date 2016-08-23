@@ -31,10 +31,11 @@ class VideoChat extends Component {
     var date = new Date(), 
     var time = '';
     if (date.getHours() > 12) {
-      time.concat(date.getHours() - 12 + ':' + date.getMinutes() + 'pm');
+      time.concat(date.getHours() - 12 + ':' + date.getMinutes() + ' pm');
     } else {
-      time.concat(date.getHours() + ':' + date.getMinutes() + 'am');
+      time.concat(date.getHours() + ':' + date.getMinutes() + ' am');
     }
+
     establishPeerConnection().then( (conn) => {
       console.log('Peer connection: connected as host!', conn)
       this.props.socket.emit('online', {
@@ -48,6 +49,14 @@ class VideoChat extends Component {
   }
 
   initAsReceiver(sourceId) {
+    var date = new Date(), 
+    var time = '';
+    if (date.getHours() > 12) {
+      time.concat(date.getHours() - 12 + ':' + date.getMinutes() + ' pm');
+    } else {
+      time.concat(date.getHours() + ':' + date.getMinutes() + ' am');
+    }
+
     establishPeerConnection(sourceId).then( conn => console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
   }
 
@@ -78,6 +87,7 @@ class VideoChat extends Component {
 function mapStateToProps(state) {
   // Whatever is returned will show up as props
   return {
+    roomId: state.RoomId.roomId,
     socket: state.Socket.socket,
     isHost: state.Host.isHost,
     peerId: state.PeerId.peerId,
