@@ -28,7 +28,7 @@ class VideoChat extends Component {
   }
 
   initAsSource() {
-    var date = new Date(), 
+    var date = new Date();
     var time = '';
     if (date.getHours() > 12) {
       time.concat(date.getHours() - 12 + ':' + date.getMinutes() + ' pm');
@@ -49,7 +49,7 @@ class VideoChat extends Component {
   }
 
   initAsReceiver(sourceId) {
-    var date = new Date(), 
+    var date = new Date();
     var time = '';
     if (date.getHours() > 12) {
       time.concat(date.getHours() - 12 + ':' + date.getMinutes() + ' pm');
