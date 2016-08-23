@@ -3,6 +3,7 @@ import GitHubStrategy, { Strategy } from 'passport-github2';
 import { requestGithub } from '../github/githubQueries';
 import request from 'request';
 import fetch from 'node-fetch';
+import atob from 'atob';
 
 export default function(app) {
   // Authenticate user
@@ -117,6 +118,36 @@ export default function(app) {
       })
       .catch(error => {
         console.log('GET user tree error', error);
+      });
+  });
+
+  // Get file contents
+  app.post('/api/github/contents', (req, res) => {
+    let access_token = req.user.accessToken;
+    let user = req.user.username;
+    let repo = req.body.repo;
+    let path = req.body.path;
+    console.log(repo, path);
+    let url = `https://api.github.com/repos/${user}/${repo}/contents/${path}?access_token=${access_token}`;
+    let options = {
+      url: url,
+      headers: {
+        'User-Agent': user
+      }
+    };
+    res.send('hello');
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        let b64 = data.content;
+        let bin = atob(b64);
+        console.log(bin);
+      })
+      .catch(error => {
+        console.log('GET file contents error', error);
       });
   });
 
