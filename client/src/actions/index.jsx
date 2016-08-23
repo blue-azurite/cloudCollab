@@ -138,9 +138,7 @@ export function fetchSha(userRepo) {
   }
   const userSha = axios.post('/api/github/repo/sha', data)
     .then(response => {
-      let tree = JSON.stringify(response.data);
-      console.log(tree);
-      return tree;
+      return response.data;
     })
     .catch(error => {
       console.warn(error);
