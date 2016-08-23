@@ -27,13 +27,19 @@ class MessageEntry extends Component {
         <li className="right clearfix infomsg">
           <span className="chat-img">
             <img src={avatarUrl} className="img-circle" />
+            <div className="chat-body clearfix">
+              <div className="header">
+                <span id="date" className="primary-font pull-right"></span>
+              </div>
+
+            </div>
           </span>
         </li>
 
 
       );
     }
-    }
+    
   }
 }
 
