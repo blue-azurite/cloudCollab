@@ -54,12 +54,16 @@ class Github extends Component {
   render(){
     if (!this.props.Repos) {
       return (
-        <div>Please Login</div>
+        <div>
+          <h2>Your Github Files</h2>
+          To see your files please Login
+        </div>
       )
     }
     if (this.props.Trees.length > 0) {
       return (
           <div>
+          <h2>Your Github Files</h2>
             <ul>
               {
                 this.props.Trees.map((file, index) =>
@@ -73,6 +77,7 @@ class Github extends Component {
     return (
       <div>
         <div>
+          <h2>Your Github Files</h2>
           <ul>
            {
              this.props.Repos.map((repo, index) =>
