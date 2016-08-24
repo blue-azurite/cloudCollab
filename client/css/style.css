@@ -127,12 +127,21 @@ li {
 }
 
 /** =================== **
+        Github
+** =================== **/
+li > a {
+  color: #66d9ef;
+}
+
+/** =================== **
         Editor
 ** =================== **/
 .codeblock-container {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
+
 /** =================== **
     CodeBlock Console
 ** =================== **/
