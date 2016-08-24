@@ -28,7 +28,7 @@ class Github extends Component {
       this.props.fetchFileContents(path, repo);
       setTimeout(() => {
         var content = this.props.Content;
-        if(typeof content !== 'string'){
+        if (typeof content !== 'string') {
           content = JSON.stringify(content);
         }
         var contentToRoom = {
