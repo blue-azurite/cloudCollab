@@ -623,6 +623,9 @@ th {
 .glyphicon-comment:before {
   content: "\e111";
 }
+.glyphicon-comment:after {
+  margin-right: 2px;
+}
 .glyphicon-magnet:before {
   content: "\e112";
 }
@@ -1414,7 +1417,7 @@ a.bg-danger:focus {
 .page-header {
   padding-bottom: 10px;
   margin: 44px 0 22px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 0px solid #dddddd;
 }
 ul,
 ol {

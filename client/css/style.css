@@ -3,8 +3,30 @@ body {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
 div {
-    display: block;
+  /*display: block;*/
+}
+
+.text {
+  margin-left: 2px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /** =================== **
@@ -25,7 +47,6 @@ div {
 
 .chat_box {
   margin-top: 20px;
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   clear: both;
   height: 300px;
   background: #272822;
@@ -291,20 +312,6 @@ ul {
     -webkit-padding-start: 40px;
 }
 
-.chat li {
-    -webkit-transition: all 1.5s ease;
-    -moz-transition: all 1.5s ease;
-    -o-transition: all 1.5s ease;
-    transition: all 1.5s ease;
-    background-color: #272822;
-    color: #51cfef;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #51cfef;
-    padding: 15px 5px;
-    font-weight: normal;
-}
-
 .chathelpmessage {
     text-align: center;
     margin-left: 0px !important;
@@ -342,15 +349,38 @@ ul {
     display: table-cell;
 }
 
+.input-sm, #button_send {
+  margin-top: 15px;
+}
+
+.input-sm {
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+
 .chat li {
+    display: block;
+    width: 100%;
     -webkit-transition: all 1.5s ease;
     -moz-transition: all 1.5s ease;
     -o-transition: all 1.5s ease;
     transition: all 1.5s ease;
-    background-color: #428bca;
+    background-color: #272822;
+    color: #63d9ef;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid #41b0e7;
     padding: 15px 5px;
 }
 
@@ -377,6 +407,18 @@ ul {
 
 img {
     vertical-align: middle;
+}
+
+.infomsg #message {
+    margin-top: 8px;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+    color: #777777;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
 }
 
 /* chat button */
@@ -410,7 +452,7 @@ img {
 
 #button_chat > a, #button_chat > a:hover {
     background-color: #66d9d7;
-    color: #ffffff;
+    color: #272822;
     border-radius: 0;
     border: 0px;
     margin-bottom: 0;

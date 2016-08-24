@@ -15,17 +15,18 @@ class Modal extends Component {
 
   componentDidMount() {
     const savename = this.props.saveName.bind(this);
-
-    bootbox.prompt("What is your name?", function(result) {             
-      if (result.length === 0) {
-        const anon = 'anonymous' + randomAnimal()
-        console.log('you didn\'t enter a name', anon)
-        savename(anon)
-      } else {
-        savename(result);
-        console.log('hello', result);                        
-      }
-    });
+    if (!this.props.name) {
+      bootbox.prompt("What is your name?", function(result) {             
+        if (result.length === 0) {
+          const anon = 'anonymous' + randomAnimal()
+          console.log('you didn\'t enter a name', anon)
+          savename(anon)
+        } else {
+          savename(result);
+          console.log('hello', result);                        
+        }
+      });
+    }
   }
 
   render() {
