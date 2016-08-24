@@ -1,19 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-// if(this.props.message.id === this.props.myId){
-//       return (
-//         <div className="me chat_message">
-//           <p>{this.props.message.message}</p>
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <div className="collaborator chat_message">
-//           <p>{this.props.message.message}</p>
-//         </div>
-
-
 class MessageEntry extends Component {
   constructor () {
     super()
@@ -26,12 +13,12 @@ class MessageEntry extends Component {
       return (
         <li className="right clearfix infomsg">
           <span className="chat-img">
-            <img src={avatarUrl} className="img-circle" />
+            <img src={avatarUrl} className="img-circle imgLeft" />
             <div className="chat-body clearfix">
               <div className="header">
                 <span id="date" className="primary-font pull-right"></span>
               </div>
-              <p id="message">Message goes here: {this.props.message.message}</p>
+              <p id="message"> <b> {this.props.name}: </b> {this.props.message.message}</p>
             </div>
           </span>
         </li>
@@ -40,12 +27,12 @@ class MessageEntry extends Component {
       return (
         <li className="left clearfix infomsg">
           <span className="chat-img">
-            <img src={avatarUrl} className="img-circle" />
+            <img src={avatarUrl} className="img-circle imgRight" />
             <div className="chat-body clearfix">
               <div className="header">
                 <span id="date" className="primary-font pull-right"></span>
               </div>
-              <p id="message">{this.props.message.message}</p>
+              <p id="message"><b> {this.props.name}: </b> {this.props.message.message}</p>
             </div>
           </span>
         </li>

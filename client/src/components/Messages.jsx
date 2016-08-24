@@ -39,11 +39,12 @@ class Messages extends Component {
     });
   }
 
-  // componentWillMount() {
-  //   this.props.socket.on('connect', function(){
-  //     console.log('Connected on the client-side: MessageDisplay');
-  //   });
-  // }
+  componentWillMount() {
+    this.props.socket.on('connect', function(){
+      console.log('Connected on the client-side: MessageDisplay');
+      console.log('name is', this.props.name)
+    });
+  }
 
   componentWillMount() {
     this.randomGreeting();
@@ -77,10 +78,11 @@ class Messages extends Component {
                         <MessageEntry key={index} message={message} />
                       )}
 
-                      <Messagebox />
 
                     </ul>
                 </div>
+                
+                <Messagebox />
 
               </div>
             </div>
