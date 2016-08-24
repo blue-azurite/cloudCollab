@@ -224,10 +224,25 @@ export function fetchRecursiveTree(url) {
 ////************************ CHAT ************************////
 
 export function savePeerName(peerName) {
-  console.log('saving peername:', peerName)
   return {
     type: SAVE_PEER_NAME,
     payload: peerName
+  }
+}
+
+export function saveJoinTime(time) {
+  console.log('time is', time)
+  return {
+    type: SAVE_JOIN_TIME,
+    payload: time
+  }
+}
+
+export function savePeerJoinTime(time) {
+  console.log('peer join time is', time)
+  return {
+    type: SAVE_PEER_JOIN_TIME,
+    payload: time
   }
 }
 
@@ -245,4 +260,6 @@ export const FETCH_USER_GITHUB_REPOS = 'FETCH_USER_GITHUB_REPOS';
 export const FETCH_USER_GITHUB_REPO_TREE = 'FETCH_USER_GITHUB_REPO_TREE';
 export const FETCH_USER_GITHUB_REPO_CONTENTS = 'FETCH_USER_GITHUB_REPO_CONTENTS';
 export const FETCH_USER_GITHUB_RECURSIVE_TREE = 'FETCH_USER_GITHUB_RECURSIVE_TREE';
-export const SAVE_PEER_NAME = 'SAVE_PEER_NAME'
+export const SAVE_PEER_NAME = 'SAVE_PEER_NAME';
+export const SAVE_JOIN_TIME = 'SAVE_JOIN_TIME';
+export const SAVE_PEER_JOIN_TIME = 'SAVE_PEER_JOIN_TIME';

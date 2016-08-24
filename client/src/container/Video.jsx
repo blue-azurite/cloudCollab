@@ -41,12 +41,10 @@ class VideoChat extends Component {
     establishPeerConnection().then( (conn) => {
       console.log('Peer connection: connected as host!', conn)
 
-      conn.send(this.props.name)
+      conn.send({ name: this.props.name, time: time })
       conn.on('data', (data) => {
-        // if the data is the SCREENSHARE DATA....
-          // append it to the screenshare div. 
           console.log('received', data);
-          savepeername(data)
+          savepeername(data.name)
       })
     });
   }
@@ -109,7 +107,9 @@ function mapStateToProps(state) {
     myId: state.MyId.myId,
     input: state.Text.text, 
     peerName: state.PeerName.peerName,
-    name: state.Name.name
+    name: state.Name.name,
+    joinTime: state.JoinTime.joinTime,
+    peerJoinTime: state.PeerJoinTime.peerJoinTime
   }
 }
 
