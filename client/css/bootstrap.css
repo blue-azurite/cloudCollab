@@ -2554,6 +2554,7 @@ output {
   color: #333333;
 }
 .form-control {
+  padding-bottom: 10px;
   text-align: center;
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: block;

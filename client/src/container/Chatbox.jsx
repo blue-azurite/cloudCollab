@@ -22,7 +22,7 @@ class Chatbox extends Component {
     }
 
     if(this.props.roomId){
-        var room = this.props.roomId;
+        var room = this.props.roomId; 
         this.props.socket.emit('room', room);
         //the "emit(room)" was originall wrap on io.connect, which did not fire consistenly
     }
@@ -30,10 +30,7 @@ class Chatbox extends Component {
 
   toggleChat() {
     this.state.chatDisplay ? this.setState({ chatDisplay: false }) : this.setState({ chatDisplay: true })
-    console.log('chatDisplay is ', this.state.chatDisplay)
   }
-
-// chatcontainer should be auto hidden !! 
 
   render(){
 

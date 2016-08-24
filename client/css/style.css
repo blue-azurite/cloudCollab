@@ -15,9 +15,6 @@ li {
   display: list-item;
   text-align: -webkit-match-parent;
 }
-div {
-  /*display: block;*/
-}
 
 .text {
   margin-left: 2px;
@@ -237,13 +234,26 @@ div {
         Chat
 ** =================== **/
 
+.greeting {
+  color: #a3e22e;
+}
+
+.imgLeft {
+    float: left;
+    text-align: left;
+}
+.imgRight {
+    float: right;
+    text-align: left;
+}
+
 #chatcontainer {
     position: fixed;
     z-index: 1000;
     bottom: 31px;
     right: 16px;
     width: 302px;
-    box-shadow: -3px -6px 15px #BDBCBC;
+    border: 1px solid #66d9ef;
     background-color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -290,7 +300,7 @@ div {
 
 .chatbox .panel-body {
     overflow-y: auto;
-    height: calc(100vh - 118px);
+    height: calc(80vh - 118px);
     overflow-y: scroll;
     padding: 0px;
 }
@@ -330,6 +340,11 @@ ul {
     border-bottom-left-radius: 3px;
 }
 
+.panel-body:after {
+    display: table;
+    content: " ";
+}
+
 .input-group {
     position: relative;
     display: table;
@@ -350,7 +365,8 @@ ul {
 }
 
 .input-sm, #button_send {
-  margin-top: 15px;
+  /*margin-top: 10px;*/
+  padding-bottom: 0px;
 }
 
 .input-sm {
@@ -369,6 +385,16 @@ ul {
     margin-bottom: 0;
 }
 
+.right {
+    float: right;
+    margin-right: 3px;
+}
+
+.left {
+    float: left;
+    margin-left: 3px;
+}
+
 .chat li {
     display: block;
     width: 100%;
@@ -382,16 +408,6 @@ ul {
     padding-bottom: 5px;
     border-bottom: 1px solid #41b0e7;
     padding: 15px 5px;
-}
-
-.right {
-  float: right;
-  margin-right: 3px;
-}
-
-.left {
-  float: left;
-  margin-left: 3px;
 }
 
 .chatbox .img-circle {
