@@ -24,9 +24,13 @@ class Messages extends Component {
     super(props);
     this.state = {
       messages: [],
-      greetingWord: '',
-      greetingLanguage: ''
+      greetingWord: ''
     }
+
+    // if (this.props.display) {
+    //   console.log('i need to hide myself ! ')
+    //   document.getElementById('chatcontainer').style.visibility = "block";
+    // }
 
     var addMessage = function (msg){
       var messages = this.state.messages.slice();
@@ -52,7 +56,7 @@ class Messages extends Component {
 
   randomGreeting() {
     var greeting = greetings[Math.floor(greetings.length * Math.random())]
-    this.setState({ greetingWord: greeting.word, greetingLanguage: greeting.language })
+    this.setState({ greetingWord: greeting.word })
   }
 
 

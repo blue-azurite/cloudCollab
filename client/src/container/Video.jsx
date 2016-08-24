@@ -9,15 +9,6 @@ import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } fro
 
 
 class VideoChat extends Component {
-  constructor() {
-    super()
-
-    // this.props.socket.on('peer name', function(peerName) {
-    //   console.log('peer name saved', peerName);
-    //   this.props.savePeerName(peerName);
-    // })
-  }
-
 
   componentWillMount() {    
     this.props.getPeerId(); 
@@ -35,15 +26,10 @@ class VideoChat extends Component {
       this.initAsReceiver(sourceId);
     }
 
-    const savepeername = this.props.savePeerName.bind(this);
-    this.props.socket.on('peer name', function(peerName) {
-      console.log('peer name saved', peerName);
-      savepeername(peerName);
-    })
-
   }
 
   initAsSource() {
+    const savepeername = this.props.savePeerName.bind(this);
     var date = new Date();
     var time = '';
     if (date.getHours() > 12) {
@@ -54,18 +40,19 @@ class VideoChat extends Component {
 
     establishPeerConnection().then( (conn) => {
       console.log('Peer connection: connected as host!', conn)
-      this.props.socket.emit('join room', {
-        room: this.props.roomId, 
-        peerName: this.props.name
-      })
+
+      conn.send(this.props.name)
       conn.on('data', (data) => {
         // if the data is the SCREENSHARE DATA....
           // append it to the screenshare div. 
+          console.log('received', data);
+          savepeername(data)
       })
     });
   }
 
   initAsReceiver(sourceId) {
+    const savepeername = this.props.savePeerName.bind(this);
     var date = new Date();
     var time = '';
     if (date.getHours() > 12) {
@@ -76,11 +63,16 @@ class VideoChat extends Component {
 
     establishPeerConnection(sourceId).then( conn => {
       console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn)
-      this.props.socket.emit('join room', {
-        room: this.props.roomId, 
-        peerName: this.props.name
+
+      conn.send(this.props.name)
+      conn.on('data', (data) => {
+        // if the data is the SCREENSHARE DATA....
+          // append it to the screenshare div. 
+          console.log('received', data);
+          savepeername(data)
       })
     });
+
   }
 
   enableVideo() {

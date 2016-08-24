@@ -69,10 +69,6 @@ io.on('connection', function(socket){
     io.to(room).emit("new guest", null);
   })
 
-  socket.on('join room', function(obj) {
-    io.to(obj.room).emit('peer name', obj.peerName);
-  })
-
   socket.on('change text', function(textToRoom){
     contents = textToRoom.text;
     io.to(textToRoom.room).emit('change text', contents);

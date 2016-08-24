@@ -49,7 +49,7 @@ class Chatbox extends Component {
           </li>
         </ul>
 
-        { this.state.chatDisplay ? <Messages /> : null }
+        { this.state.chatDisplay ? <Messages /> : <Messages display={'hidden'} /> }
 
 
       </div>
