@@ -127,6 +127,14 @@ li {
 /** =================== **
         Github
 ** =================== **/
+.github {
+  color: #a3e22e;
+}
+
+.github > h4 {
+  color: #66d9ef;
+}
+
 li > a {
   color: #66d9ef;
 }
@@ -413,7 +421,6 @@ ul {
     color: #63d9ef;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #41b0e7;
     padding: 15px 5px;
 }
 
@@ -469,14 +476,22 @@ img {
     right: 0;
 }
 
+
 #button_chat a {
     padding: 7px;
 }
 
-#button_chat > a, #button_chat > a:hover {
+#button_chat > a {
     background-color: #66d9d7;
     color: #272822;
     border-radius: 0;
     border: 0px;
     margin-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#button_chat > a:hover {
+    background-color: #54b3b1;
+  
 }

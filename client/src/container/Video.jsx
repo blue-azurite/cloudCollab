@@ -4,11 +4,20 @@ import { bindActionCreators } from 'redux';
 import Link from '../components/Link';
 import axios from 'axios';
 // import any other actions as well
-import { params, initVid, amIHost, getPeerId, setMyId } from '../actions';
+import { params, initVid, amIHost, getPeerId, setMyId, savePeerName } from '../actions';
 import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
 
 class VideoChat extends Component {
+  constructor() {
+    super()
+
+    // this.props.socket.on('peer name', function(peerName) {
+    //   console.log('peer name saved', peerName);
+    //   this.props.savePeerName(peerName);
+    // })
+  }
+
 
   componentWillMount() {    
     this.props.getPeerId(); 
@@ -25,6 +34,13 @@ class VideoChat extends Component {
     } else {
       this.initAsReceiver(sourceId);
     }
+
+    const savepeername = this.props.savePeerName.bind(this);
+    this.props.socket.on('peer name', function(peerName) {
+      console.log('peer name saved', peerName);
+      savepeername(peerName);
+    })
+
   }
 
   initAsSource() {
@@ -38,8 +54,9 @@ class VideoChat extends Component {
 
     establishPeerConnection().then( (conn) => {
       console.log('Peer connection: connected as host!', conn)
-      this.props.socket.emit('online', {
-
+      this.props.socket.emit('join room', {
+        room: this.props.roomId, 
+        peerName: this.props.name
       })
       conn.on('data', (data) => {
         // if the data is the SCREENSHARE DATA....
@@ -57,7 +74,13 @@ class VideoChat extends Component {
       time.concat(date.getHours() + ':' + date.getMinutes() + ' am');
     }
 
-    establishPeerConnection(sourceId).then( conn => console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn));
+    establishPeerConnection(sourceId).then( conn => {
+      console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn)
+      this.props.socket.emit('join room', {
+        room: this.props.roomId, 
+        peerName: this.props.name
+      })
+    });
   }
 
   enableVideo() {
@@ -92,7 +115,9 @@ function mapStateToProps(state) {
     isHost: state.Host.isHost,
     peerId: state.PeerId.peerId,
     myId: state.MyId.myId,
-    input: state.Text.text
+    input: state.Text.text, 
+    peerName: state.PeerName.peerName,
+    name: state.Name.name
   }
 }
 
@@ -101,7 +126,8 @@ function mapDispatchToProps(dispatch) {
     initVid: initVid, 
     amIHost: amIHost, 
     getPeerId: getPeerId, 
-    setMyId: setMyId
+    setMyId: setMyId, 
+    savePeerName: savePeerName
   }, dispatch)
 }
 
