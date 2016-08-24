@@ -158,7 +158,6 @@ export function fetchSha(userRepo) {
 
 // Fetch contents of file
 export function fetchFileContents(path, repo) {
-
   const data = {
     path: path,
     repo: repo
@@ -179,7 +178,28 @@ export function fetchFileContents(path, repo) {
     payload: fileContents
   }
 }
-// Once sha is obtained, get
+
+// Fetch recursive tree
+export function fetchRecursiveTree(url) {
+  const data = {
+    treeUrl: url
+  }
+  const recursiveTree = axios.post('/api/github/recursiveTree', data)
+    .then(response => {
+      return response.data;
+    })
+    .then(data => {
+      return data;
+    })
+    .catch(error => {
+      console.log('Error retrieving tree', error);
+    });
+
+    return {
+      type: FETCH_USER_GITHUB_RECURSIVE_TREE,
+      payload: recursiveTree
+    }
+}
 
 ////************************ Redis ************************////
 
@@ -216,3 +236,5 @@ export const FETCH_USER_GITHUB = 'FETCH_USER_GITHUB';
 export const FETCH_USER_GITHUB_REPOS = 'FETCH_USER_GITHUB_REPOS';
 export const FETCH_USER_GITHUB_REPO_TREE = 'FETCH_USER_GITHUB_REPO_TREE';
 export const FETCH_USER_GITHUB_REPO_CONTENTS = 'FETCH_USER_GITHUB_REPO_CONTENTS';
+export const FETCH_USER_GITHUB_RECURSIVE_TREE = 'FETCH_USER_GITHUB_RECURSIVE_TREE';
+
