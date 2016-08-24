@@ -1,4 +1,4 @@
-import { FETCH_USER_GITHUB, FETCH_USER_GITHUB_REPOS, FETCH_USER_GITHUB_REPO_CONTENTS, FETCH_USER_GITHUB_REPO_TREE } from '../actions';
+import { FETCH_USER_GITHUB, FETCH_USER_GITHUB_REPOS, FETCH_USER_GITHUB_REPO_CONTENTS, FETCH_USER_GITHUB_REPO_TREE, FETCH_USER_GITHUB_RECURSIVE_TREE } from '../actions';
 
 const initialState = {
   trees: [],
@@ -25,6 +25,11 @@ export default function (state = initialState, action) {
         contents: action.payload
       }
     case FETCH_USER_GITHUB_REPO_TREE:
+      return {
+        ...state,
+        trees: action.payload
+      }
+    case FETCH_USER_GITHUB_RECURSIVE_TREE: 
       return {
         ...state,
         trees: action.payload

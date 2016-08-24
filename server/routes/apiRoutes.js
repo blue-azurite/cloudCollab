@@ -45,7 +45,6 @@ export default function(app) {
         return response.json();
       })
       .then(data => {
-        // console.log('data from apiroutes', data);
         let collection = [];
         for (let keys in data) {
           collection.push(data[keys].name);
@@ -77,6 +76,7 @@ export default function(app) {
       .then(data => {
         let sha = data.object.sha;
         let url = `https://api.github.com/repos/${user}/${repo}/git/trees/${sha}?access_token=${access_token}`
+
         fetch(url, {
           url: url,
           headers: {
@@ -121,6 +121,30 @@ export default function(app) {
       });
   });
 
+  // GET user tree recursively
+  app.post('/api/github/recursiveTree', (req, res) => {
+    let user = req.user.username;
+    let treeUrl = req.body.treeUrl;
+    let url = `${treeUrl}?recursive=1`;
+    let options = {
+      url: url,
+      headers: {
+        'User-Agent': user
+      }
+    };
+
+    fetch(url, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        res.send(data.tree);
+      })
+      .catch(error => {
+        console.log('GET user tree error', error);
+      });
+  });
+
   // Get file contents
   app.post('/api/github/contents', (req, res) => {
     let access_token = req.user.accessToken;
@@ -140,7 +164,6 @@ export default function(app) {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         let b64 = data.content;
         let bin = atob(b64);
         console.log(typeof bin);
