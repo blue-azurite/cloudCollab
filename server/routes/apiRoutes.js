@@ -135,7 +135,6 @@ export default function(app) {
         'User-Agent': user
       }
     };
-    res.send('hello');
     fetch(url, options)
       .then(response => {
         return response.json();
@@ -144,7 +143,8 @@ export default function(app) {
         console.log(data);
         let b64 = data.content;
         let bin = atob(b64);
-        console.log(bin);
+        console.log(typeof bin);
+        res.send(bin);
       })
       .catch(error => {
         console.log('GET file contents error', error);
