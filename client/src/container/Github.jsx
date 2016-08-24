@@ -23,12 +23,12 @@ class Github extends Component {
     });
   }
   handleFileClick(path, type){
-    console.log(path);
-    console.log(this.state.selectedRepo);
+    // console.log(path);
+    // console.log(this.state.selectedRepo);
     let repo = this.state.selectedRepo;
     if (type === 'blob') {
       this.props.fetchFileContents(path, repo);
-      console.log(typeof this.props.Content);
+      // console.log(typeof this.props.Content);
       setTimeout(() => {
         var content = this.props.Content;
         if(typeof content !== 'string'){
@@ -43,7 +43,6 @@ class Github extends Component {
 
     } else if (type === 'tree') {
       // do something
-
     }
   } 
   render(){
