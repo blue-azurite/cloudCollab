@@ -237,13 +237,17 @@ div {
         Chat
 ** =================== **/
 
+.greeting {
+  color: #a3e22e;
+}
+
 #chatcontainer {
     position: fixed;
     z-index: 1000;
     bottom: 31px;
     right: 16px;
     width: 302px;
-    box-shadow: -3px -6px 15px #BDBCBC;
+    border: 1px solid #66d9ef;
     background-color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -350,7 +354,8 @@ ul {
 }
 
 .input-sm, #button_send {
-  margin-top: 15px;
+  margin-top: 10px;
+  padding-bottom: 0px;
 }
 
 .input-sm {

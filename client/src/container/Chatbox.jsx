@@ -30,10 +30,7 @@ class Chatbox extends Component {
 
   toggleChat() {
     this.state.chatDisplay ? this.setState({ chatDisplay: false }) : this.setState({ chatDisplay: true })
-    console.log('chatDisplay is ', this.state.chatDisplay)
   }
-
-// chatcontainer should be auto hidden !! 
 
   render(){
 

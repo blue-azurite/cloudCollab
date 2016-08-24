@@ -23,7 +23,9 @@ class Messages extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      messages: [] 
+      messages: [],
+      greetingWord: '',
+      greetingLanguage: ''
     }
 
     var addMessage = function (msg){
@@ -43,17 +45,19 @@ class Messages extends Component {
   //   });
   // }
 
+  componentWillMount() {
+    this.randomGreeting();
+  }
+
   randomGreeting() {
     var greeting = greetings[Math.floor(greetings.length * Math.random())]
-
-    return greeting.word + ' ' + this.props.name + '. (That\'s ' + greeting.language + ' for hello.)';
+    this.setState({ greetingWord: greeting.word, greetingLanguage: greeting.language })
   }
 
 
 
   render(){
     return (
-
       <div id="chatcontainer" className="col-xs-12 col-sm-4 col-md-3 col-lg-3 pull-left chatcontainer">
         <div className="tab-content pull-left">
           <div className="tab-pane active" id="public">
@@ -65,7 +69,7 @@ class Messages extends Component {
                         <li id="chatmessage" className="whitebg clearfix">
                             <div className="chat-body clearfix chathelpmessage">
                                 <div className="header">
-                                    <strong id="name" className="primary-font">{ this.randomGreeting() }</strong>
+                                    <p id="greeting" className="primary-font"> {this.state.greetingWord}, <b> {this.props.name}</b>. <br /> (That's {this.state.greetingLanguage} for hello.) </p>
                                 </div>
                             </div>
                         </li>
@@ -90,7 +94,8 @@ class Messages extends Component {
 
 function mapStateToProps(state) {
   return {
-    socket: state.Socket.socket
+    socket: state.Socket.socket, 
+    name: state.Name.name
   }
 }
 
