@@ -24,8 +24,7 @@ class Messages extends Component {
     super(props);
     this.state = {
       messages: [],
-      greetingWord: '',
-      greetingLanguage: ''
+      greetingWord: ''
     }
 
     var addMessage = function (msg){
@@ -52,7 +51,7 @@ class Messages extends Component {
 
   randomGreeting() {
     var greeting = greetings[Math.floor(greetings.length * Math.random())]
-    this.setState({ greetingWord: greeting.word, greetingLanguage: greeting.language })
+    this.setState({ greetingWord: greeting.word })
   }
 
 
@@ -70,7 +69,7 @@ class Messages extends Component {
                         <li id="chatmessage" className="whitebg clearfix">
                             <div className="chat-body clearfix chathelpmessage">
                                 <div className="header">
-                                    <p id="greeting" className="primary-font"> {this.state.greetingWord}, <b> {this.props.name}</b>. <br /> (That's {this.state.greetingLanguage} for hello.) </p>
+                                    <p id="greeting" className="primary-font"> {this.state.greetingWord}, <b> {this.props.name}</b>.</p>
                                 </div>
                             </div>
                         </li>

@@ -9,7 +9,7 @@ class Chatbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatDisplay: false
+      chatDisplay: true
     }
   }
   componentDidUpdate(){
@@ -29,7 +29,14 @@ class Chatbox extends Component {
   }
 
   toggleChat() {
-    this.state.chatDisplay ? this.setState({ chatDisplay: false }) : this.setState({ chatDisplay: true })
+    // this.state.chatDisplay ? this.setState({ chatDisplay: false }) : this.setState({ chatDisplay: true })
+    if (this.state.chatDisplay) {
+      $('#chatcontainer').hide();
+      this.setState({ chatDisplay: false })
+    } else {
+      $('#chatcontainer').show();
+      this.setState({ chatDisplay: true })
+    }
   }
 
   render(){
@@ -49,7 +56,7 @@ class Chatbox extends Component {
           </li>
         </ul>
 
-        { this.state.chatDisplay ? <Messages /> : null }
+        <Messages />
 
 
       </div>

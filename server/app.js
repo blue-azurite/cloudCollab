@@ -64,7 +64,7 @@ io.on('connection', function(socket){
   var sessionId = 'someID'; //need to update this later
   var contents; 
 
-  socket.on('room', function(room){
+  socket.on('room', function(room) {
     socket.join(room);
     io.to(room).emit("new guest", null);
   })

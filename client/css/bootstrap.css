@@ -4293,7 +4293,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
 }
 .navbar-brand > img {
-  display: block;
+  display: inline-block;
+  padding-right: 5px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
@@ -4336,7 +4337,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
-  line-height: 22px;
+  line-height: 23px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -5493,7 +5494,7 @@ button.list-group-item-danger.active:focus {
 .panel-footer {
   padding: 10px 15px;
   /*background-color: #ffffff;*/
-  border-top: 1px solid #66d9d7;
+  /*border-top: 1px solid #66d9d7;*/
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -6801,6 +6802,7 @@ button.close {
   /*padding-top: 12.5px;*/
   padding-bottom: 12.5px;
   line-height: 1.9;
+  font-weight: bold;
 }
 
 
