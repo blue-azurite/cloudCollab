@@ -1,4 +1,5 @@
-const peer = new Peer({key: 'lwjd5qra8257b9'});
+const peer = new Peer({ host: '/', path: '/peerjs', port: '', secure: true });
+
 let peerId;
 
 peer.on('open', function(id) {

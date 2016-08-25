@@ -88,6 +88,7 @@ class CodeEditor extends Component {
 					mode="javascript"
 					name="ghosteditor"
 					theme="monokai"
+					showPrintMargin={false}
 					value={this.props.input}
 					onChange={this.change.bind(this)}
 				  value={this.state.input}
