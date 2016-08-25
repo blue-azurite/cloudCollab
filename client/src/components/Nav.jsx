@@ -6,7 +6,7 @@ const Nav = () => {
       <div className="container">
         <div className="navbar-header">
           {/*------------------- HEADER -----------------------*/}
-          <a href="../" className="navbar-brand">CloudCollab</a>
+          <a href="../" className="navbar-brand"><img src="./images/logo.png" /> CloudCollab</a>
           <button className="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
