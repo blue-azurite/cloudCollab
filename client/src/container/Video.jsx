@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import Link from '../components/Link';
 import axios from 'axios';
 // import any other actions as well
-import { params, initVid, amIHost, getPeerId, setMyId, savePeerName } from '../actions';
+import { params, initVid, amIHost, getPeerId, setMyId, savePeerName, saveJoinTime, savePeerJoinTime } from '../actions';
 import { getMyId, peer, peerId, establishPeerCall, establishPeerConnection } from '../utilities/VideoActions';
 
 
@@ -19,6 +19,7 @@ class VideoChat extends Component {
 
   componentDidMount() {
     const sourceId = params.get('id')
+    console.log(this.props)
     this.props.amIHost(); // this will update global state
     if (this.props.isHost) { // this is grabbing global state
       this.initAsSource();
@@ -29,45 +30,58 @@ class VideoChat extends Component {
   }
 
   initAsSource() {
-    const savepeername = this.props.savePeerName.bind(this);
-    var date = new Date();
-    var time = '';
-    if (date.getHours() > 12) {
-      time.concat(date.getHours() - 12 + ':' + date.getMinutes() + ' pm');
+    let savepeername = this.props.savePeerName.bind(this);
+    let joinTime = this.props.saveJoinTime.bind(this);
+    let peerJoinTime = this.props.savePeerJoinTime.bind(this);
+    let date = new Date();
+    let time = '';
+
+    if (Number(date.getHours()) > 12) {
+      time = date.getHours() - 12 + ':' + date.getMinutes() + ' pm';
     } else {
-      time.concat(date.getHours() + ':' + date.getMinutes() + ' am');
+      time = date.getHours() + ':' + date.getMinutes() + ' am';
     }
+    joinTime(time)
 
     establishPeerConnection().then( (conn) => {
-      console.log('Peer connection: connected as host!', conn)
-
+      console.log('time joined:', time)
       conn.send({ name: this.props.name, time: time })
       conn.on('data', (data) => {
           console.log('received', data);
           savepeername(data.name)
+          peerJoinTime(data.time)
       })
     });
   }
 
   initAsReceiver(sourceId) {
-    const savepeername = this.props.savePeerName.bind(this);
-    var date = new Date();
-    var time = '';
+    let savepeername = this.props.savePeerName.bind(this);
+    let joinTime = this.props.saveJoinTime.bind(this);
+    let peerJoinTime = this.props.savePeerJoinTime.bind(this);
+    let date = new Date();
+    let time = '';
+
     if (date.getHours() > 12) {
-      time.concat(date.getHours() - 12 + ':' + date.getMinutes() + ' pm');
+      time = date.getHours() - 12 + ':' + date.getMinutes() + ' pm';
     } else {
-      time.concat(date.getHours() + ':' + date.getMinutes() + ' am');
+      time = date.getHours() + ':' + date.getMinutes() + ' am';
     }
+    joinTime(time)
+    this.props.socket.emit('new message', {
+      id: this.props.myId,
+      message: 'now online',
+      room: this.props.roomId,
+      name: this.props.name
+    })
 
     establishPeerConnection(sourceId).then( conn => {
-      console.log('Peer connection: connected to host! ᕙ༼ຈل͜ຈ༽ᕗ ', conn)
-
-      conn.send(this.props.name)
+      conn.send({ name: this.props.name, time: time })
       conn.on('data', (data) => {
         // if the data is the SCREENSHARE DATA....
           // append it to the screenshare div. 
           console.log('received', data);
-          savepeername(data)
+          savepeername(data.name)
+          peerJoinTime(data.time)
       })
     });
 
@@ -119,7 +133,9 @@ function mapDispatchToProps(dispatch) {
     amIHost: amIHost, 
     getPeerId: getPeerId, 
     setMyId: setMyId, 
-    savePeerName: savePeerName
+    savePeerName: savePeerName,
+    saveJoinTime: saveJoinTime,
+    savePeerJoinTime: savePeerJoinTime
   }, dispatch)
 }
 

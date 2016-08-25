@@ -23,8 +23,9 @@ export default class App extends Component {
             </div>
             {/* End Header */} 
             <br />
-            {/* Start Editor && Video Container*/} 
-            <div className="row">
+
+            {/* Start main row */} 
+            <div className="row main">
               <div className="col-lg-3 overflowControl">
                 <Github />
               </div>
@@ -40,7 +41,8 @@ export default class App extends Component {
                   <VideoChat />
               </div>
             </div>
-            {/* End Editor && Video Container*/} 
+            {/* End main row */} 
+
             
             {/* Start Chat */} 
             <div className="row">

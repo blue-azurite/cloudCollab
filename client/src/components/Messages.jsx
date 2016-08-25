@@ -27,11 +27,6 @@ class Messages extends Component {
       greetingWord: ''
     }
 
-    // if (this.props.display) {
-    //   console.log('i need to hide myself ! ')
-    //   document.getElementById('chatcontainer').style.visibility = "block";
-    // }
-
     var addMessage = function (msg){
       var messages = this.state.messages.slice();
       messages.push(msg);

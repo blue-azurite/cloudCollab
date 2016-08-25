@@ -26,6 +26,10 @@ li {
   box-sizing: border-box;
 }
 
+.main {
+  width: 100%;
+}
+
 /** =================== **
         Video Div
 ** =================== **/
