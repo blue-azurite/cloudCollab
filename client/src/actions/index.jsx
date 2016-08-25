@@ -162,7 +162,6 @@ export function fetchFileContents(path, repo) {
     path: path,
     repo: repo
   }
-  console.log(path, repo);
   const fileContents = axios.post('/api/github/contents', data)
     .then(response => {
       return response.data;
