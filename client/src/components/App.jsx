@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import VideoChat from '../container/Video';
 import Github from '../container/Github';
 import CodeEditor from '../container/Editor';
 import Chatbox from '../container/Chatbox';
@@ -29,16 +28,11 @@ export default class App extends Component {
               <div className="col-lg-3 overflowControl">
                 <Github />
               </div>
-              <div className="col-lg-6">
+              <div className="col-lg-9">
                 <br />
                 <br />
 
                 <CodeEditor />
-              </div>
-              <div className="col-lg-3">
-                <br />
-                <br />
-                  <VideoChat />
               </div>
             </div>
             {/* End main row */} 

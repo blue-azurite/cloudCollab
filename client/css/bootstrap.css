@@ -3652,6 +3652,10 @@ tbody.collapse.in {
     right: auto;
   }
 }
+.navbar-right{
+  z-index: 1005;
+}
+
 .btn-group,
 .btn-group-vertical {
   position: relative;
