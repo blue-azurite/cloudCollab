@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-      // <div className="messages_box">
-      //  <textarea type='text' placeholder="new message here" onKeyDown={this.sendMessage.bind(this)}></textarea>
-      // </div>
-
 class Messagebox extends Component {
 
   sendMessage(e){

@@ -26,6 +26,14 @@ li {
   box-sizing: border-box;
 }
 
+.logo {
+  display: inline-block;
+}
+
+.shareLink {
+  line-height: 0;
+}
+
 /** =================== **
         Video Div
 ** =================== **/
@@ -120,10 +128,23 @@ li {
 
 
 .overflowControl {
-  margin-top: 45px;
-  width: 150px;
-  height: 500px;
+  margin-top: 30px;
   overflow: scroll;
+}
+
+/** =================== **
+        Github
+** =================== **/
+.github {
+  color: #a3e22e;
+}
+
+.github > h4 {
+  color: #66d9ef;
+}
+
+li > a {
+  color: #66d9ef;
 }
 
 /** =================== **
@@ -133,6 +154,8 @@ li {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
+
 /** =================== **
     CodeBlock Console
 ** =================== **/
@@ -241,10 +264,14 @@ li {
 .imgLeft {
     float: left;
     text-align: left;
+    margin-left: 10px;
+    margin-right: 5px;
 }
 .imgRight {
     float: right;
     text-align: left;
+    margin-right: 10px;
+    margin-left: 5px;
 }
 
 #chatcontainer {
@@ -305,6 +332,11 @@ li {
     padding: 0px;
 }
 
+#message {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
 .chat {
     list-style: none;
     margin: 0;
@@ -329,13 +361,13 @@ ul {
 
 #chatcontainer .panel-footer {
     padding: 8px 6px;
-    border-top: 1px solid #66d9d7;
+    /*border-top: 1px solid #66d9d7;*/
 }
 
 .panel-footer {
     padding: 10px 15px;
     background-color: #272822;
-    border-top: 1px solid #ddd;
+    /*border-top: 1px solid #ddd;*/
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
 }
@@ -406,7 +438,6 @@ ul {
     color: #63d9ef;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #41b0e7;
     padding: 15px 5px;
 }
 
@@ -462,14 +493,22 @@ img {
     right: 0;
 }
 
+
 #button_chat a {
     padding: 7px;
 }
 
-#button_chat > a, #button_chat > a:hover {
+#button_chat > a {
     background-color: #66d9d7;
     color: #272822;
     border-radius: 0;
     border: 0px;
     margin-bottom: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#button_chat > a:hover {
+    background-color: #54b3b1;
+
 }

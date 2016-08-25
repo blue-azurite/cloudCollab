@@ -8,6 +8,7 @@ class MessageEntry extends Component {
 
   render(){
     let avatarUrl = 'https://robohash.org/' + this.props.name;
+    let peerAvatarUrl = 'https://robohash.org/' + this.props.peerName;
 
     if (this.props.message.id === this.props.myId) {
       return (
@@ -27,12 +28,12 @@ class MessageEntry extends Component {
       return (
         <li className="left clearfix infomsg">
           <span className="chat-img">
-            <img src={avatarUrl} className="img-circle imgRight" />
+            <img src={peerAvatarUrl} className="img-circle imgRight" />
             <div className="chat-body clearfix">
               <div className="header">
                 <span id="date" className="primary-font pull-right"></span>
               </div>
-              <p id="message"><b> {this.props.name}: </b> {this.props.message.message}</p>
+              <p id="message"><b> {this.props.peerName}: </b> {this.props.message.message}</p>
             </div>
           </span>
         </li>
@@ -45,7 +46,8 @@ class MessageEntry extends Component {
 function mapStateToProps(state) {
   return {
     myId: state.MyId.myId, 
-    name: state.Name.name
+    name: state.Name.name,
+    peerName: state.PeerName.peerName
   }
 }
 

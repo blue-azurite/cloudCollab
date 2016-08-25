@@ -23,9 +23,10 @@ export default class App extends Component {
             </div>
             {/* End Header */} 
             <br />
-            {/* Start Editor && Video Container*/} 
-            <div className="row">
-              <div className="col-lg-2 overflowControl">
+
+            {/* Start main row */} 
+            <div className="row main">
+              <div className="col-lg-3 overflowControl">
                 <Github />
               </div>
               <div className="col-lg-6">
@@ -34,13 +35,14 @@ export default class App extends Component {
 
                 <CodeEditor />
               </div>
-              <div className="col-lg-4">
+              <div className="col-lg-3">
                 <br />
                 <br />
                   <VideoChat />
               </div>
             </div>
-            {/* End Editor && Video Container*/} 
+            {/* End main row */} 
+
             
             {/* Start Chat */} 
             <div className="row">

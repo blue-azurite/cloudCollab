@@ -202,25 +202,49 @@ export function fetchRecursiveTree(url) {
 
 ////************************ Redis ************************////
 
-export function fetchInput(input, hostId) {
-  const data = {
-    host: hostId,
-    input: input
-  }
+// export function fetchInput(input, hostId) {
+//   const data = {
+//     host: hostId,
+//     input: input
+//   }
 
-  const abcde = axios.get('/session/join', data)
-    .then(response => {
-      console.log(response)
-    })
-    .catch(erro => {
-      console.warn(error);
-    });
+//   const abcde = axios.get('/session/join', data)
+//     .then(response => {
+//       console.log(response)
+//     })
+//     .catch(erro => {
+//       console.warn(error);
+//     });
+//   return {
+//     type: SAVE_INPUT,
+//     input: abcde
+//   }
+// }
+
+////************************ CHAT ************************////
+
+export function savePeerName(peerName) {
   return {
-    type: SAVE_INPUT,
-    input: abcde
+    type: SAVE_PEER_NAME,
+    payload: peerName
   }
 }
 
+export function saveJoinTime(time) {
+  console.log('time is', time)
+  return {
+    type: SAVE_JOIN_TIME,
+    payload: time
+  }
+}
+
+export function savePeerJoinTime(time) {
+  console.log('peer join time is', time)
+  return {
+    type: SAVE_PEER_JOIN_TIME,
+    payload: time
+  }
+}
 
 export const SAVE_NAME = 'SAVE_NAME';
 export const SOCKET_IO = 'SOCKET_IO';
@@ -236,4 +260,6 @@ export const FETCH_USER_GITHUB_REPOS = 'FETCH_USER_GITHUB_REPOS';
 export const FETCH_USER_GITHUB_REPO_TREE = 'FETCH_USER_GITHUB_REPO_TREE';
 export const FETCH_USER_GITHUB_REPO_CONTENTS = 'FETCH_USER_GITHUB_REPO_CONTENTS';
 export const FETCH_USER_GITHUB_RECURSIVE_TREE = 'FETCH_USER_GITHUB_RECURSIVE_TREE';
-
+export const SAVE_PEER_NAME = 'SAVE_PEER_NAME';
+export const SAVE_JOIN_TIME = 'SAVE_JOIN_TIME';
+export const SAVE_PEER_JOIN_TIME = 'SAVE_PEER_JOIN_TIME';
