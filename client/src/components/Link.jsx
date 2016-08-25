@@ -11,13 +11,9 @@ class Link extends Component {
 
   render() {
     return(
-      <div id="link">
-        <div id="link-message">
-          <CopyToClipboard text={`http://localhost:3000/?id=${ sourceId ? sourceId : this.props.myId }`}>
-            <button className="btn btn-primary btn-sm">Copy share link</button>
-          </CopyToClipboard>
-        </div>
-      </div>
+      <CopyToClipboard text={`http://localhost:3000/?id=${ sourceId ? sourceId : this.props.myId }`}>
+        <span className="shareLink">Copy share link</span>
+      </CopyToClipboard>
     )
   }
 };

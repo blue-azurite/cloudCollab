@@ -30,9 +30,9 @@ li {
   display: inline-block;
 }
 
-/*.main {
-  width: 100%;
-}*/
+.shareLink {
+  line-height: 0;
+}
 
 /** =================== **
         Video Div
