@@ -1,4 +1,4 @@
-const peer = new Peer({ host: '/', path: '/peerjs', port: '', secure: true });
+const peer = new Peer({ key: 'lwjd5qra8257b9', host: 'localhost', path: '/peerjs', port: 9000, secure: true });
 
 let peerId;
 
