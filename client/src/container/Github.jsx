@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { fetchUsers, fetchUserRepos, fetchSha, fetchFileContents, fetchRecursiveTree } from '../actions';
 import GithubTree from '../components/TreeView';
 import axios from 'axios';
+import Menu from 'react-burger-menu';
+
 
 class Github extends Component {
   constructor(props){

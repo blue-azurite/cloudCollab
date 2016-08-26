@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from './Link';
+import Video from '../container/Video';
 
 const Nav = () => {
   return (
@@ -20,6 +21,7 @@ const Nav = () => {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#"><Link /></a></li>
+            <li><a href="#"><Video /></a></li>
             <li><a href="/api/github">Login with Github</a></li>
           </ul>
         </div>

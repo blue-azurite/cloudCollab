@@ -100,11 +100,11 @@ class VideoChat extends Component {
 
   render() {
     return(
-      <div id="video" className="mediaDiv"> 
-        <button className="btn btn-primary btn-sm vid-btn" onClick={this.enableVideo.bind(this)}>Enable video chat</button>
-        <video id="local-video" autoPlay></video>
-        <video id="remote-video" autoPlay></video>
-      </div>
+        <span>
+          <span onClick={this.enableVideo.bind(this)}>Enable video chat</span>
+          <video id="local-video" autoPlay></video>
+          <video id="remote-video" autoPlay></video>
+        </span>
     )
   }
 

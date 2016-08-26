@@ -14,7 +14,6 @@ const app = express();
 const server = Server(app);
 const io = Io(server);
 const port = process.env.PORT || 3000;
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Render static index route
 app.use(express.static(path.join(__dirname,'../compiled')));
@@ -25,7 +24,6 @@ app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: fals
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json())
-app.use(urlencodedParser);
 
 // Create GitHubStrategy
 passport.use(new GitHubStrategy({

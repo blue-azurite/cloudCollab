@@ -1,4 +1,5 @@
-const peer = new Peer({key: 'lwjd5qra8257b9'});
+const peer = new Peer({ key: 't5xx2zmvmtj1nhfr' });
+
 let peerId;
 
 peer.on('open', function(id) {

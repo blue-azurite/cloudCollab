@@ -35,15 +35,25 @@ li {
 }
 
 /** =================== **
-        Video Div
+        Videos
 ** =================== **/
 
-.mediaDiv {
-  text-align: center;
-}
 .vid-btn {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+#local-video {
+  position: fixed;
+  top: 80px;
+  right: 140px;
+  z-index: -1;
+
+}
+#remote-video {
+  top: 80px;
+  right: 40px;
+  position: fixed;
+  z-index: -2;
 }
 
 /** =================== **
@@ -327,7 +337,7 @@ li > a {
 
 .chatbox .panel-body {
     overflow-y: auto;
-    height: calc(80vh - 118px);
+    height: calc(60vh - 118px);
     overflow-y: scroll;
     padding: 0px;
 }

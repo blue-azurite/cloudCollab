@@ -8,12 +8,12 @@ const constraints = {
   audio: false, // setting to false for testing purposes
   video: {
     width: {
-      min: 250,
-      max: 250
+      min: 90,
+      max: 90
     }, 
     height: {
-      min: 189,
-      max: 190
+      min: 68,
+      max: 68
     }
   }
 };
