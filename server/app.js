@@ -9,14 +9,11 @@ import GitHubStrategy, { Strategy } from 'passport-github2';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import saveSession from './routes/userRoutes'
-import peer from 'peer';
 
 const app = express();
 const server = Server(app);
 const io = Io(server);
 const port = process.env.PORT || 3000;
-const ExpressPeerServer = peer.ExpressPeerServer;
-const peerServer = ExpressPeerServer(server, { debug: true });
 
 // Render static index route
 app.use(express.static(path.join(__dirname,'../compiled')));
@@ -27,7 +24,6 @@ app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: fals
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json())
-app.use('/', peerServer);
 
 // Create GitHubStrategy
 passport.use(new GitHubStrategy({
@@ -94,13 +90,6 @@ io.on('connection', function(socket){
       socket.broadcast.emit('message', data);
   });
 
-});
-
-// peer server
-peerServer.on('connection', function(id) {
-  /* ........... */
-  console.log('id is: ', id)
-  console.log('connection detected');
 });
 
 // RESTful routes for app

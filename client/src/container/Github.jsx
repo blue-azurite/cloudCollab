@@ -6,7 +6,6 @@ import GithubTree from '../components/TreeView';
 import axios from 'axios';
 import Menu from 'react-burger-menu';
 
-const StackMenu = Menu.stack
 
 class Github extends Component {
   constructor(props){
@@ -58,10 +57,8 @@ class Github extends Component {
     if (!this.props.Repos) {
       return (
         <div className="github">
-          <StackMenu>
           <h4>Your Github Files</h4>
           To see your files please login.
-          </StackMenu>
         </div>
       )
     }
