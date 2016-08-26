@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import redis from 'redis';
+// import redis from 'redis';
 
-const client = redis.createClient();
+// const client = redis.createClient();
 const url = process.env.DATABASEURL || 'mongodb://localhost/blueazurite';
 
 //------------------------------- Mongo
@@ -22,6 +22,6 @@ db.once('open', () => {
 
 //------------------------------- Redis
 
-client.on('connect', function() {
-    console.log(`redis is connected ${random}`);
-});
+// client.on('connect', function() {
+//     console.log(`redis is connected ${random}`);
+// });
