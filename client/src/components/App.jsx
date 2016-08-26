@@ -4,6 +4,9 @@ import CodeEditor from '../container/Editor';
 import Chatbox from '../container/Chatbox';
 import Nav from './Nav';
 import Modal from '../container/Modal';
+import BurgerMenu from 'react-burger-menu';
+
+const Menu = require('react-burger-menu').stack;
 
 export default class App extends Component {
   render() {

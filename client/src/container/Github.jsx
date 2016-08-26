@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import { fetchUsers, fetchUserRepos, fetchSha, fetchFileContents, fetchRecursiveTree } from '../actions';
 import GithubTree from '../components/TreeView';
 import axios from 'axios';
-import Menu from 'react-burger-menu';
+import BurgerMenu from 'react-burger-menu';
 
+const Menu = require('react-burger-menu').stack;
 
 class Github extends Component {
   constructor(props){
@@ -57,8 +58,10 @@ class Github extends Component {
     if (!this.props.Repos) {
       return (
         <div className="github">
-          <h4>Your Github Files</h4>
-          To see your files please login.
+        <Menu customCrossIcon={ <img src="./images/list.png" width="96" height="96" /> }>
+            <h4>Your Github Files</h4>
+            <a href="" className="menu-item">To see your files please login.</a>
+          </Menu>
         </div>
       )
     }
