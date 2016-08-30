@@ -4,6 +4,9 @@ import CodeEditor from '../container/Editor';
 import Chatbox from '../container/Chatbox';
 import Nav from './Nav';
 import Modal from '../container/Modal';
+import BurgerMenu from 'react-burger-menu';
+
+const Menu = require('react-burger-menu').stack;
 
 export default class App extends Component {
   render() {
@@ -24,11 +27,9 @@ export default class App extends Component {
             <br />
 
             {/* Start main row */} 
+            <Github />
             <div className="row main">
-              <div className="col-lg-3 overflowControl">
-                <Github />
-              </div>
-              <div className="col-lg-9">
+              <div className="col-lg-12">
                 <br />
                 <br />
 
