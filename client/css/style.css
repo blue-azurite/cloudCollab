@@ -145,30 +145,46 @@ li {
 /** =================== **
         Github
 ** =================== **/
-.github {
-  color: #a3e22e;
+.bm-cross-button {
+  margin: 10px;
+}
+.bmMenu {
+  background: #373a47;
+  padding: 20px 10px;
+}
+.bm-item-list {
+  background-color: #272822;
+  border-right: 1px solid #a6e22e;
+  color: #66d9ef;
+  padding-top: 20px;
+  z-index: 2000;
+}
+.github > a{
+  color: #a6e22e;
+}
+.github > li {
+  list-style:square;
 }
 
-.github > h4 {
-  color: #66d9ef;
-}
 
-li > a {
-  color: #66d9ef;
-}
 
 /** =================== **
         Editor
 ** =================== **/
+/*#ghosteditor {
+  z-index: -100;
+}*/
 .codeblock-container {
   border-radius: 5px;
   margin-bottom: 10px;
+  z-index: -3;
 }
-
-
+.ace_gutter {
+  z-index: 1 !important;
+}
 /** =================== **
     CodeBlock Console
-** =================== **/
+** =================== *
 /*Structure*/
 
 
@@ -193,6 +209,15 @@ li > a {
     color: #66d9ef;
     display: inline-block;
     word-break: break-all;
+    z-index: 1;
+}
+
+.codeblock-console, .codeblock-editor-wrapper{
+  z-index: 1;
+}
+
+.codeblock-console {
+  margin-bottom: 70px;
 }
 
 .codeblock-reset {

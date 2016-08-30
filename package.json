@@ -44,6 +44,7 @@
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
     "querystring": "^0.2.0",
+    "radium": "^0.18.1",
     "react": "^15.3.0",
     "react-ace": "^3.5.0",
     "react-burger-menu": "^1.10.4",

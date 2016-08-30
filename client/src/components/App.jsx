@@ -27,11 +27,9 @@ export default class App extends Component {
             <br />
 
             {/* Start main row */} 
+            <Github />
             <div className="row main">
-              <div className="col-lg-3 overflowControl">
-                <Github />
-              </div>
-              <div className="col-lg-9">
+              <div className="col-lg-12">
                 <br />
                 <br />
 

@@ -58,9 +58,10 @@ class Github extends Component {
     if (!this.props.Repos) {
       return (
         <div className="github">
-        <Menu customCrossIcon={ <img src="./images/list.png" width="96" height="96" /> }>
+        <Menu customCrossIcon={ <img src="./images/list.png" width="96" height="96"/> }
+              noOverlay >
             <h4>Your Github Files</h4>
-            <a href="" className="menu-item">To see your files please login.</a>
+            <a href="javascript:;">To see your files please login.</a>
           </Menu>
         </div>
       )
@@ -68,29 +69,36 @@ class Github extends Component {
     if (this.props.Trees.length > 0) {
       return (
           <div className="github">
+          <Menu customCrossIcon={ <img src="./images/list.png" width="96" height="96"/> }
+              noOverlay >
+
           <h4>Your Github Files</h4>
             <ul>
               {
                 this.props.Trees.map((file, index) =>
-                  <li onClick={this.handleFileClick.bind(this, file.path, file.type, file.url)} key={index}><a>{file.path}</a></li>
+                  <li className="menu-item" onClick={this.handleFileClick.bind(this, file.path, file.type, file.url)} key={index}><a>{file.path}</a></li>
                 )
               }
             </ul>
+          </Menu>
           </div>
         )
       }
     return (
       <div className="github">
-        <div>
-          <h4>Your Github Files</h4>
-          <ul>
-           {
-             this.props.Repos.map((repo, index) =>
-               <GithubTree handleClickedItem={this.handleClickedItem.bind(this, repo)} data={repo} tree={this.props.Trees} key={index}/>
-             )
-           }
-          </ul>
-        </div>
+        <Menu customCrossIcon={ <img src="./images/list.png" width="96" height="96"/> }
+        noOverlay >
+          <div>
+            <h4>Your Github Files</h4>
+            <ul>
+             {
+               this.props.Repos.map((repo, index) =>
+                 <GithubTree handleClickedItem={this.handleClickedItem.bind(this, repo)} data={repo} tree={this.props.Trees} key={index}/>
+               )
+             }
+            </ul>
+          </div>
+        </Menu>
       </div>
     )
   }
