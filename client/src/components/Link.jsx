@@ -11,7 +11,7 @@ class Link extends Component {
 
   render() {
     return(
-      <CopyToClipboard text={`http://localhost:3000/?id=${ sourceId ? sourceId : this.props.myId }`}>
+      <CopyToClipboard text={`http://52.52.149.74:3000/?id=${ sourceId ? sourceId : this.props.myId }`}>
         <span className="shareLink">Copy share link</span>
       </CopyToClipboard>
     )
